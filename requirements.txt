@@ -3,8 +3,10 @@ numpy
 SQLAlchemy
 psycopg2-binary
 scikit-learn
+joblib
 xgboost
 lightgbm
+catboost
 imbalanced-learn
 optuna
 shap
