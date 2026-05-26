@@ -1,0 +1,37 @@
+{
+  "best_algorithm": "XGBoost",
+  "best_params": {
+    "n_estimators": 311,
+    "max_depth": 9,
+    "learning_rate": 0.01926285795193187,
+    "subsample": 0.8038272277297336,
+    "colsample_bytree": 0.8264392134038689,
+    "min_child_weight": 1,
+    "gamma": 0.5248371704100026,
+    "reg_alpha": 0.0008343319329586134,
+    "reg_lambda": 0.003156453072204755,
+    "random_state": 42,
+    "eval_metric": "logloss",
+    "verbosity": 0,
+    "n_jobs": -1
+  },
+  "test_metrics": {
+    "model_name": "XGBoost (Tuned)",
+    "auc_roc": 0.6882,
+    "f1_score": 0.3482,
+    "precision": 0.4968,
+    "recall": 0.268,
+    "avg_precision": 0.4464,
+    "confusion_matrix": [
+      [
+        630,
+        79
+      ],
+      [
+        213,
+        78
+      ]
+    ]
+  },
+  "trained_at": "2026-05-25 15:49:01"
+}

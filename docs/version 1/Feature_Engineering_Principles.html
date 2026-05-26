@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>หลักการทำ Feature Engineering และการคัดเลือก Feature</title>
+    <style>
+        body {
+            font-family: 'Sarabun', 'Tahoma', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        h2 {
+            text-align: center;
+            color: #7f8c8d;
+            font-weight: normal;
+            font-size: 1.2em;
+            margin-top: 0;
+            margin-bottom: 30px;
+        }
+        h3 {
+            color: #2980b9;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        h4 {
+            color: #34495e;
+            margin-bottom: 5px;
+        }
+        p {
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        .example {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-left: 4px solid #3498db;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+        .reason {
+            background-color: #fdfbf7;
+            padding: 10px;
+            border-left: 4px solid #f39c12;
+            margin-bottom: 20px;
+        }
+        .source {
+            background-color: #e8f5e9;
+            padding: 5px 10px;
+            border-left: 4px solid #2ecc71;
+            margin-bottom: 5px;
+            font-size: 0.95em;
+        }
+        .highlight {
+            background-color: #e8f4f8;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>หลักการทำ Feature Engineering และการคัดเลือก Feature</h1>
+    <h2>เปรียบเทียบระหว่าง clean_dataset.csv และ df_engineered</h2>
+
+    <h3>1. ภาพรวมและวัตถุประสงค์ (Overview)</h3>
+    <p>
+        กระบวนการ <strong>Feature Engineering</strong> เป็นการเตรียมและคัดเลือกข้อมูลเพื่อนำไปสอน Machine Learning Model 
+        โดยเป้าหมายหลักคือการทำนายว่าคำสั่งซื้อจะถูกส่งคืนหรือไม่ (<code>is_returned</code>) 
+        เราเริ่มต้นจากข้อมูลดิบที่ผ่านการทำความสะอาดแล้ว (<code>clean_dataset.csv</code>) นำมาแปลงรูปแบบ สร้างตัวแปรใหม่ 
+        และตัดตัวแปรที่ไม่จำเป็นออก จนได้ชุดข้อมูลสุดท้ายคือ <code>df_engineered</code>
+    </p>
+
+    <h3>2. กลุ่ม Feature ที่ถูกตัดทิ้ง (Dropped Features)</h3>
+    <p>หลักการในการพิจารณาตัด Feature ทิ้ง แบ่งออกเป็น 4 ประเภทหลัก ได้แก่:</p>
+
+    <h4>2.1. ข้อมูลระบุตัวตน (Identifiers & PII)</h4>
+    <div class="example">ตัวอย่าง: order_id, customer_id, customer_name, customer_phone, product_id, supplier_id</div>
+    <div class="reason"><strong>เหตุผล:</strong> ข้อมูลเหล่านี้เป็นข้อมูลเฉพาะเจาะจงของบุคคลหรือสิ่งของ ไม่ช่วยให้โมเดลเรียนรู้รูปแบบ (Pattern) ในภาพรวมได้ และหากนำไปสอนโมเดลอาจทำให้เกิดปัญหา Overfitting (จำข้อมูลได้แต่ทำนายของใหม่ไม่เป็น)</div>
+
+    <h4>2.2. ข้อมูลในอนาคต หรือ ข้อมูลที่หลุดรอด (Data Leakage)</h4>
+    <div class="example">ตัวอย่าง: return_id, return_date, return_reason, item_condition, return_status, refund_amount, delivery_days</div>
+    <div class="reason"><strong>เหตุผล:</strong> ข้อมูลเหล่านี้จะเกิดขึ้นหรือรับรู้ได้ก็ต่อเมื่อ "มีการจัดส่งหรือคืนสินค้าไปแล้ว" การนำข้อมูลที่เกิดทีหลังมาใช้ทำนายล่วงหน้าถือเป็นการโกง (Leakage) เพราะในโลกความเป็นจริงตอนที่ลูกค้าเพิ่งกดสั่งซื้อ เราจะยังไม่มีข้อมูลเหล่านี้เลย</div>
+
+    <h4>2.3. ผลลัพธ์จากโมเดลเดิม (Model Outputs)</h4>
+    <div class="example">ตัวอย่าง: risk_score, risk_tier, shap_values</div>
+    <div class="reason"><strong>เหตุผล:</strong> เป็นผลลัพธ์ที่ได้จากการคำนวณของโมเดลตัวอื่น ไม่ใช่ข้อมูลดิบตั้งต้น หากนำมาใช้จะทำให้เกิดความซ้ำซ้อนและไม่ได้ประโยชน์เชิงพฤติกรรม</div>
+
+    <h4>2.4. ข้อมูลวันที่ดิบๆ (Raw Dates)</h4>
+    <div class="example">ตัวอย่าง: order_date, expected_delivery_date</div>
+    <div class="reason"><strong>เหตุผล:</strong> โมเดล Machine Learning แบบตารางมักไม่สามารถเข้าใจวันที่ตรงๆ ได้ จึงถูกตัดออกและนำไปสกัดเป็นช่วงเวลา หรือระยะห่างแทน (เช่น แปลงเป็น order_hour, days_since_last_order)</div>
+
+    <h3>3. กลุ่ม Feature ที่ถูกเก็บไว้และแปลงรูป (Kept & Transformed Features)</h3>
+    
+    <h4>3.1. ข้อมูลการสั่งซื้อหลัก</h4>
+    <div class="example">ได้แก่: quantity, unit_price, total_amount, payment_method, channel_type, category</div>
+    <div class="reason"><strong>การแปลงรูป:</strong> มีการทำ Log Transformation (เช่น <code>log_unit_price</code>, <code>log_total_amount</code>) เพื่อลดผลกระทบจากข้อมูลที่มีราคาสูงผิดปกติ (Outliers) ทำให้กราฟการกระจายตัวของข้อมูลมีความสมดุลมากขึ้น</div>
+
+    <h4>3.2. ข้อมูลส่วนลด (Discounts)</h4>
+    <div class="example">ได้แก่: promo_discount_pct</div>
+    <div class="reason"><strong>การแปลงรูป:</strong> สร้าง Flag แจ้งเตือนเช่น <code>is_high_discount</code> (ส่วนลดมากกว่า 20%) เนื่องจากในเชิงธุรกิจพบว่าส่วนลดที่สูงมากมักกระตุ้นให้เกิดการซื้อแบบไม่ยั้งคิด และมีโอกาสขอคืนสินค้าในภายหลัง</div>
+
+    <h3>4. กลุ่ม Feature ที่สร้างขึ้นมาใหม่ (Engineered Features) พร้อมที่มา</h3>
+    <p>เรามีการสร้างข้อมูลใหม่จากความรู้เชิงธุรกิจ (Business Domain) โดยประกอบขึ้นมาจากข้อมูลเดิมที่มีอยู่ ดังนี้:</p>
+
+    <h4>4.1. ข้อมูลสถิติย้อนหลัง (Point-in-Time Historical)</h4>
+    <div class="example">
+        - <code>total_orders_before</code> (จำนวนออเดอร์ในอดีต)<br>
+        - <code>total_returns_before</code> (จำนวนครั้งที่เคยคืน)<br>
+        - <code>customer_return_ratio</code> (สัดส่วนการคืนของลูกค้า)<br>
+        - <code>return_rate_by_category</code> (อัตราการคืนของหมวดหมู่นั้นๆ ในช่วง 90 วัน)
+    </div>
+    <div class="source"><strong>สร้างมาจาก:</strong> <code>customer_id</code> (เพื่อหาลูกค้าคนเดิม), <code>category</code> (หมวดหมู่สินค้า), <code>order_date</code> (ดูช่วงเวลา) และประวัติ <code>is_returned</code> ในอดีต</div>
+    <div class="reason"><strong>เหตุผล:</strong> คำนวณจากประวัติลูกค้าหรือสินค้า <strong>"ณ วันก่อนที่จะเกิดคำสั่งซื้อปัจจุบัน"</strong> เพื่อดักจับพฤติกรรมลูกค้าที่ชอบคืนสินค้าเป็นประจำ (Serial Returners) โดยรับประกันว่าจะไม่เกิด Data Leakage</div>
+
+    <h4>4.2. ข้อมูลเชิงเวลา (Time-based)</h4>
+    <div class="example">
+        - <code>is_peak_hour</code> (เวลาเร่งด่วนของการสั่งช่องทางนั้นๆ)<br>
+        - <code>order_dayofweek</code> (วันในสัปดาห์ 0-6)<br>
+        - <code>is_weekend</code> (เป็นวันเสาร์-อาทิตย์หรือไม่)
+    </div>
+    <div class="source"><strong>สร้างมาจาก:</strong> สกัดค่าชั่วโมงและวันออกมาจาก <code>order_date</code> ส่วน <code>is_peak_hour</code> ใช้เงื่อนไขช่วงเวลา + <code>channel_type</code></div>
+    <div class="reason"><strong>เหตุผล:</strong> ช่วยดักจับพฤติกรรมการซื้อ เช่น การซื้อดึกๆ อาจมีความเสี่ยงในการคืนมากกว่าซื้อตอนกลางวัน</div>
+
+    <h4>4.3. เงื่อนไขทางธุรกิจและความเสี่ยง (Business Rules / Risk Flags)</h4>
+    <div class="example">
+        - <code>is_long_distance_cod</code> (เก็บเงินปลายทางต่างจังหวัดไกลๆ)<br>
+        - <code>is_impulse_buy</code> (ซื้อสินค้าแฟชั่นผ่านทีวี/TikTok ตอนกลางคืนดึกๆ)<br>
+        - <code>is_low_commitment</code> (จ่ายปลายทางและมีส่วนลดสูงมาก)<br>
+        - <code>is_bracketing</code> (ซื้อแฟชั่นทีละหลายไซส์/หลายสีเพื่อลองแล้วคืน)
+    </div>
+    <div class="source"><strong>สร้างมาจาก:</strong> เป็นการผสมเงื่อนไข (IF-ELSE) ของข้อมูลเดิมหลายๆ ตัว เช่น 
+        <br>• <code>province</code> + <code>payment_method</code> == 'COD'
+        <br>• <code>category</code> == 'Fashion' + <code>channel_type</code> + <code>is_peak_hour</code>
+        <br>• <code>payment_method</code> == 'COD' + <code>is_high_discount</code>
+        <br>• <code>category</code> == 'Fashion' + <code>quantity</code> &gt; 1
+    </div>
+    <div class="reason"><strong>เหตุผล:</strong> เป็นการจับคู่เงื่อนไขที่สะท้อนบริบททางธุรกิจ ซึ่งให้ประสิทธิภาพการทำนายที่แม่นยำกว่าการใช้ตัวแปรเดี่ยวๆ</div>
+
+    <h4>4.4. การจับคู่ตัวแปร (Interaction Features)</h4>
+    <div class="example">
+        - <code>category_payment</code> (หมวดหมู่ + วิธีการจ่ายเงิน)<br>
+        - <code>category_channel</code> (หมวดหมู่ + ช่องทางการขาย)<br>
+        - <code>gender_province</code> (เพศ + จังหวัด)
+    </div>
+    <div class="source"><strong>สร้างมาจาก:</strong> การนำข้อมูล Text 2 คอลัมน์มาต่อกันตรงๆ (String Concatenation)</div>
+    <div class="reason"><strong>เหตุผล:</strong> พฤติกรรมบางอย่างเกิดจากองค์ประกอบร่วมกัน เช่น การซื้อสินค้าแฟชั่นผ่านช่องทางทีวี (<code>is_fashion_tv</code>) อาจมีอัตราการคืนที่แตกต่างจากการซื้อเครื่องใช้ไฟฟ้าผ่านช่องทางเดียวกัน เป็นต้น</div>
+
+    <div class="highlight">
+        <h3>💡 ข้อสรุปเพิ่มเติมประเด็นการใช้งาน History Data</h3>
+        <p><strong>คำถาม:</strong> บางข้อมูลเราแค่รู้ประวัติมันแต่ไม่ได้เอามาทำนายใช่มั้ย?</p>
+        <p><strong>คำตอบ:</strong> ใช่ครับ สำหรับข้อมูล <strong>ประวัติในอดีต (Historical Data)</strong> เราไม่ได้เอาข้อมูลระดับ "บรรทัดต่อบรรทัด" ของอดีตมาโยนใส่โมเดลตรงๆ แต่เรานำประวัติเหล่านั้นมา <strong>"สรุปเป็นสถิติ ณ จุดเวลาที่ลูกค้ากำลังจะซื้อ" (Point-in-Time)</strong> เช่น แปลงประวัติในอดีตให้ออกมาเป็น "จำนวนที่เคยคืน" (`total_returns_before`)</p>
+        <p>ส่วนข้อมูลหลังบ้านของ <strong>"คำสั่งซื้อปัจจุบัน" (Future/After-the-fact Data)</strong> เช่น เหตุผลการคืน, วันที่ส่งของเสร็จ ของบิลรอบนี้ เราจะเก็บไว้ดูเป็น Report เฉยๆ แต่ <strong>ห้ามเอามาใช้ทำนายบิลรอบนี้เด็ดขาด</strong> เพราะตอนที่ลูกค้าเพิ่งกดสั่งซื้อ เรายังไม่รู้ข้อมูลพวกนี้ครับ (หากใส่ไปจะทำให้เกิด Data Leakage)</p>
+    </div>
+
+</body>
+</html>
