@@ -1,0 +1,86 @@
+{
+  "generation_summary": {
+    "source_rows": 5000,
+    "synthetic_rows_added": 4700,
+    "output_rows": 9700,
+    "target_return_rate": 0.15,
+    "actual_return_rate": 0.15,
+    "target_distribution": {
+      "0": 8245,
+      "1": 1455
+    }
+  },
+  "cleaning_audit": [
+    {
+      "step": "drop_exact_duplicates",
+      "rows_affected": 0
+    },
+    {
+      "step": "drop_duplicate_order_id",
+      "rows_affected": 0
+    },
+    {
+      "step": "fill_promo_type",
+      "rows_affected": 8967
+    },
+    {
+      "step": "fill_return_id",
+      "rows_affected": 3545
+    },
+    {
+      "step": "fill_numeric_risk_score",
+      "rows_affected": 4700
+    },
+    {
+      "step": "recalculate_discount_applied_amount",
+      "rows_affected": 0
+    },
+    {
+      "step": "recalculate_total_amount",
+      "rows_affected": 0
+    }
+  ],
+  "eda_insight": {
+    "rows": 9700,
+    "return_rate": 0.15,
+    "top_category_return_rate": {
+      "Electronics": 0.16344086021505377,
+      "Supplement": 0.15810879511947126,
+      "Home_Appliance": 0.15649867374005305
+    },
+    "top_channel_return_rate": {
+      "TV_Show": 0.15598650927487354,
+      "Shopee": 0.15172988745310545,
+      "TikTok": 0.14777733279935923
+    }
+  },
+  "best_model": {
+    "model": "XGBoost_SMOTE_Optuna",
+    "threshold": 0.33999999999999997,
+    "accuracy": 0.8345360824742268,
+    "precision": 0.45,
+    "recall": 0.4639175257731959,
+    "f1": 0.45685279187817257,
+    "auc": 0.8538112237136325,
+    "avg_precision": 0.4446689081268707,
+    "cost_thb": 31650,
+    "tn": 1484,
+    "fp": 165,
+    "fn": 156,
+    "tp": 135,
+    "default_accuracy": 0.8458762886597938,
+    "default_recall": 0.23711340206185566,
+    "default_f1": 0.3157894736842105,
+    "default_cost_thb": 37150,
+    "train_seconds": 1.83899079999901,
+    "performance_score": 0.542080579831493
+  },
+  "outputs": {
+    "raw": "C:\\Users\\user\\.gemini\\antigravity\\playground\\return-risk-prediction\\data\\generated\\v4_synthetic_orders_returns.csv",
+    "clean": "C:\\Users\\user\\.gemini\\antigravity\\playground\\return-risk-prediction\\data\\processed\\clean_dataset_v4_generated.csv",
+    "features": "C:\\Users\\user\\.gemini\\antigravity\\playground\\return-risk-prediction\\data\\features\\df_engineered_v4_generated.csv",
+    "train_test": "C:\\Users\\user\\.gemini\\antigravity\\playground\\return-risk-prediction\\data\\features\\train_test_sets_v4_generated.pkl",
+    "model": "C:\\Users\\user\\.gemini\\antigravity\\playground\\return-risk-prediction\\models\\best_model_v4_generated.pkl",
+    "report_pdf": "C:\\Users\\user\\.gemini\\antigravity\\playground\\return-risk-prediction\\docs\\analysis\\v4_generated_end_to_end_report.pdf"
+  }
+}

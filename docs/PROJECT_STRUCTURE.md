@@ -1,50 +1,88 @@
 # Project Structure
 
-This document describes where each type of project file should live.
+This file is the main map for the Return Risk Prediction project.
 
-## Root
+## Open First
 
-- `dashboard.py`: Streamlit application entry point.
-- `README.md`: high-level project overview and run instructions.
-- `requirements.txt`: Python dependencies.
-- `docker-compose.yml`: local database stack.
-- `package.json` / `package-lock.json`: Node-based tooling used for document/export utilities.
+1. `docs/version 4/README_V4_GENERATED.md`
+   - Latest selected V4 generated experiment.
+   - Main result: XGBoost + SMOTE + Optuna, Accuracy 83.45%, Recall 46.39%, F1 45.69%, AUC 85.38%, Cost 31,650.
+2. `docs/model comparison/model_versions_v1_to_v4_comparison.pdf`
+   - Comparison across V1-V4.
+3. `docs/business insight/business_insight_feature_summary.md`
+   - Business insight and feature mapping.
 
-## Data
+## Top-Level Folders
 
-- `data/raw/`: source or mock source datasets.
-- `data/processed/`: cleaned datasets ready for feature engineering.
-- `data/features/`: engineered feature tables, train/test sets, and scalers.
+| Folder | Purpose | Notes |
+| --- | --- | --- |
+| `data/raw` | Original/mock raw source data | Do not edit manually. |
+| `data/processed` | Cleaned datasets | Includes original clean data and V4 generated clean data. |
+| `data/generated` | Synthetic/generated datasets | V4 generated imbalance data lives here. |
+| `data/features` | Feature matrices and train/test artifacts | Used by training scripts. |
+| `docs/reference` | Input materials and screenshots | PDFs, ER diagram, source reference images. |
+| `docs/analysis` | Working analysis documents | Broader analysis outputs and report drafts. |
+| `docs/business insight` | Business insight deliverables | Curated documents for presentation/reporting. |
+| `docs/model comparison` | Version comparison deliverables | V1-V4 comparison report and chart. |
+| `docs/version 1` | V1 code/report materials | Baseline feature engineering and model scripts. |
+| `docs/version 2` | V2 code/report materials | V2 feature engineering, model scripts, and V2.1 tuning package. |
+| `docs/version 3` | V3 code/report materials | Stacking model and threshold evaluation. |
+| `docs/version 4` | Latest V4 generated package | Self-contained generated-data pipeline package. |
+| `models` | Model artifacts | `.pkl` model files and metadata. |
+| `reports` | Charts/metrics from experiments | Canonical output folder for scripts. |
+| `scripts` | Re-runnable utility and experiment scripts | End-to-end pipelines and export scripts. |
+| `src` | App/source package area | Project source code support. |
 
-## Models
+## Version Folders
 
-- `models/`: only model binaries and model metadata.
-- `models/*.pkl`: trained model artifacts.
-- `models/best_model_metadata.json`: model selection and metric snapshot.
+### V1
 
-## Reports
+`docs/version 1`
 
-- `reports/model_training/`: model comparison tables and charts.
-- `reports/model_evaluation/`: V1 evaluation artifacts.
-- `reports/model_evaluation_v2/`: V2 metrics and SHAP/cost artifacts.
-- `reports/model_evaluation_v3/`: V3 threshold tradeoff and metrics CSVs.
-- `reports/business_insights/`, `reports/eda_full/`, `reports/Graph Item/`, `reports/Graph Relation Feature/`: EDA and business insight visuals.
+- `feature_engineering.py`
+- `model_training.py`
+- `model_evaluation.py`
+- Feature engineering principle docs/PDF
 
-## Documentation
+### V2
 
-- `docs/version 1/`, `docs/version 2/`, `docs/version 3/`: versioned ML pipeline scripts and docs.
-- `docs/analysis/`: markdown analysis notes and summaries.
-- `docs/reference/input_materials/`: proposal PDFs, ERD input, and external reference files.
-- `docs/reference/images/`: whiteboard/reference images.
-- `docs/archive/conversations/`: conversation logs (ignored by git).
+`docs/version 2`
 
-## Notebooks
+- `feature_engineering_v2.py`
+- `model_training_v2.py`
+- `model_evaluation_v2.py`
+- `df_engineered_v2_preview.csv`
+- `df_engineered_v2_unencoded.csv`
+- `v2_1_accuracy_tuning/`
+  - V2.1 tuning report, metrics CSV, selected features, and metadata.
 
-- `notebooks/clean_process/`: data cleaning and schema-support notebooks/scripts.
-- `notebooks/eda/`: EDA scripts and notebook exports.
+### V3
 
-## Source Scripts
+`docs/version 3`
 
-- `src/setup_database.py`: mock data generation and database load.
-- `src/sync_db_to_csv.py`: database to CSV sync utility.
-- `scripts/print_pdf.js`: PDF rendering helper script.
+- `model_training_v3_stacking.py`
+- `model_evaluation_v3.py`
+
+### V4
+
+`docs/version 4`
+
+This is the latest selected V4 package and replaces the old V4 XGBoost feature-selection experiment.
+
+- `data/generated/v4_synthetic_orders_returns.csv`
+- `data/processed/clean_dataset_v4_generated.csv`
+- `data/features/df_engineered_v4_generated.csv`
+- `data/features/train_test_sets_v4_generated.pkl`
+- `models/best_model_v4_generated.pkl`
+- `reports/model_evaluation/v4_generated_model_metrics.csv`
+- `reports/model_evaluation/v4_generated_shap_summary.png`
+- `reports/eda/`
+- `docs/v4_generated_end_to_end_report.pdf`
+- `scripts/run_v4_generated_end_to_end_pipeline.py`
+
+## Canonical Vs Deliverable Copies
+
+- Canonical files used by scripts stay in `data/`, `reports/`, `models/`, and `scripts/`.
+- Presentation/report copies are grouped under `docs/`.
+- `docs/version 4` is self-contained for the latest V4 generated experiment.
+

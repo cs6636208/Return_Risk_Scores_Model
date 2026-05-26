@@ -190,7 +190,7 @@ with tab_overview:
                 "risk_tier",
                 "is_returned",
             ]
-        ].head(100),
+        ].head(5000),
         use_container_width=True,
         hide_index=True,
     )

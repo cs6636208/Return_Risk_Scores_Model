@@ -1,0 +1,29 @@
+{
+  "best_model": "XGBoost_SMOTE_Optuna",
+  "threshold": 0.33999999999999997,
+  "feature_count": 180,
+  "metrics": {
+    "model": "XGBoost_SMOTE_Optuna",
+    "threshold": 0.33999999999999997,
+    "accuracy": 0.8345360824742268,
+    "precision": 0.45,
+    "recall": 0.4639175257731959,
+    "f1": 0.45685279187817257,
+    "auc": 0.8538112237136325,
+    "avg_precision": 0.4446689081268707,
+    "cost_thb": 31650,
+    "tn": 1484,
+    "fp": 165,
+    "fn": 156,
+    "tp": 135,
+    "default_accuracy": 0.8458762886597938,
+    "default_recall": 0.23711340206185566,
+    "default_f1": 0.3157894736842105,
+    "default_cost_thb": 37150,
+    "train_seconds": 1.83899079999901,
+    "performance_score": 0.542080579831493
+  },
+  "target_return_rate": 0.15,
+  "uses_smote": true,
+  "uses_optuna": true
+}
