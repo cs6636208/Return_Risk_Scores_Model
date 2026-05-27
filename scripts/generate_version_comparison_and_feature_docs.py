@@ -302,9 +302,9 @@ def save_comparison_charts(models: pd.DataFrame) -> dict[str, Path]:
     metric_labels = ["Accuracy", "Recall", "Precision", "F1", "AUC"]
     colors = ["#2f6fbb", "#d65f5f", "#4f9d69", "#8064a2", "#d49a3a"]
 
-    fig, ax = plt.subplots(figsize=(15, 7))
+    fig, ax = plt.subplots(figsize=(18, 8))
     x = np.arange(len(models))
-    width = 0.15
+    width = 0.12
     for i, col in enumerate(metric_cols):
         values = models[col].astype(float).to_numpy()
         positions = x + (i - 2) * width
@@ -312,20 +312,22 @@ def save_comparison_charts(models: pd.DataFrame) -> dict[str, Path]:
         for bar, value in zip(bars, values):
             ax.text(
                 bar.get_x() + bar.get_width() / 2,
-                min(value + 0.018, 0.985),
+                min(value + 0.025, 1.02),
                 f"{value:.1%}",
                 ha="center",
                 va="bottom",
-                fontsize=7.5,
-                rotation=90,
+                fontsize=10,
+                rotation=0,
+                fontweight="bold",
             )
     ax.set_xticks(x)
-    ax.set_xticklabels(versions, rotation=12, ha="right")
-    ax.set_ylim(0, 1.08)
-    ax.set_ylabel("Score")
-    ax.set_title("Model Performance Comparison by Version")
+    ax.set_xticklabels(versions, rotation=0, ha="center", fontsize=11)
+    ax.set_ylim(0, 1.12)
+    ax.set_ylabel("Score", fontsize=12)
+    ax.set_title("Model Performance Comparison by Version", fontsize=15, pad=16)
+    ax.tick_params(axis="y", labelsize=10)
     ax.grid(axis="y", alpha=0.25)
-    ax.legend(ncol=5, loc="upper center", bbox_to_anchor=(0.5, -0.14))
+    ax.legend(ncol=5, loc="upper center", bbox_to_anchor=(0.5, -0.10), fontsize=10)
     fig.tight_layout()
     charts["performance"] = COMPARISON_IMG_DIR / "version_1_to_4_performance_metrics.png"
     fig.savefig(charts["performance"], dpi=170)

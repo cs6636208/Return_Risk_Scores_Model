@@ -1,0 +1,2 @@
+﻿source_data,output_df_featured,selected_package_output,row_count,feature_count,target,rolling_windows,order_time_safe_drop,key_logic
+data\processed\clean_dataset.csv,docs\version 2\data\features\df_featured.csv,docs\version 2\v2_xgboost_safe_plus_rolling\data\df_featured.csv,5000,60,is_returned,"30d, 60d, 90d, 180d, 365d","delivery_days, delay_days","for each customer/order, use only historical orders where order_date < current_order_date"

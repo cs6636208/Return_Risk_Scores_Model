@@ -1,0 +1,129 @@
+﻿source,feature,feature_group,status,reason,exists_in_df_engineered,exists_in_v2_preview,exists_in_clean_dataset
+clean_dataset.csv,order_id,other,query_or_audit_only,ใช้ join/query/audit ได้ แต่ไม่ส่งให้ model จำ identity โดยตรง,False,False,
+clean_dataset.csv,order_date,time,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered feature อื่น,False,False,
+clean_dataset.csv,expected_delivery_date,logistics,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered feature อื่น,False,False,
+clean_dataset.csv,delivery_date,logistics,dropped,เป็น post-event/leakage field จึงตัดออกเพื่อกันข้อมูลอนาคต,False,False,
+clean_dataset.csv,customer_id,other,query_or_audit_only,ใช้ join/query/audit ได้ แต่ไม่ส่งให้ model จำ identity โดยตรง,False,False,
+clean_dataset.csv,customer_name,other,query_or_audit_only,ใช้ join/query/audit ได้ แต่ไม่ส่งให้ model จำ identity โดยตรง,False,False,
+clean_dataset.csv,customer_phone,other,query_or_audit_only,ใช้ join/query/audit ได้ แต่ไม่ส่งให้ model จำ identity โดยตรง,False,False,
+clean_dataset.csv,gender,customer_profile,used_exact,ใช้เข้า model โดยตรง,True,True,
+clean_dataset.csv,age,customer_profile,used_exact,ใช้เข้า model โดยตรง,True,True,
+clean_dataset.csv,membership_tier,customer_profile,used_exact,ใช้เข้า model โดยตรง,True,True,
+clean_dataset.csv,preferred_channel,payment_channel,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered feature อื่น,False,False,
+clean_dataset.csv,province,customer_profile,used_exact,ใช้เข้า model โดยตรง,True,True,
+clean_dataset.csv,registration_date,time,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered feature อื่น,False,False,
+clean_dataset.csv,customer_age_days,customer_profile,used_exact,ใช้เข้า model โดยตรง,True,True,
+clean_dataset.csv,product_id,product_category,query_or_audit_only,ใช้ join/query/audit ได้ แต่ไม่ส่งให้ model จำ identity โดยตรง,False,False,
+clean_dataset.csv,product_name,product_category,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered feature อื่น,False,False,
+clean_dataset.csv,category,product_category,used_exact,ใช้เข้า model โดยตรง,True,True,
+clean_dataset.csv,brand,product_category,used_exact,ใช้เข้า model โดยตรง,True,True,
+clean_dataset.csv,is_fragile,product_category,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered feature อื่น,False,False,
+clean_dataset.csv,product_rating,product_category,used_exact,ใช้เข้า model โดยตรง,True,True,
+clean_dataset.csv,supplier_id,other,query_or_audit_only,ใช้ join/query/audit ได้ แต่ไม่ส่งให้ model จำ identity โดยตรง,False,False,
+clean_dataset.csv,supplier_name,other,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered feature อื่น,False,False,
+clean_dataset.csv,supplier_contact,other,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered feature อื่น,False,False,
+clean_dataset.csv,courier_id,logistics,query_or_audit_only,ใช้ join/query/audit ได้ แต่ไม่ส่งให้ model จำ identity โดยตรง,False,False,
+clean_dataset.csv,courier_name,logistics,used_exact,ใช้เข้า model โดยตรง,True,True,
+clean_dataset.csv,courier_type,logistics,used_exact,ใช้เข้า model โดยตรง,True,True,
+clean_dataset.csv,avg_delivery_days,logistics,used_exact,ใช้เข้า model โดยตรง,True,True,
+clean_dataset.csv,damage_rate,logistics,used_exact,ใช้เข้า model โดยตรง,True,True,
+clean_dataset.csv,coverage_region,customer_profile,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered feature อื่น,False,False,
+clean_dataset.csv,promo_id,promotion_discount,query_or_audit_only,ใช้ join/query/audit ได้ แต่ไม่ส่งให้ model จำ identity โดยตรง,False,False,
+clean_dataset.csv,promo_name,promotion_discount,used_exact,ใช้เข้า model โดยตรง,True,True,
+clean_dataset.csv,promo_type,promotion_discount,used_exact,ใช้เข้า model โดยตรง,True,True,
+clean_dataset.csv,promo_discount_rate,promotion_discount,used_exact,ใช้เข้า model โดยตรง,True,True,
+clean_dataset.csv,promo_start_date,promotion_discount,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered feature อื่น,False,False,
+clean_dataset.csv,promo_end_date,promotion_discount,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered feature อื่น,False,False,
+clean_dataset.csv,channel_type,payment_channel,used_exact,ใช้เข้า model โดยตรง,True,True,
+clean_dataset.csv,payment_method,payment_channel,used_exact,ใช้เข้า model โดยตรง,True,True,
+clean_dataset.csv,quantity,price_amount,used_exact,ใช้เข้า model โดยตรง,True,True,
+clean_dataset.csv,unit_price,price_amount,used_exact,ใช้เข้า model โดยตรง,True,True,
+clean_dataset.csv,tier_discount_pct,promotion_discount,used_exact,ใช้เข้า model โดยตรง,True,True,
+clean_dataset.csv,campaign_discount_pct,promotion_discount,used_exact,ใช้เข้า model โดยตรง,True,True,
+clean_dataset.csv,total_discount_pct,promotion_discount,used_exact,ใช้เข้า model โดยตรง,True,True,
+clean_dataset.csv,discount_applied_amount,promotion_discount,used_exact,ใช้เข้า model โดยตรง,True,True,
+clean_dataset.csv,total_amount,price_amount,used_exact,ใช้เข้า model โดยตรง,True,True,
+clean_dataset.csv,delivery_time_expected_days,logistics,used_exact,ใช้เข้า model โดยตรง,True,True,
+clean_dataset.csv,delivery_days,logistics,dropped,เป็น post-event/leakage field จึงตัดออกเพื่อกันข้อมูลอนาคต,False,True,
+clean_dataset.csv,delay_days,logistics,dropped,เป็น post-event/leakage field จึงตัดออกเพื่อกันข้อมูลอนาคต,False,True,
+clean_dataset.csv,is_repurchased_item,other,used_exact,ใช้เข้า model โดยตรง,True,True,
+clean_dataset.csv,order_hour,time,used_exact,ใช้เข้า model โดยตรง,True,True,
+clean_dataset.csv,days_since_last_order,customer_history,used_exact,ใช้เข้า model โดยตรง,True,True,
+clean_dataset.csv,hist_order_count,customer_history,used_exact,ใช้เข้า model โดยตรง,True,True,
+clean_dataset.csv,hist_return_rate,customer_history,used_exact,ใช้เข้า model โดยตรง,True,True,
+clean_dataset.csv,return_id,other,dropped,เป็น post-event/leakage field จึงตัดออกเพื่อกันข้อมูลอนาคต,False,False,
+clean_dataset.csv,return_date,time,dropped,เป็น post-event/leakage field จึงตัดออกเพื่อกันข้อมูลอนาคต,False,False,
+clean_dataset.csv,return_reason,other,dropped,เป็น post-event/leakage field จึงตัดออกเพื่อกันข้อมูลอนาคต,False,False,
+clean_dataset.csv,return_scenario,other,dropped,เป็น post-event/leakage field จึงตัดออกเพื่อกันข้อมูลอนาคต,False,False,
+clean_dataset.csv,item_condition,other,dropped,เป็น post-event/leakage field จึงตัดออกเพื่อกันข้อมูลอนาคต,False,False,
+clean_dataset.csv,return_status,other,dropped,เป็น post-event/leakage field จึงตัดออกเพื่อกันข้อมูลอนาคต,False,False,
+clean_dataset.csv,refund_amount,price_amount,dropped,เป็น post-event/leakage field จึงตัดออกเพื่อกันข้อมูลอนาคต,False,False,
+clean_dataset.csv,score_id,other,dropped,เป็น post-event/leakage field จึงตัดออกเพื่อกันข้อมูลอนาคต,False,False,
+clean_dataset.csv,risk_score,other,dropped,เป็น post-event/leakage field จึงตัดออกเพื่อกันข้อมูลอนาคต,False,False,
+clean_dataset.csv,risk_tier,other,dropped,เป็น post-event/leakage field จึงตัดออกเพื่อกันข้อมูลอนาคต,False,False,
+clean_dataset.csv,scored_at,other,dropped,เป็น post-event/leakage field จึงตัดออกเพื่อกันข้อมูลอนาคต,False,False,
+clean_dataset.csv,shap_values,other,dropped,เป็น post-event/leakage field จึงตัดออกเพื่อกันข้อมูลอนาคต,False,False,
+clean_dataset.csv,is_returned,other,target,เป็น target label ไม่ใช่ input feature,True,True,
+df_engineered.csv,gender,customer_profile,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,True,True
+df_engineered.csv,age,customer_profile,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,True,True
+df_engineered.csv,membership_tier,customer_profile,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,True,True
+df_engineered.csv,province,customer_profile,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,True,True
+df_engineered.csv,customer_age_days,customer_profile,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,True,True
+df_engineered.csv,category,product_category,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,True,True
+df_engineered.csv,brand,product_category,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,True,True
+df_engineered.csv,product_rating,product_category,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,True,True
+df_engineered.csv,courier_name,logistics,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,True,True
+df_engineered.csv,courier_type,logistics,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,True,True
+df_engineered.csv,avg_delivery_days,logistics,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,True,True
+df_engineered.csv,damage_rate,logistics,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,True,True
+df_engineered.csv,promo_name,promotion_discount,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,True,True
+df_engineered.csv,promo_type,promotion_discount,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,True,True
+df_engineered.csv,promo_discount_rate,promotion_discount,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,True,True
+df_engineered.csv,channel_type,payment_channel,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,True,True
+df_engineered.csv,payment_method,payment_channel,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,True,True
+df_engineered.csv,quantity,price_amount,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,True,True
+df_engineered.csv,unit_price,price_amount,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,True,True
+df_engineered.csv,tier_discount_pct,promotion_discount,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,True,True
+df_engineered.csv,campaign_discount_pct,promotion_discount,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,True,True
+df_engineered.csv,total_discount_pct,promotion_discount,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,True,True
+df_engineered.csv,discount_applied_amount,promotion_discount,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,True,True
+df_engineered.csv,total_amount,price_amount,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,True,True
+df_engineered.csv,delivery_time_expected_days,logistics,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,True,True
+df_engineered.csv,is_repurchased_item,other,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,True,True
+df_engineered.csv,order_hour,time,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,True,True
+df_engineered.csv,days_since_last_order,customer_history,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,True,True
+df_engineered.csv,hist_order_count,customer_history,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,True,True
+df_engineered.csv,hist_return_rate,customer_history,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,True,True
+df_engineered.csv,customer_tenure_months,customer_profile,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,True,False
+df_engineered.csv,order_month,time,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,True,False
+df_engineered.csv,order_dayofweek,time,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,True,False
+df_engineered.csv,is_weekend,time,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,True,False
+df_engineered.csv,age_group,customer_profile,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,True,False
+df_engineered.csv,logistics_risk,logistics,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,True,False
+df_engineered.csv,hist_order_count_30d,customer_history,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,False,False
+df_engineered.csv,hist_return_count_30d,customer_history,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,False,False
+df_engineered.csv,hist_return_rate_30d,customer_history,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,False,False
+df_engineered.csv,hist_spend_sum_30d,customer_history,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,False,False
+df_engineered.csv,hist_order_count_60d,customer_history,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,False,False
+df_engineered.csv,hist_return_count_60d,customer_history,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,False,False
+df_engineered.csv,hist_return_rate_60d,customer_history,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,False,False
+df_engineered.csv,hist_spend_sum_60d,customer_history,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,False,False
+df_engineered.csv,hist_order_count_90d,customer_history,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,False,False
+df_engineered.csv,hist_return_count_90d,customer_history,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,False,False
+df_engineered.csv,hist_return_rate_90d,customer_history,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,False,False
+df_engineered.csv,hist_spend_sum_90d,customer_history,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,False,False
+df_engineered.csv,hist_order_count_180d,customer_history,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,False,False
+df_engineered.csv,hist_return_count_180d,customer_history,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,False,False
+df_engineered.csv,hist_return_rate_180d,customer_history,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,False,False
+df_engineered.csv,hist_spend_sum_180d,customer_history,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,False,False
+df_engineered.csv,hist_order_count_365d,customer_history,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,False,False
+df_engineered.csv,hist_return_count_365d,customer_history,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,False,False
+df_engineered.csv,hist_return_rate_365d,customer_history,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,False,False
+df_engineered.csv,hist_spend_sum_365d,customer_history,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,False,False
+df_engineered.csv,discount_amount_ratio,promotion_discount,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,False,False
+df_engineered.csv,category_payment,product_category,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,False,False
+df_engineered.csv,category_channel,product_category,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,False,False
+df_engineered.csv,province_payment,payment_channel,used,เป็น input feature ของ v2_xgboost_safe_plus_rolling,,False,False
+df_engineered.csv,is_returned,other,target,target label,,True,True
+df_engineered_v2_preview.csv,delivery_days,logistics,dropped_from_selected_v2,มีใน V2 preview แต่เป็น post-event/leakage field จึงตัดออกจาก selected model,False,,True
+df_engineered_v2_preview.csv,delay_days,logistics,dropped_from_selected_v2,มีใน V2 preview แต่เป็น post-event/leakage field จึงตัดออกจาก selected model,False,,True
