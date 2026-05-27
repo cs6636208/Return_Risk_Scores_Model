@@ -1,7 +1,0 @@
-node_modules/
-chats.md
-chats1.md
-.streamlit/secrets.toml
-__pycache__/
-*.pyc
-docs/archive/conversations/

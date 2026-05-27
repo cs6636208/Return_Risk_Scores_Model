@@ -1,5 +1,0 @@
-﻿version,model,data,accuracy,recall,f1,auc,cost_thb
-V1,XGBoost Tuned,original,0.708,0.268,0.3482,0.6882,35900
-V2,XGBoost,original,0.6787,0.656,0.5427,0.7366,19550
-V3,Stacking,original,0.6667,0.6376,0.5265,0.719,20400
-V4,XGBoost + SMOTE + Optuna,generated imbalance,0.8345,0.4639,0.4569,0.8538,31650

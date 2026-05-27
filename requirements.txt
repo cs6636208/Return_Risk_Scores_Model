@@ -15,3 +15,5 @@ python-dotenv
 plotly
 matplotlib
 seaborn
+fastapi
+uvicorn
