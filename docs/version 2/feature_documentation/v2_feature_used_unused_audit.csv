@@ -1,0 +1,129 @@
+﻿source,feature,status,reason,group
+clean_dataset.csv,order_id,query_or_audit_only,ใช้ join/query/audit ได้ แต่ไม่ควรให้ model จำ identity โดยตรง,other
+clean_dataset.csv,order_date,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered/encoded feature,other
+clean_dataset.csv,expected_delivery_date,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered/encoded feature,logistics
+clean_dataset.csv,delivery_date,dropped,post-event/leakage field ไม่ควรใช้กับ training หรือ order-time scoring,logistics
+clean_dataset.csv,customer_id,query_or_audit_only,ใช้ join/query/audit ได้ แต่ไม่ควรให้ model จำ identity โดยตรง,other
+clean_dataset.csv,customer_name,query_or_audit_only,ใช้ join/query/audit ได้ แต่ไม่ควรให้ model จำ identity โดยตรง,other
+clean_dataset.csv,customer_phone,query_or_audit_only,ใช้ join/query/audit ได้ แต่ไม่ควรให้ model จำ identity โดยตรง,other
+clean_dataset.csv,gender,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,customer_profile
+clean_dataset.csv,age,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,customer_profile
+clean_dataset.csv,membership_tier,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,customer_profile
+clean_dataset.csv,preferred_channel,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered/encoded feature,payment_channel
+clean_dataset.csv,province,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,customer_profile
+clean_dataset.csv,registration_date,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered/encoded feature,other
+clean_dataset.csv,customer_age_days,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,customer_profile
+clean_dataset.csv,product_id,query_or_audit_only,ใช้ join/query/audit ได้ แต่ไม่ควรให้ model จำ identity โดยตรง,product_category
+clean_dataset.csv,product_name,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered/encoded feature,product_category
+clean_dataset.csv,category,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,product_category
+clean_dataset.csv,brand,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,product_category
+clean_dataset.csv,is_fragile,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered/encoded feature,product_category
+clean_dataset.csv,product_rating,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,product_category
+clean_dataset.csv,supplier_id,query_or_audit_only,ใช้ join/query/audit ได้ แต่ไม่ควรให้ model จำ identity โดยตรง,other
+clean_dataset.csv,supplier_name,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered/encoded feature,other
+clean_dataset.csv,supplier_contact,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered/encoded feature,other
+clean_dataset.csv,courier_id,query_or_audit_only,ใช้ join/query/audit ได้ แต่ไม่ควรให้ model จำ identity โดยตรง,logistics
+clean_dataset.csv,courier_name,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,logistics
+clean_dataset.csv,courier_type,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,logistics
+clean_dataset.csv,avg_delivery_days,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,logistics
+clean_dataset.csv,damage_rate,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,logistics
+clean_dataset.csv,coverage_region,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered/encoded feature,customer_profile
+clean_dataset.csv,promo_id,query_or_audit_only,ใช้ join/query/audit ได้ แต่ไม่ควรให้ model จำ identity โดยตรง,promotion_discount
+clean_dataset.csv,promo_name,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,promotion_discount
+clean_dataset.csv,promo_type,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,promotion_discount
+clean_dataset.csv,promo_discount_rate,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,promotion_discount
+clean_dataset.csv,promo_start_date,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered/encoded feature,promotion_discount
+clean_dataset.csv,promo_end_date,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered/encoded feature,promotion_discount
+clean_dataset.csv,channel_type,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,payment_channel
+clean_dataset.csv,payment_method,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,payment_channel
+clean_dataset.csv,quantity,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,price_amount
+clean_dataset.csv,unit_price,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,price_amount
+clean_dataset.csv,tier_discount_pct,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,promotion_discount
+clean_dataset.csv,campaign_discount_pct,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,promotion_discount
+clean_dataset.csv,total_discount_pct,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,promotion_discount
+clean_dataset.csv,discount_applied_amount,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,promotion_discount
+clean_dataset.csv,total_amount,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,price_amount
+clean_dataset.csv,delivery_time_expected_days,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,logistics
+clean_dataset.csv,delivery_days,dropped,post-event/leakage field ไม่ควรใช้กับ training หรือ order-time scoring,logistics
+clean_dataset.csv,delay_days,dropped,post-event/leakage field ไม่ควรใช้กับ training หรือ order-time scoring,logistics
+clean_dataset.csv,is_repurchased_item,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,other
+clean_dataset.csv,order_hour,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,time
+clean_dataset.csv,days_since_last_order,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,customer_history
+clean_dataset.csv,hist_order_count,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,customer_history
+clean_dataset.csv,hist_return_rate,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,customer_history
+clean_dataset.csv,return_id,dropped,post-event/leakage field ไม่ควรใช้กับ training หรือ order-time scoring,other
+clean_dataset.csv,return_date,dropped,post-event/leakage field ไม่ควรใช้กับ training หรือ order-time scoring,other
+clean_dataset.csv,return_reason,dropped,post-event/leakage field ไม่ควรใช้กับ training หรือ order-time scoring,other
+clean_dataset.csv,return_scenario,dropped,post-event/leakage field ไม่ควรใช้กับ training หรือ order-time scoring,other
+clean_dataset.csv,item_condition,dropped,post-event/leakage field ไม่ควรใช้กับ training หรือ order-time scoring,other
+clean_dataset.csv,return_status,dropped,post-event/leakage field ไม่ควรใช้กับ training หรือ order-time scoring,other
+clean_dataset.csv,refund_amount,dropped,post-event/leakage field ไม่ควรใช้กับ training หรือ order-time scoring,price_amount
+clean_dataset.csv,score_id,dropped,post-event/leakage field ไม่ควรใช้กับ training หรือ order-time scoring,other
+clean_dataset.csv,risk_score,dropped,post-event/leakage field ไม่ควรใช้กับ training หรือ order-time scoring,other
+clean_dataset.csv,risk_tier,dropped,post-event/leakage field ไม่ควรใช้กับ training หรือ order-time scoring,other
+clean_dataset.csv,scored_at,dropped,post-event/leakage field ไม่ควรใช้กับ training หรือ order-time scoring,other
+clean_dataset.csv,shap_values,dropped,post-event/leakage field ไม่ควรใช้กับ training หรือ order-time scoring,other
+clean_dataset.csv,is_returned,target,target label ไม่ใช่ input feature,other
+docs\version 2\data\features\df_engineered_v2_preview.csv,gender,used_exact,อยู่ใน model feature list โดยตรง,customer_profile
+docs\version 2\data\features\df_engineered_v2_preview.csv,age,used_exact,อยู่ใน model feature list โดยตรง,customer_profile
+docs\version 2\data\features\df_engineered_v2_preview.csv,membership_tier,used_exact,อยู่ใน model feature list โดยตรง,customer_profile
+docs\version 2\data\features\df_engineered_v2_preview.csv,province,used_exact,อยู่ใน model feature list โดยตรง,customer_profile
+docs\version 2\data\features\df_engineered_v2_preview.csv,customer_age_days,used_exact,อยู่ใน model feature list โดยตรง,customer_profile
+docs\version 2\data\features\df_engineered_v2_preview.csv,category,used_exact,อยู่ใน model feature list โดยตรง,product_category
+docs\version 2\data\features\df_engineered_v2_preview.csv,brand,used_exact,อยู่ใน model feature list โดยตรง,product_category
+docs\version 2\data\features\df_engineered_v2_preview.csv,product_rating,used_exact,อยู่ใน model feature list โดยตรง,product_category
+docs\version 2\data\features\df_engineered_v2_preview.csv,courier_name,used_exact,อยู่ใน model feature list โดยตรง,logistics
+docs\version 2\data\features\df_engineered_v2_preview.csv,courier_type,used_exact,อยู่ใน model feature list โดยตรง,logistics
+docs\version 2\data\features\df_engineered_v2_preview.csv,avg_delivery_days,used_exact,อยู่ใน model feature list โดยตรง,logistics
+docs\version 2\data\features\df_engineered_v2_preview.csv,damage_rate,used_exact,อยู่ใน model feature list โดยตรง,logistics
+docs\version 2\data\features\df_engineered_v2_preview.csv,promo_name,used_exact,อยู่ใน model feature list โดยตรง,promotion_discount
+docs\version 2\data\features\df_engineered_v2_preview.csv,promo_type,used_exact,อยู่ใน model feature list โดยตรง,promotion_discount
+docs\version 2\data\features\df_engineered_v2_preview.csv,promo_discount_rate,used_exact,อยู่ใน model feature list โดยตรง,promotion_discount
+docs\version 2\data\features\df_engineered_v2_preview.csv,channel_type,used_exact,อยู่ใน model feature list โดยตรง,payment_channel
+docs\version 2\data\features\df_engineered_v2_preview.csv,payment_method,used_exact,อยู่ใน model feature list โดยตรง,payment_channel
+docs\version 2\data\features\df_engineered_v2_preview.csv,quantity,used_exact,อยู่ใน model feature list โดยตรง,price_amount
+docs\version 2\data\features\df_engineered_v2_preview.csv,unit_price,used_exact,อยู่ใน model feature list โดยตรง,price_amount
+docs\version 2\data\features\df_engineered_v2_preview.csv,tier_discount_pct,used_exact,อยู่ใน model feature list โดยตรง,promotion_discount
+docs\version 2\data\features\df_engineered_v2_preview.csv,campaign_discount_pct,used_exact,อยู่ใน model feature list โดยตรง,promotion_discount
+docs\version 2\data\features\df_engineered_v2_preview.csv,total_discount_pct,used_exact,อยู่ใน model feature list โดยตรง,promotion_discount
+docs\version 2\data\features\df_engineered_v2_preview.csv,discount_applied_amount,used_exact,อยู่ใน model feature list โดยตรง,promotion_discount
+docs\version 2\data\features\df_engineered_v2_preview.csv,total_amount,used_exact,อยู่ใน model feature list โดยตรง,price_amount
+docs\version 2\data\features\df_engineered_v2_preview.csv,delivery_time_expected_days,used_exact,อยู่ใน model feature list โดยตรง,logistics
+docs\version 2\data\features\df_engineered_v2_preview.csv,delivery_days,not_used,ไม่อยู่ใน selected model feature set หรือถูกตัดเพื่อลด feature/resource,logistics
+docs\version 2\data\features\df_engineered_v2_preview.csv,delay_days,not_used,ไม่อยู่ใน selected model feature set หรือถูกตัดเพื่อลด feature/resource,logistics
+docs\version 2\data\features\df_engineered_v2_preview.csv,is_repurchased_item,used_exact,อยู่ใน model feature list โดยตรง,other
+docs\version 2\data\features\df_engineered_v2_preview.csv,order_hour,used_exact,อยู่ใน model feature list โดยตรง,time
+docs\version 2\data\features\df_engineered_v2_preview.csv,days_since_last_order,used_exact,อยู่ใน model feature list โดยตรง,customer_history
+docs\version 2\data\features\df_engineered_v2_preview.csv,hist_order_count,used_exact,อยู่ใน model feature list โดยตรง,customer_history
+docs\version 2\data\features\df_engineered_v2_preview.csv,hist_return_rate,used_exact,อยู่ใน model feature list โดยตรง,customer_history
+docs\version 2\data\features\df_engineered_v2_preview.csv,customer_tenure_months,used_exact,อยู่ใน model feature list โดยตรง,customer_profile
+docs\version 2\data\features\df_engineered_v2_preview.csv,order_month,used_exact,อยู่ใน model feature list โดยตรง,time
+docs\version 2\data\features\df_engineered_v2_preview.csv,order_dayofweek,used_exact,อยู่ใน model feature list โดยตรง,time
+docs\version 2\data\features\df_engineered_v2_preview.csv,is_weekend,used_exact,อยู่ใน model feature list โดยตรง,time
+docs\version 2\data\features\df_engineered_v2_preview.csv,age_group,used_exact,อยู่ใน model feature list โดยตรง,customer_profile
+docs\version 2\data\features\df_engineered_v2_preview.csv,logistics_risk,used_exact,อยู่ใน model feature list โดยตรง,logistics
+docs\version 2\data\features\df_engineered_v2_preview.csv,is_returned,target,target label,other
+model_feature_set,hist_order_count_30d,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_history
+model_feature_set,hist_return_count_30d,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_history
+model_feature_set,hist_return_rate_30d,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_history
+model_feature_set,hist_spend_sum_30d,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_history
+model_feature_set,hist_order_count_60d,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_history
+model_feature_set,hist_return_count_60d,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_history
+model_feature_set,hist_return_rate_60d,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_history
+model_feature_set,hist_spend_sum_60d,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_history
+model_feature_set,hist_order_count_90d,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_history
+model_feature_set,hist_return_count_90d,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_history
+model_feature_set,hist_return_rate_90d,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_history
+model_feature_set,hist_spend_sum_90d,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_history
+model_feature_set,hist_order_count_180d,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_history
+model_feature_set,hist_return_count_180d,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_history
+model_feature_set,hist_return_rate_180d,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_history
+model_feature_set,hist_spend_sum_180d,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_history
+model_feature_set,hist_order_count_365d,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_history
+model_feature_set,hist_return_count_365d,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_history
+model_feature_set,hist_return_rate_365d,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_history
+model_feature_set,hist_spend_sum_365d,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_history
+model_feature_set,discount_amount_ratio,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",promotion_discount
+model_feature_set,category_payment,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",product_category
+model_feature_set,category_channel,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",product_category
+model_feature_set,province_payment,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",payment_channel

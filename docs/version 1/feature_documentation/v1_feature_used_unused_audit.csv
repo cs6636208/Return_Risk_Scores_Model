@@ -1,0 +1,211 @@
+﻿source,feature,status,reason,group
+clean_dataset.csv,order_id,query_or_audit_only,ใช้ join/query/audit ได้ แต่ไม่ควรให้ model จำ identity โดยตรง,other
+clean_dataset.csv,order_date,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered/encoded feature,other
+clean_dataset.csv,expected_delivery_date,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered/encoded feature,logistics
+clean_dataset.csv,delivery_date,dropped,post-event/leakage field ไม่ควรใช้กับ training หรือ order-time scoring,logistics
+clean_dataset.csv,customer_id,query_or_audit_only,ใช้ join/query/audit ได้ แต่ไม่ควรให้ model จำ identity โดยตรง,other
+clean_dataset.csv,customer_name,query_or_audit_only,ใช้ join/query/audit ได้ แต่ไม่ควรให้ model จำ identity โดยตรง,other
+clean_dataset.csv,customer_phone,query_or_audit_only,ใช้ join/query/audit ได้ แต่ไม่ควรให้ model จำ identity โดยตรง,other
+clean_dataset.csv,gender,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,customer_profile
+clean_dataset.csv,age,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,customer_profile
+clean_dataset.csv,membership_tier,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,customer_profile
+clean_dataset.csv,preferred_channel,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered/encoded feature,payment_channel
+clean_dataset.csv,province,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,customer_profile
+clean_dataset.csv,registration_date,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered/encoded feature,other
+clean_dataset.csv,customer_age_days,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,customer_profile
+clean_dataset.csv,product_id,query_or_audit_only,ใช้ join/query/audit ได้ แต่ไม่ควรให้ model จำ identity โดยตรง,product_category
+clean_dataset.csv,product_name,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered/encoded feature,product_category
+clean_dataset.csv,category,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,product_category
+clean_dataset.csv,brand,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered/encoded feature,product_category
+clean_dataset.csv,is_fragile,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,product_category
+clean_dataset.csv,product_rating,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,product_category
+clean_dataset.csv,supplier_id,query_or_audit_only,ใช้ join/query/audit ได้ แต่ไม่ควรให้ model จำ identity โดยตรง,other
+clean_dataset.csv,supplier_name,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered/encoded feature,other
+clean_dataset.csv,supplier_contact,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered/encoded feature,other
+clean_dataset.csv,courier_id,query_or_audit_only,ใช้ join/query/audit ได้ แต่ไม่ควรให้ model จำ identity โดยตรง,logistics
+clean_dataset.csv,courier_name,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered/encoded feature,logistics
+clean_dataset.csv,courier_type,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered/encoded feature,logistics
+clean_dataset.csv,avg_delivery_days,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered/encoded feature,logistics
+clean_dataset.csv,damage_rate,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered/encoded feature,logistics
+clean_dataset.csv,coverage_region,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered/encoded feature,customer_profile
+clean_dataset.csv,promo_id,query_or_audit_only,ใช้ join/query/audit ได้ แต่ไม่ควรให้ model จำ identity โดยตรง,promotion_discount
+clean_dataset.csv,promo_name,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered/encoded feature,promotion_discount
+clean_dataset.csv,promo_type,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered/encoded feature,promotion_discount
+clean_dataset.csv,promo_discount_rate,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered/encoded feature,promotion_discount
+clean_dataset.csv,promo_start_date,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered/encoded feature,promotion_discount
+clean_dataset.csv,promo_end_date,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered/encoded feature,promotion_discount
+clean_dataset.csv,channel_type,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,payment_channel
+clean_dataset.csv,payment_method,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,payment_channel
+clean_dataset.csv,quantity,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,price_amount
+clean_dataset.csv,unit_price,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,price_amount
+clean_dataset.csv,tier_discount_pct,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered/encoded feature,promotion_discount
+clean_dataset.csv,campaign_discount_pct,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered/encoded feature,promotion_discount
+clean_dataset.csv,total_discount_pct,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered/encoded feature,promotion_discount
+clean_dataset.csv,discount_applied_amount,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered/encoded feature,promotion_discount
+clean_dataset.csv,total_amount,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,price_amount
+clean_dataset.csv,delivery_time_expected_days,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,logistics
+clean_dataset.csv,delivery_days,dropped,post-event/leakage field ไม่ควรใช้กับ training หรือ order-time scoring,logistics
+clean_dataset.csv,delay_days,dropped,post-event/leakage field ไม่ควรใช้กับ training หรือ order-time scoring,logistics
+clean_dataset.csv,is_repurchased_item,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,other
+clean_dataset.csv,order_hour,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,time
+clean_dataset.csv,days_since_last_order,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,customer_history
+clean_dataset.csv,hist_order_count,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,customer_history
+clean_dataset.csv,hist_return_rate,used_source_or_encoded,ใช้ตรงหรือถูก encode/derive เป็น model feature,customer_history
+clean_dataset.csv,return_id,dropped,post-event/leakage field ไม่ควรใช้กับ training หรือ order-time scoring,other
+clean_dataset.csv,return_date,dropped,post-event/leakage field ไม่ควรใช้กับ training หรือ order-time scoring,other
+clean_dataset.csv,return_reason,dropped,post-event/leakage field ไม่ควรใช้กับ training หรือ order-time scoring,other
+clean_dataset.csv,return_scenario,dropped,post-event/leakage field ไม่ควรใช้กับ training หรือ order-time scoring,other
+clean_dataset.csv,item_condition,dropped,post-event/leakage field ไม่ควรใช้กับ training หรือ order-time scoring,other
+clean_dataset.csv,return_status,dropped,post-event/leakage field ไม่ควรใช้กับ training หรือ order-time scoring,other
+clean_dataset.csv,refund_amount,dropped,post-event/leakage field ไม่ควรใช้กับ training หรือ order-time scoring,price_amount
+clean_dataset.csv,score_id,dropped,post-event/leakage field ไม่ควรใช้กับ training หรือ order-time scoring,other
+clean_dataset.csv,risk_score,dropped,post-event/leakage field ไม่ควรใช้กับ training หรือ order-time scoring,other
+clean_dataset.csv,risk_tier,dropped,post-event/leakage field ไม่ควรใช้กับ training หรือ order-time scoring,other
+clean_dataset.csv,scored_at,dropped,post-event/leakage field ไม่ควรใช้กับ training หรือ order-time scoring,other
+clean_dataset.csv,shap_values,dropped,post-event/leakage field ไม่ควรใช้กับ training หรือ order-time scoring,other
+clean_dataset.csv,is_returned,target,target label ไม่ใช่ input feature,other
+docs\version 1\data\features\df_engineered.csv,order_hour,used_exact,อยู่ใน model feature list โดยตรง,time
+docs\version 1\data\features\df_engineered.csv,channel_type,used_after_encoding,ถูก one-hot/encoding แตกเป็น feature ย่อย,payment_channel
+docs\version 1\data\features\df_engineered.csv,payment_method,used_after_encoding,ถูก one-hot/encoding แตกเป็น feature ย่อย,payment_channel
+docs\version 1\data\features\df_engineered.csv,quantity,used_exact,อยู่ใน model feature list โดยตรง,price_amount
+docs\version 1\data\features\df_engineered.csv,unit_price,used_exact,อยู่ใน model feature list โดยตรง,price_amount
+docs\version 1\data\features\df_engineered.csv,log_unit_price,used_exact,อยู่ใน model feature list โดยตรง,price_amount
+docs\version 1\data\features\df_engineered.csv,promo_discount_pct,used_exact,อยู่ใน model feature list โดยตรง,promotion_discount
+docs\version 1\data\features\df_engineered.csv,total_amount,used_exact,อยู่ใน model feature list โดยตรง,price_amount
+docs\version 1\data\features\df_engineered.csv,log_total_amount,used_exact,อยู่ใน model feature list โดยตรง,price_amount
+docs\version 1\data\features\df_engineered.csv,is_repurchased_item,used_exact,อยู่ใน model feature list โดยตรง,other
+docs\version 1\data\features\df_engineered.csv,days_since_last_order,used_exact,อยู่ใน model feature list โดยตรง,customer_history
+docs\version 1\data\features\df_engineered.csv,membership_tier,used_exact,อยู่ใน model feature list โดยตรง,customer_profile
+docs\version 1\data\features\df_engineered.csv,province,used_after_encoding,ถูก one-hot/encoding แตกเป็น feature ย่อย,customer_profile
+docs\version 1\data\features\df_engineered.csv,gender_province,used_after_encoding,ถูก one-hot/encoding แตกเป็น feature ย่อย,customer_profile
+docs\version 1\data\features\df_engineered.csv,customer_age_days,used_exact,อยู่ใน model feature list โดยตรง,customer_profile
+docs\version 1\data\features\df_engineered.csv,age,used_exact,อยู่ใน model feature list โดยตรง,customer_profile
+docs\version 1\data\features\df_engineered.csv,category,used_after_encoding,ถูก one-hot/encoding แตกเป็น feature ย่อย,product_category
+docs\version 1\data\features\df_engineered.csv,is_fragile,used_exact,อยู่ใน model feature list โดยตรง,product_category
+docs\version 1\data\features\df_engineered.csv,product_rating,used_exact,อยู่ใน model feature list โดยตรง,product_category
+docs\version 1\data\features\df_engineered.csv,is_peak_hour,used_exact,อยู่ใน model feature list โดยตรง,time
+docs\version 1\data\features\df_engineered.csv,is_fashion_tv,used_exact,อยู่ใน model feature list โดยตรง,other
+docs\version 1\data\features\df_engineered.csv,is_remote_area,used_exact,อยู่ใน model feature list โดยตรง,other
+docs\version 1\data\features\df_engineered.csv,low_rating_alert,used_exact,อยู่ใน model feature list โดยตรง,product_category
+docs\version 1\data\features\df_engineered.csv,is_cod,used_exact,อยู่ใน model feature list โดยตรง,payment_channel
+docs\version 1\data\features\df_engineered.csv,is_high_risk_customer,used_exact,อยู่ใน model feature list โดยตรง,other
+docs\version 1\data\features\df_engineered.csv,is_high_discount,used_exact,อยู่ใน model feature list โดยตรง,promotion_discount
+docs\version 1\data\features\df_engineered.csv,is_first_order,used_exact,อยู่ใน model feature list โดยตรง,other
+docs\version 1\data\features\df_engineered.csv,order_dayofweek,used_exact,อยู่ใน model feature list โดยตรง,time
+docs\version 1\data\features\df_engineered.csv,is_weekend,used_exact,อยู่ใน model feature list โดยตรง,time
+docs\version 1\data\features\df_engineered.csv,return_rate_by_category,used_exact,อยู่ใน model feature list โดยตรง,product_category
+docs\version 1\data\features\df_engineered.csv,delivery_time_expected_days,used_exact,อยู่ใน model feature list โดยตรง,logistics
+docs\version 1\data\features\df_engineered.csv,is_long_distance_cod,used_exact,อยู่ใน model feature list โดยตรง,payment_channel
+docs\version 1\data\features\df_engineered.csv,is_impulse_buy,used_exact,อยู่ใน model feature list โดยตรง,other
+docs\version 1\data\features\df_engineered.csv,is_low_commitment,used_exact,อยู่ใน model feature list โดยตรง,other
+docs\version 1\data\features\df_engineered.csv,category_payment,used_after_encoding,ถูก one-hot/encoding แตกเป็น feature ย่อย,product_category
+docs\version 1\data\features\df_engineered.csv,category_channel,used_after_encoding,ถูก one-hot/encoding แตกเป็น feature ย่อย,product_category
+docs\version 1\data\features\df_engineered.csv,province_payment,used_after_encoding,ถูก one-hot/encoding แตกเป็น feature ย่อย,payment_channel
+docs\version 1\data\features\df_engineered.csv,total_orders_before,used_exact,อยู่ใน model feature list โดยตรง,customer_history
+docs\version 1\data\features\df_engineered.csv,total_returns_before,used_exact,อยู่ใน model feature list โดยตรง,customer_history
+docs\version 1\data\features\df_engineered.csv,customer_return_ratio,used_exact,อยู่ใน model feature list โดยตรง,customer_history
+docs\version 1\data\features\df_engineered.csv,days_since_last_return,used_exact,อยู่ใน model feature list โดยตรง,customer_history
+docs\version 1\data\features\df_engineered.csv,hist_spend_sum_30d,used_exact,อยู่ใน model feature list โดยตรง,customer_history
+docs\version 1\data\features\df_engineered.csv,hist_order_count_30d,used_exact,อยู่ใน model feature list โดยตรง,customer_history
+docs\version 1\data\features\df_engineered.csv,hist_return_rate_30d,used_exact,อยู่ใน model feature list โดยตรง,customer_history
+docs\version 1\data\features\df_engineered.csv,hist_spend_sum_60d,used_exact,อยู่ใน model feature list โดยตรง,customer_history
+docs\version 1\data\features\df_engineered.csv,hist_order_count_60d,used_exact,อยู่ใน model feature list โดยตรง,customer_history
+docs\version 1\data\features\df_engineered.csv,hist_return_rate_60d,used_exact,อยู่ใน model feature list โดยตรง,customer_history
+docs\version 1\data\features\df_engineered.csv,hist_spend_sum_180d,used_exact,อยู่ใน model feature list โดยตรง,customer_history
+docs\version 1\data\features\df_engineered.csv,hist_order_count_180d,used_exact,อยู่ใน model feature list โดยตรง,customer_history
+docs\version 1\data\features\df_engineered.csv,hist_return_rate_180d,used_exact,อยู่ใน model feature list โดยตรง,customer_history
+docs\version 1\data\features\df_engineered.csv,is_returned,target,target label,other
+model_feature_set,channel_type_Shopee,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",payment_channel
+model_feature_set,channel_type_TV_Show,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",payment_channel
+model_feature_set,channel_type_TikTok,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",payment_channel
+model_feature_set,payment_method_COD,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",payment_channel
+model_feature_set,payment_method_Credit_Card,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",payment_channel
+model_feature_set,province_Chiang Mai,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_profile
+model_feature_set,province_Chonburi,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_profile
+model_feature_set,province_Khon Kaen,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_profile
+model_feature_set,province_Nonthaburi,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_profile
+model_feature_set,province_Phuket,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_profile
+model_feature_set,province_Remote_Area,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_profile
+model_feature_set,province_Songkhla,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_profile
+model_feature_set,category_Electronics,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",product_category
+model_feature_set,category_Fashion,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",product_category
+model_feature_set,category_Home_Appliance,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",product_category
+model_feature_set,category_Supplement,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",product_category
+model_feature_set,gender_province_Female_Chiang Mai,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_profile
+model_feature_set,gender_province_Female_Chonburi,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_profile
+model_feature_set,gender_province_Female_Khon Kaen,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_profile
+model_feature_set,gender_province_Female_Nonthaburi,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_profile
+model_feature_set,gender_province_Female_Phuket,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_profile
+model_feature_set,gender_province_Female_Remote_Area,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_profile
+model_feature_set,gender_province_Female_Songkhla,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_profile
+model_feature_set,gender_province_Male_Bangkok,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_profile
+model_feature_set,gender_province_Male_Chiang Mai,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_profile
+model_feature_set,gender_province_Male_Chonburi,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_profile
+model_feature_set,gender_province_Male_Khon Kaen,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_profile
+model_feature_set,gender_province_Male_Nonthaburi,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_profile
+model_feature_set,gender_province_Male_Phuket,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_profile
+model_feature_set,gender_province_Male_Remote_Area,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_profile
+model_feature_set,gender_province_Male_Songkhla,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_profile
+model_feature_set,gender_province_Other_Chiang Mai,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_profile
+model_feature_set,gender_province_Other_Chonburi,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_profile
+model_feature_set,gender_province_Other_Khon Kaen,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_profile
+model_feature_set,gender_province_Other_Nonthaburi,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_profile
+model_feature_set,gender_province_Other_Phuket,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_profile
+model_feature_set,gender_province_Other_Remote_Area,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_profile
+model_feature_set,gender_province_Other_Songkhla,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",customer_profile
+model_feature_set,category_payment_Cosmetics_COD,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",product_category
+model_feature_set,category_payment_Cosmetics_Credit_Card,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",product_category
+model_feature_set,category_payment_Electronics_Bank_Transfer,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",product_category
+model_feature_set,category_payment_Electronics_COD,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",product_category
+model_feature_set,category_payment_Electronics_Credit_Card,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",product_category
+model_feature_set,category_payment_Fashion_Bank_Transfer,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",product_category
+model_feature_set,category_payment_Fashion_COD,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",product_category
+model_feature_set,category_payment_Fashion_Credit_Card,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",product_category
+model_feature_set,category_payment_Home_Appliance_Bank_Transfer,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",product_category
+model_feature_set,category_payment_Home_Appliance_COD,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",product_category
+model_feature_set,category_payment_Home_Appliance_Credit_Card,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",product_category
+model_feature_set,category_payment_Supplement_Bank_Transfer,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",product_category
+model_feature_set,category_payment_Supplement_COD,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",product_category
+model_feature_set,category_payment_Supplement_Credit_Card,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",product_category
+model_feature_set,category_channel_Cosmetics_Shopee,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",product_category
+model_feature_set,category_channel_Cosmetics_TV_Show,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",product_category
+model_feature_set,category_channel_Cosmetics_TikTok,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",product_category
+model_feature_set,category_channel_Electronics_Mobile_App,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",product_category
+model_feature_set,category_channel_Electronics_Shopee,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",product_category
+model_feature_set,category_channel_Electronics_TV_Show,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",product_category
+model_feature_set,category_channel_Electronics_TikTok,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",product_category
+model_feature_set,category_channel_Fashion_Mobile_App,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",product_category
+model_feature_set,category_channel_Fashion_Shopee,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",product_category
+model_feature_set,category_channel_Fashion_TV_Show,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",product_category
+model_feature_set,category_channel_Fashion_TikTok,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",product_category
+model_feature_set,category_channel_Home_Appliance_Mobile_App,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",product_category
+model_feature_set,category_channel_Home_Appliance_Shopee,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",product_category
+model_feature_set,category_channel_Home_Appliance_TV_Show,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",product_category
+model_feature_set,category_channel_Home_Appliance_TikTok,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",product_category
+model_feature_set,category_channel_Supplement_Mobile_App,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",product_category
+model_feature_set,category_channel_Supplement_Shopee,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",product_category
+model_feature_set,category_channel_Supplement_TV_Show,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",product_category
+model_feature_set,category_channel_Supplement_TikTok,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",product_category
+model_feature_set,province_payment_Bangkok_COD,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",payment_channel
+model_feature_set,province_payment_Bangkok_Credit_Card,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",payment_channel
+model_feature_set,province_payment_Chiang Mai_Bank_Transfer,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",payment_channel
+model_feature_set,province_payment_Chiang Mai_COD,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",payment_channel
+model_feature_set,province_payment_Chiang Mai_Credit_Card,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",payment_channel
+model_feature_set,province_payment_Chonburi_Bank_Transfer,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",payment_channel
+model_feature_set,province_payment_Chonburi_COD,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",payment_channel
+model_feature_set,province_payment_Chonburi_Credit_Card,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",payment_channel
+model_feature_set,province_payment_Khon Kaen_Bank_Transfer,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",payment_channel
+model_feature_set,province_payment_Khon Kaen_COD,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",payment_channel
+model_feature_set,province_payment_Khon Kaen_Credit_Card,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",payment_channel
+model_feature_set,province_payment_Nonthaburi_Bank_Transfer,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",payment_channel
+model_feature_set,province_payment_Nonthaburi_COD,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",payment_channel
+model_feature_set,province_payment_Nonthaburi_Credit_Card,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",payment_channel
+model_feature_set,province_payment_Phuket_Bank_Transfer,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",payment_channel
+model_feature_set,province_payment_Phuket_COD,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",payment_channel
+model_feature_set,province_payment_Phuket_Credit_Card,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",payment_channel
+model_feature_set,province_payment_Remote_Area_Bank_Transfer,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",payment_channel
+model_feature_set,province_payment_Remote_Area_COD,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",payment_channel
+model_feature_set,province_payment_Remote_Area_Credit_Card,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",payment_channel
+model_feature_set,province_payment_Songkhla_Bank_Transfer,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",payment_channel
+model_feature_set,province_payment_Songkhla_COD,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",payment_channel
+model_feature_set,province_payment_Songkhla_Credit_Card,used_encoded_or_generated,"feature ที่เกิดหลัง encoding, rolling aggregation, one-hot หรือ generated pipeline",payment_channel
