@@ -302,14 +302,26 @@ def save_comparison_charts(models: pd.DataFrame) -> dict[str, Path]:
     metric_labels = ["Accuracy", "Recall", "Precision", "F1", "AUC"]
     colors = ["#2f6fbb", "#d65f5f", "#4f9d69", "#8064a2", "#d49a3a"]
 
-    fig, ax = plt.subplots(figsize=(13, 6))
+    fig, ax = plt.subplots(figsize=(15, 7))
     x = np.arange(len(models))
     width = 0.15
     for i, col in enumerate(metric_cols):
-        ax.bar(x + (i - 2) * width, models[col].astype(float), width, label=metric_labels[i], color=colors[i])
+        values = models[col].astype(float).to_numpy()
+        positions = x + (i - 2) * width
+        bars = ax.bar(positions, values, width, label=metric_labels[i], color=colors[i])
+        for bar, value in zip(bars, values):
+            ax.text(
+                bar.get_x() + bar.get_width() / 2,
+                min(value + 0.018, 0.985),
+                f"{value:.1%}",
+                ha="center",
+                va="bottom",
+                fontsize=7.5,
+                rotation=90,
+            )
     ax.set_xticks(x)
     ax.set_xticklabels(versions, rotation=12, ha="right")
-    ax.set_ylim(0, 1)
+    ax.set_ylim(0, 1.08)
     ax.set_ylabel("Score")
     ax.set_title("Model Performance Comparison by Version")
     ax.grid(axis="y", alpha=0.25)
@@ -319,13 +331,22 @@ def save_comparison_charts(models: pd.DataFrame) -> dict[str, Path]:
     fig.savefig(charts["performance"], dpi=170)
     plt.close(fig)
 
-    fig, ax = plt.subplots(figsize=(10, 5))
-    bars = ax.bar(versions, models["cost"].astype(float), color=["#8d99ae", "#2a9d8f", "#457b9d", "#e76f51"])
+    fig, ax = plt.subplots(figsize=(11, 5.6))
+    cost_values = models["cost"].astype(float).to_numpy()
+    bars = ax.bar(versions, cost_values, color=["#8d99ae", "#2a9d8f", "#457b9d", "#e76f51"])
     ax.set_ylabel("Cost")
     ax.set_title("Cost Matrix Comparison")
     ax.grid(axis="y", alpha=0.25)
-    for bar, value in zip(bars, models["cost"].astype(float)):
-        ax.text(bar.get_x() + bar.get_width() / 2, value + 500, f"{int(value):,}", ha="center", fontsize=9)
+    ax.set_ylim(0, max(cost_values) * 1.18)
+    for bar, value in zip(bars, cost_values):
+        ax.text(
+            bar.get_x() + bar.get_width() / 2,
+            value + max(cost_values) * 0.025,
+            f"{int(value):,}",
+            ha="center",
+            fontsize=10,
+            fontweight="bold",
+        )
     fig.tight_layout()
     charts["cost"] = COMPARISON_IMG_DIR / "version_1_to_4_cost_comparison.png"
     fig.savefig(charts["cost"], dpi=170)
@@ -345,13 +366,21 @@ def save_comparison_charts(models: pd.DataFrame) -> dict[str, Path]:
         if not row.empty:
             labels.append(label)
             counts.append(int(float(row.iloc[0]["used_feature_count"])))
-    fig, ax = plt.subplots(figsize=(9, 5))
+    fig, ax = plt.subplots(figsize=(10, 5.4))
     bars = ax.bar(labels, counts, color=["#6c757d", "#2a9d8f", "#457b9d", "#e9c46a"])
     ax.set_ylabel("Used feature count")
     ax.set_title("Feature Count Used by Representative Version")
     ax.grid(axis="y", alpha=0.25)
+    ax.set_ylim(0, max(counts) * 1.18)
     for bar, value in zip(bars, counts):
-        ax.text(bar.get_x() + bar.get_width() / 2, value + 3, str(value), ha="center", fontsize=9)
+        ax.text(
+            bar.get_x() + bar.get_width() / 2,
+            value + max(counts) * 0.025,
+            str(value),
+            ha="center",
+            fontsize=10,
+            fontweight="bold",
+        )
     fig.tight_layout()
     charts["features"] = COMPARISON_IMG_DIR / "version_1_to_4_feature_count.png"
     fig.savefig(charts["features"], dpi=170)

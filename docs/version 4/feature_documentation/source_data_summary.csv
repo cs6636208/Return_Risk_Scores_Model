@@ -1,0 +1,2 @@
+﻿version,source_before_feature,engineered_dataset,df_featured_output,rows,columns_in_df_featured,model_input_feature_count,target_column,model_name,note
+version 4,docs/version 4/data/processed/clean_dataset_v4_generated.csv,docs/version 4/data/features/df_engineered_v4_generated.csv,docs\version 4\data\features\df_featured.csv,9700,182,180,is_returned,XGBoost_SMOTE_Optuna,V4 export เป็น generated/synthetic model feature set 180 features จาก train_test_sets_v4_generated.pkl ไม่ควรเทียบ production ตรงกับข้อมูลจริง

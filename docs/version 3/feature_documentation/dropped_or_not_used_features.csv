@@ -1,0 +1,33 @@
+﻿source,feature,status,reason,feature_group
+clean_dataset.csv,order_id,query_or_audit_only,ใช้ join/query/audit ได้ แต่ไม่ควรให้ model จำ identity ตรง ๆ,other
+clean_dataset.csv,order_date,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered/encoded feature,time
+clean_dataset.csv,expected_delivery_date,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered/encoded feature,logistics
+clean_dataset.csv,delivery_date,dropped,post-event/leakage field ไม่ควรใช้เป็น input model,logistics
+clean_dataset.csv,customer_id,query_or_audit_only,ใช้ join/query/audit ได้ แต่ไม่ควรให้ model จำ identity ตรง ๆ,other
+clean_dataset.csv,customer_name,query_or_audit_only,ใช้ join/query/audit ได้ แต่ไม่ควรให้ model จำ identity ตรง ๆ,other
+clean_dataset.csv,customer_phone,query_or_audit_only,ใช้ join/query/audit ได้ แต่ไม่ควรให้ model จำ identity ตรง ๆ,other
+clean_dataset.csv,preferred_channel,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered/encoded feature,payment_channel
+clean_dataset.csv,registration_date,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered/encoded feature,time
+clean_dataset.csv,product_id,query_or_audit_only,ใช้ join/query/audit ได้ แต่ไม่ควรให้ model จำ identity ตรง ๆ,product_category
+clean_dataset.csv,product_name,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered/encoded feature,product_category
+clean_dataset.csv,is_fragile,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered/encoded feature,product_category
+clean_dataset.csv,supplier_id,query_or_audit_only,ใช้ join/query/audit ได้ แต่ไม่ควรให้ model จำ identity ตรง ๆ,other
+clean_dataset.csv,supplier_name,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered/encoded feature,other
+clean_dataset.csv,supplier_contact,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered/encoded feature,other
+clean_dataset.csv,courier_id,query_or_audit_only,ใช้ join/query/audit ได้ แต่ไม่ควรให้ model จำ identity ตรง ๆ,logistics
+clean_dataset.csv,coverage_region,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered/encoded feature,customer_profile
+clean_dataset.csv,promo_id,query_or_audit_only,ใช้ join/query/audit ได้ แต่ไม่ควรให้ model จำ identity ตรง ๆ,promotion_discount
+clean_dataset.csv,promo_start_date,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered/encoded feature,promotion_discount
+clean_dataset.csv,promo_end_date,not_used_or_replaced,ไม่ได้ใช้ตรง หรือถูกแทนด้วย engineered/encoded feature,promotion_discount
+clean_dataset.csv,return_id,dropped,post-event/leakage field ไม่ควรใช้เป็น input model,other
+clean_dataset.csv,return_date,dropped,post-event/leakage field ไม่ควรใช้เป็น input model,time
+clean_dataset.csv,return_reason,dropped,post-event/leakage field ไม่ควรใช้เป็น input model,other
+clean_dataset.csv,return_scenario,dropped,post-event/leakage field ไม่ควรใช้เป็น input model,other
+clean_dataset.csv,item_condition,dropped,post-event/leakage field ไม่ควรใช้เป็น input model,other
+clean_dataset.csv,return_status,dropped,post-event/leakage field ไม่ควรใช้เป็น input model,other
+clean_dataset.csv,refund_amount,dropped,post-event/leakage field ไม่ควรใช้เป็น input model,price_amount
+clean_dataset.csv,score_id,dropped,post-event/leakage field ไม่ควรใช้เป็น input model,other
+clean_dataset.csv,risk_score,dropped,post-event/leakage field ไม่ควรใช้เป็น input model,other
+clean_dataset.csv,risk_tier,dropped,post-event/leakage field ไม่ควรใช้เป็น input model,other
+clean_dataset.csv,scored_at,dropped,post-event/leakage field ไม่ควรใช้เป็น input model,other
+clean_dataset.csv,shap_values,dropped,post-event/leakage field ไม่ควรใช้เป็น input model,other

@@ -1,0 +1,2 @@
+﻿version,source_before_feature,engineered_dataset,df_featured_output,rows,columns_in_df_featured,model_input_feature_count,target_column,model_name,note
+version 2,data/processed/clean_dataset.csv,docs/version 2/data/features/df_engineered_v2_preview.csv + rolling features from train_v2_optimized_model.py,docs\version 2\data\features\df_featured.csv,5000,62,60,is_returned,XGBClassifier: v2_xgboost_safe_plus_rolling,V2 selected export เป็น order-time-safe raw feature frame 60 features ตัด delivery_days/delay_days และเพิ่ม rolling history 30/60/90/180/365d

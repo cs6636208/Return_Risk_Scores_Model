@@ -1,0 +1,139 @@
+﻿column,dtype,non_null_count,missing_count,unique_count,sample_values
+order_hour,int64,6672,0,24,8 | 12 | 8 | 8 | 7
+quantity,float64,6672,0,406,0.9995001249375232 | 0.9995001249375232 | -1.0005001250625234 | 0.9995001249375232 | 0.9995001249375232
+unit_price,float64,6672,0,1217,-0.3989640858464646 | -0.3989640858464646 | 1.8502784789143796 | -0.3052456456480961 | 1.8502784789143796
+log_unit_price,float64,6672,0,1217,-0.12064045786875696 | -0.12064045786875696 | 1.4978612133344609 | 0.0009898406901681395 | 1.4978612133344609
+promo_discount_pct,float64,6672,0,871,1.9042331732665811 | -0.888238790462977 | 0.04258519744687572 | -0.888238790462977 | 1.9042331732665811
+total_amount,float64,6672,0,1670,-0.1755962511328032 | 0.024773607939410195 | 0.6683858825350046 | 0.14013807225371486 | 2.155980290798407
+log_total_amount,float64,6672,0,1670,0.18038444016425734 | 0.3992474471952432 | 0.9217816423583874 | 0.5100694286226537 | 1.6547526696777322
+is_repurchased_item,int64,6672,0,2,0 | 0 | 0 | 0 | 0
+days_since_last_order,float64,6672,0,1814,-0.24729661978880801 | -0.7474598590766753 | -0.45190885404293557 | -0.7929292444664815 | -0.8156639371613845
+membership_tier,int64,6672,0,4,4 | 1 | 2 | 1 | 4
+customer_age_days,float64,6672,0,2075,0.1171925380318016 | -1.7512210283718803 | -0.004156194074645733 | -0.1719029708100288 | -0.2325773368632525
+age,float64,6672,0,1631,-0.4199764104135564 | -0.4857931178909982 | 1.422891398954815 | -0.7490599478007656 | -0.15670958050378903
+is_fragile,bool,6672,0,2,True | True | True | False | True
+product_rating,float64,6672,0,1204,-1.0400805551346488 | -1.0400805551346488 | 1.0587072973252252 | 0.009313371095287622 | 1.0587072973252252
+is_peak_hour,int64,6672,0,2,0 | 0 | 1 | 0 | 0
+is_fashion_tv,int64,6672,0,2,0 | 0 | 0 | 0 | 0
+is_remote_area,int64,6672,0,2,0 | 0 | 0 | 0 | 0
+low_rating_alert,int64,6672,0,2,1 | 1 | 0 | 0 | 0
+is_cod,int64,6672,0,2,0 | 0 | 0 | 0 | 0
+is_high_risk_customer,int64,6672,0,2,0 | 1 | 0 | 1 | 1
+is_high_discount,int64,6672,0,2,0 | 0 | 0 | 0 | 0
+is_first_order,int64,6672,0,2,0 | 0 | 0 | 0 | 0
+order_dayofweek,float64,6672,0,1355,-0.5068999981137501 | -0.5068999981137501 | -1.5017969522133576 | 0.9854454330356612 | 0.48799695598585746
+is_weekend,int64,6672,0,2,0 | 0 | 0 | 1 | 0
+return_rate_by_category,float64,6672,0,3197,-1.3180298851726784 | 0.05132472690236782 | -0.7154692877681345 | 0.3742576900700519 | -0.9371499620973631
+delivery_time_expected_days,float64,6672,0,905,0.003401177949829173 | -1.23339080380622 | -1.23339080380622 | 1.2401931597058784 | 1.2401931597058784
+is_long_distance_cod,int64,6672,0,2,0 | 0 | 0 | 0 | 0
+is_impulse_buy,int64,6672,0,2,0 | 0 | 0 | 0 | 0
+is_low_commitment,int64,6672,0,2,0 | 0 | 0 | 0 | 0
+total_orders_before,float64,6672,0,1351,-0.8162865663986753 | -0.27277491170126356 | -1.088042393747381 | -0.27277491170126356 | -0.8162865663986753
+total_returns_before,float64,6672,0,915,-0.7779953770204306 | 0.3638066806136632 | -0.7779953770204306 | 0.3638066806136632 | -0.20709434820338374
+customer_return_ratio,float64,6672,0,1173,-0.8357355375852039 | 0.9915031097924537 | -0.8357355375852039 | 0.9915031097924537 | 0.9915031097924537
+days_since_last_return,float64,6672,0,1588,-0.6426610923351842 | -0.5454239527066075 | -0.6426610923351842 | -0.5732059926004865 | -0.5870970125474261
+hist_spend_sum_30d,float64,6672,0,2799,0.9146613309265117 | -0.9928495192154358 | 0.4137798668243932 | -0.8876720471421633 | -0.5310994194962954
+hist_order_count_30d,float64,6672,0,718,0.6194624828106625 | -0.5022441406581698 | -0.5022441406581698 | -0.5022441406581698 | -0.5022441406581698
+hist_return_rate_30d,float64,6672,0,534,-0.6518962432655195 | 1.9148048481265285 | -0.6518962432655195 | 1.9148048481265285 | 1.9148048481265285
+hist_spend_sum_60d,float64,6672,0,3388,0.4381091710655249 | -1.0865581183236943 | 0.03775622726913631 | -0.6546224537323925 | -0.4001298050081637
+hist_order_count_60d,float64,6672,0,950,0.060488202000900326 | -0.7514339725078287 | -0.7514339725078287 | 0.060488202000900326 | 0.060488202000900326
+hist_return_rate_60d,float64,6672,0,730,-0.7044335667748325 | 2.078327358552262 | -0.7044335667748325 | 2.078327358552262 | 0.6869468958887145
+hist_spend_sum_180d,float64,6672,0,4646,-0.32234528203829454 | 0.43784413536282124 | -0.5614650412399882 | -0.7617642907542117 | -0.8230022778668405
+hist_order_count_180d,float64,6672,0,1246,-0.6667424525579349 | 0.20997346139069747 | -1.105100409532251 | -0.22838449558361867 | -0.6667424525579349
+hist_return_rate_180d,float64,6672,0,1032,-0.8163197690303283 | 0.8727182851484994 | -0.8163197690303283 | 1.435730969874775 | 0.8727182851484994
+channel_type_Shopee,bool,6672,0,2,False | False | False | False | False
+channel_type_TV_Show,bool,6672,0,2,False | False | True | False | True
+channel_type_TikTok,bool,6672,0,2,True | True | False | False | False
+payment_method_COD,bool,6672,0,2,False | False | False | False | False
+payment_method_Credit_Card,bool,6672,0,2,False | True | False | True | False
+province_Chiang Mai,bool,6672,0,2,False | False | False | True | False
+province_Chonburi,bool,6672,0,2,True | False | False | False | True
+province_Khon Kaen,bool,6672,0,2,False | True | True | False | False
+province_Nonthaburi,bool,6672,0,2,False | False | False | False | False
+province_Phuket,bool,6672,0,2,False | False | False | False | False
+province_Remote_Area,bool,6672,0,2,False | False | False | False | False
+province_Songkhla,bool,6672,0,2,False | False | False | False | False
+category_Electronics,bool,6672,0,2,False | False | True | False | True
+category_Fashion,bool,6672,0,2,False | False | False | False | False
+category_Home_Appliance,bool,6672,0,2,True | True | False | False | False
+category_Supplement,bool,6672,0,2,False | False | False | True | False
+gender_province_Female_Chiang Mai,bool,6672,0,2,False | False | False | True | False
+gender_province_Female_Chonburi,bool,6672,0,2,True | False | False | False | False
+gender_province_Female_Khon Kaen,bool,6672,0,2,False | True | False | False | False
+gender_province_Female_Nonthaburi,bool,6672,0,2,False | False | False | False | False
+gender_province_Female_Phuket,bool,6672,0,2,False | False | False | False | False
+gender_province_Female_Remote_Area,bool,6672,0,2,False | False | False | False | False
+gender_province_Female_Songkhla,bool,6672,0,2,False | False | False | False | False
+gender_province_Male_Bangkok,bool,6672,0,2,False | False | False | False | False
+gender_province_Male_Chiang Mai,bool,6672,0,2,False | False | False | False | False
+gender_province_Male_Chonburi,bool,6672,0,2,False | False | False | False | False
+gender_province_Male_Khon Kaen,bool,6672,0,2,False | False | False | False | False
+gender_province_Male_Nonthaburi,bool,6672,0,2,False | False | False | False | False
+gender_province_Male_Phuket,bool,6672,0,2,False | False | False | False | False
+gender_province_Male_Remote_Area,bool,6672,0,2,False | False | False | False | False
+gender_province_Male_Songkhla,bool,6672,0,2,False | False | False | False | False
+gender_province_Other_Chiang Mai,bool,6672,0,2,False | False | False | False | False
+gender_province_Other_Chonburi,bool,6672,0,2,False | False | False | False | True
+gender_province_Other_Khon Kaen,bool,6672,0,2,False | False | True | False | False
+gender_province_Other_Nonthaburi,bool,6672,0,2,False | False | False | False | False
+gender_province_Other_Phuket,bool,6672,0,2,False | False | False | False | False
+gender_province_Other_Remote_Area,bool,6672,0,2,False | False | False | False | False
+gender_province_Other_Songkhla,bool,6672,0,2,False | False | False | False | False
+category_payment_Cosmetics_COD,bool,6672,0,2,False | False | False | False | False
+category_payment_Cosmetics_Credit_Card,bool,6672,0,2,False | False | False | False | False
+category_payment_Electronics_Bank_Transfer,bool,6672,0,2,False | False | True | False | True
+category_payment_Electronics_COD,bool,6672,0,2,False | False | False | False | False
+category_payment_Electronics_Credit_Card,bool,6672,0,2,False | False | False | False | False
+category_payment_Fashion_Bank_Transfer,bool,6672,0,2,False | False | False | False | False
+category_payment_Fashion_COD,bool,6672,0,2,False | False | False | False | False
+category_payment_Fashion_Credit_Card,bool,6672,0,2,False | False | False | False | False
+category_payment_Home_Appliance_Bank_Transfer,bool,6672,0,2,True | False | False | False | False
+category_payment_Home_Appliance_COD,bool,6672,0,2,False | False | False | False | False
+category_payment_Home_Appliance_Credit_Card,bool,6672,0,2,False | True | False | False | False
+category_payment_Supplement_Bank_Transfer,bool,6672,0,2,False | False | False | False | False
+category_payment_Supplement_COD,bool,6672,0,2,False | False | False | False | False
+category_payment_Supplement_Credit_Card,bool,6672,0,2,False | False | False | True | False
+category_channel_Cosmetics_Shopee,bool,6672,0,2,False | False | False | False | False
+category_channel_Cosmetics_TV_Show,bool,6672,0,2,False | False | False | False | False
+category_channel_Cosmetics_TikTok,bool,6672,0,2,False | False | False | False | False
+category_channel_Electronics_Mobile_App,bool,6672,0,2,False | False | False | False | False
+category_channel_Electronics_Shopee,bool,6672,0,2,False | False | False | False | False
+category_channel_Electronics_TV_Show,bool,6672,0,2,False | False | True | False | True
+category_channel_Electronics_TikTok,bool,6672,0,2,False | False | False | False | False
+category_channel_Fashion_Mobile_App,bool,6672,0,2,False | False | False | False | False
+category_channel_Fashion_Shopee,bool,6672,0,2,False | False | False | False | False
+category_channel_Fashion_TV_Show,bool,6672,0,2,False | False | False | False | False
+category_channel_Fashion_TikTok,bool,6672,0,2,False | False | False | False | False
+category_channel_Home_Appliance_Mobile_App,bool,6672,0,2,False | False | False | False | False
+category_channel_Home_Appliance_Shopee,bool,6672,0,2,False | False | False | False | False
+category_channel_Home_Appliance_TV_Show,bool,6672,0,2,False | False | False | False | False
+category_channel_Home_Appliance_TikTok,bool,6672,0,2,True | True | False | False | False
+category_channel_Supplement_Mobile_App,bool,6672,0,2,False | False | False | True | False
+category_channel_Supplement_Shopee,bool,6672,0,2,False | False | False | False | False
+category_channel_Supplement_TV_Show,bool,6672,0,2,False | False | False | False | False
+category_channel_Supplement_TikTok,bool,6672,0,2,False | False | False | False | False
+province_payment_Bangkok_COD,bool,6672,0,2,False | False | False | False | False
+province_payment_Bangkok_Credit_Card,bool,6672,0,2,False | False | False | False | False
+province_payment_Chiang Mai_Bank_Transfer,bool,6672,0,2,False | False | False | False | False
+province_payment_Chiang Mai_COD,bool,6672,0,2,False | False | False | False | False
+province_payment_Chiang Mai_Credit_Card,bool,6672,0,2,False | False | False | True | False
+province_payment_Chonburi_Bank_Transfer,bool,6672,0,2,True | False | False | False | True
+province_payment_Chonburi_COD,bool,6672,0,2,False | False | False | False | False
+province_payment_Chonburi_Credit_Card,bool,6672,0,2,False | False | False | False | False
+province_payment_Khon Kaen_Bank_Transfer,bool,6672,0,2,False | False | True | False | False
+province_payment_Khon Kaen_COD,bool,6672,0,2,False | False | False | False | False
+province_payment_Khon Kaen_Credit_Card,bool,6672,0,2,False | True | False | False | False
+province_payment_Nonthaburi_Bank_Transfer,bool,6672,0,2,False | False | False | False | False
+province_payment_Nonthaburi_COD,bool,6672,0,2,False | False | False | False | False
+province_payment_Nonthaburi_Credit_Card,bool,6672,0,2,False | False | False | False | False
+province_payment_Phuket_Bank_Transfer,bool,6672,0,2,False | False | False | False | False
+province_payment_Phuket_COD,bool,6672,0,2,False | False | False | False | False
+province_payment_Phuket_Credit_Card,bool,6672,0,2,False | False | False | False | False
+province_payment_Remote_Area_Bank_Transfer,bool,6672,0,2,False | False | False | False | False
+province_payment_Remote_Area_COD,bool,6672,0,2,False | False | False | False | False
+province_payment_Remote_Area_Credit_Card,bool,6672,0,2,False | False | False | False | False
+province_payment_Songkhla_Bank_Transfer,bool,6672,0,2,False | False | False | False | False
+province_payment_Songkhla_COD,bool,6672,0,2,False | False | False | False | False
+province_payment_Songkhla_Credit_Card,bool,6672,0,2,False | False | False | False | False
+is_returned,int64,6672,0,2,1 | 1 | 0 | 1 | 1
+dataset_split,str,6672,0,2,train | train | train | train | train
