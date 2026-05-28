@@ -15,4 +15,4 @@
 ## Decision
 ใช้เป็น benchmark ของ generated data แต่ยังไม่เลือก final เพราะ V2 ให้ balance ดีกว่า
 
-Generated at: 2026-05-28T15:24:36
+Generated at: 2026-05-28T16:26:09

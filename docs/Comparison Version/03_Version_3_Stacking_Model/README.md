@@ -25,4 +25,4 @@ Recall ดีขึ้นเมื่อเทียบกับ V1 แต่ Ac
 - `code/` - script หรือ code ที่เกี่ยวข้อง
 - `images/` - กราฟหรือภาพประเมินผลของ version นั้น
 
-Generated at: 2026-05-28T15:24:46
+Generated at: 2026-05-28T16:45:03

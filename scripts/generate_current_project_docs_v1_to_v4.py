@@ -11,6 +11,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import joblib
 from reportlab.lib import colors
 from reportlab.lib.enums import TA_CENTER, TA_LEFT
 from reportlab.lib.pagesizes import A4, landscape
@@ -185,6 +186,16 @@ def first_existing(*paths: Path) -> Path | None:
 
 def read_feature_list(path: Path | None) -> list[str]:
     if not path or not path.exists():
+        return []
+    if path.suffix.lower() == ".pkl":
+        obj = joblib.load(path)
+        if isinstance(obj, dict):
+            if "feature_names" in obj:
+                return [str(v) for v in obj["feature_names"]]
+            for key in ["X_train", "X_test"]:
+                value = obj.get(key)
+                if hasattr(value, "columns"):
+                    return [str(v) for v in value.columns]
         return []
     df = pd.read_csv(path)
     for col in ["feature", "feature_name", "features", "column"]:
@@ -668,7 +679,7 @@ def feature_config() -> dict[str, dict]:
             "version_dir": DOCS / "version 1",
             "source_data": DATA_PROCESSED / "clean_dataset.csv",
             "engineered_data": DOCS / "version 1" / "data" / "features" / "df_engineered.csv",
-            "used_features": DOCS / "version 1" / "feature_documentation" / "used_features.csv",
+            "used_features": DOCS / "version 1" / "data" / "features" / "train_test_sets.pkl",
             "model": "XGBoost baseline",
             "code_paths": [
                 DOCS / "version 1" / "feature_engineering.py",
@@ -830,15 +841,26 @@ def source_summary(cfg: dict) -> pd.DataFrame:
     ]:
         if path and Path(path).exists():
             try:
-                df_head = pd.read_csv(path, nrows=5)
-                rows.append(
-                    {
-                        "artifact": label,
-                        "path": str(Path(path).relative_to(ROOT)),
-                        "columns": len(df_head.columns),
-                        "sample_rows_read": len(df_head),
-                    }
-                )
+                if Path(path).suffix.lower() == ".pkl":
+                    features = read_feature_list(Path(path))
+                    rows.append(
+                        {
+                            "artifact": label,
+                            "path": str(Path(path).relative_to(ROOT)),
+                            "columns": len(features),
+                            "sample_rows_read": "pkl",
+                        }
+                    )
+                else:
+                    df_head = pd.read_csv(path, nrows=5)
+                    rows.append(
+                        {
+                            "artifact": label,
+                            "path": str(Path(path).relative_to(ROOT)),
+                            "columns": len(df_head.columns),
+                            "sample_rows_read": len(df_head),
+                        }
+                    )
             except Exception:
                 rows.append(
                     {

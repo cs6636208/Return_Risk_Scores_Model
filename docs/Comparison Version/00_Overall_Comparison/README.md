@@ -11,4 +11,4 @@
 
 สรุป: V2 เป็น candidate หลักในสถานะล่าสุด เพราะ Accuracy/Recall/F1/AUC ดีที่สุดและ feature logic ปลอด leakage มากที่สุด
 
-Generated at: 2026-05-28T15:24:46
+Generated at: 2026-05-28T16:45:03

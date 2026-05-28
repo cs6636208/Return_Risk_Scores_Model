@@ -13,4 +13,4 @@
 ## Decision
 ไม่เลือกเป็น final เพราะซับซ้อนกว่า แต่ performance ไม่ชนะ V2
 
-Generated at: 2026-05-28T15:24:36
+Generated at: 2026-05-28T16:26:09

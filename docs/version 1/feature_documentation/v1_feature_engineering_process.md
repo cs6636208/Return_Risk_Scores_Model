@@ -15,4 +15,4 @@
 ## Decision
 ใช้เป็น baseline เท่านั้น เพราะ recall ต่ำและพลาด return cases มาก
 
-Generated at: 2026-05-28T15:24:36
+Generated at: 2026-05-28T16:26:09

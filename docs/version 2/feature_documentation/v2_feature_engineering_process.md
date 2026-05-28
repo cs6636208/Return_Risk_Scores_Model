@@ -16,4 +16,4 @@
 ## Decision
 เลือกเป็น candidate หลัก เพราะ performance สูงสุดและ feature logic ตรงกับโจทย์ order-time prediction
 
-Generated at: 2026-05-28T15:24:36
+Generated at: 2026-05-28T16:26:09

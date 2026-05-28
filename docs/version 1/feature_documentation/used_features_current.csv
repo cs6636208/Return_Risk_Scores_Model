@@ -1,1 +1,137 @@
 ﻿version,feature,in_clean_source,in_df_engineered,used_in_model,status,reason
+V1,age,True,True,True,USED,model input feature
+V1,category_Electronics,False,False,True,USED,model input feature
+V1,category_Fashion,False,False,True,USED,model input feature
+V1,category_Home_Appliance,False,False,True,USED,model input feature
+V1,category_Supplement,False,False,True,USED,model input feature
+V1,category_channel_Cosmetics_Shopee,False,False,True,USED,model input feature
+V1,category_channel_Cosmetics_TV_Show,False,False,True,USED,model input feature
+V1,category_channel_Cosmetics_TikTok,False,False,True,USED,model input feature
+V1,category_channel_Electronics_Mobile_App,False,False,True,USED,model input feature
+V1,category_channel_Electronics_Shopee,False,False,True,USED,model input feature
+V1,category_channel_Electronics_TV_Show,False,False,True,USED,model input feature
+V1,category_channel_Electronics_TikTok,False,False,True,USED,model input feature
+V1,category_channel_Fashion_Mobile_App,False,False,True,USED,model input feature
+V1,category_channel_Fashion_Shopee,False,False,True,USED,model input feature
+V1,category_channel_Fashion_TV_Show,False,False,True,USED,model input feature
+V1,category_channel_Fashion_TikTok,False,False,True,USED,model input feature
+V1,category_channel_Home_Appliance_Mobile_App,False,False,True,USED,model input feature
+V1,category_channel_Home_Appliance_Shopee,False,False,True,USED,model input feature
+V1,category_channel_Home_Appliance_TV_Show,False,False,True,USED,model input feature
+V1,category_channel_Home_Appliance_TikTok,False,False,True,USED,model input feature
+V1,category_channel_Supplement_Mobile_App,False,False,True,USED,model input feature
+V1,category_channel_Supplement_Shopee,False,False,True,USED,model input feature
+V1,category_channel_Supplement_TV_Show,False,False,True,USED,model input feature
+V1,category_channel_Supplement_TikTok,False,False,True,USED,model input feature
+V1,category_payment_Cosmetics_COD,False,False,True,USED,model input feature
+V1,category_payment_Cosmetics_Credit_Card,False,False,True,USED,model input feature
+V1,category_payment_Electronics_Bank_Transfer,False,False,True,USED,model input feature
+V1,category_payment_Electronics_COD,False,False,True,USED,model input feature
+V1,category_payment_Electronics_Credit_Card,False,False,True,USED,model input feature
+V1,category_payment_Fashion_Bank_Transfer,False,False,True,USED,model input feature
+V1,category_payment_Fashion_COD,False,False,True,USED,model input feature
+V1,category_payment_Fashion_Credit_Card,False,False,True,USED,model input feature
+V1,category_payment_Home_Appliance_Bank_Transfer,False,False,True,USED,model input feature
+V1,category_payment_Home_Appliance_COD,False,False,True,USED,model input feature
+V1,category_payment_Home_Appliance_Credit_Card,False,False,True,USED,model input feature
+V1,category_payment_Supplement_Bank_Transfer,False,False,True,USED,model input feature
+V1,category_payment_Supplement_COD,False,False,True,USED,model input feature
+V1,category_payment_Supplement_Credit_Card,False,False,True,USED,model input feature
+V1,channel_type_Shopee,False,False,True,USED,model input feature
+V1,channel_type_TV_Show,False,False,True,USED,model input feature
+V1,channel_type_TikTok,False,False,True,USED,model input feature
+V1,customer_age_days,True,True,True,USED,model input feature
+V1,customer_return_ratio,False,True,True,USED,model input feature
+V1,days_since_last_order,True,True,True,USED,model input feature
+V1,days_since_last_return,False,True,True,USED,model input feature
+V1,delivery_time_expected_days,True,True,True,USED,model input feature
+V1,gender_province_Female_Chiang Mai,False,False,True,USED,model input feature
+V1,gender_province_Female_Chonburi,False,False,True,USED,model input feature
+V1,gender_province_Female_Khon Kaen,False,False,True,USED,model input feature
+V1,gender_province_Female_Nonthaburi,False,False,True,USED,model input feature
+V1,gender_province_Female_Phuket,False,False,True,USED,model input feature
+V1,gender_province_Female_Remote_Area,False,False,True,USED,model input feature
+V1,gender_province_Female_Songkhla,False,False,True,USED,model input feature
+V1,gender_province_Male_Bangkok,False,False,True,USED,model input feature
+V1,gender_province_Male_Chiang Mai,False,False,True,USED,model input feature
+V1,gender_province_Male_Chonburi,False,False,True,USED,model input feature
+V1,gender_province_Male_Khon Kaen,False,False,True,USED,model input feature
+V1,gender_province_Male_Nonthaburi,False,False,True,USED,model input feature
+V1,gender_province_Male_Phuket,False,False,True,USED,model input feature
+V1,gender_province_Male_Remote_Area,False,False,True,USED,model input feature
+V1,gender_province_Male_Songkhla,False,False,True,USED,model input feature
+V1,gender_province_Other_Chiang Mai,False,False,True,USED,model input feature
+V1,gender_province_Other_Chonburi,False,False,True,USED,model input feature
+V1,gender_province_Other_Khon Kaen,False,False,True,USED,model input feature
+V1,gender_province_Other_Nonthaburi,False,False,True,USED,model input feature
+V1,gender_province_Other_Phuket,False,False,True,USED,model input feature
+V1,gender_province_Other_Remote_Area,False,False,True,USED,model input feature
+V1,gender_province_Other_Songkhla,False,False,True,USED,model input feature
+V1,hist_order_count_180d,False,True,True,USED,model input feature
+V1,hist_order_count_30d,False,True,True,USED,model input feature
+V1,hist_order_count_60d,False,True,True,USED,model input feature
+V1,hist_return_rate_180d,False,True,True,USED,model input feature
+V1,hist_return_rate_30d,False,True,True,USED,model input feature
+V1,hist_return_rate_60d,False,True,True,USED,model input feature
+V1,hist_spend_sum_180d,False,True,True,USED,model input feature
+V1,hist_spend_sum_30d,False,True,True,USED,model input feature
+V1,hist_spend_sum_60d,False,True,True,USED,model input feature
+V1,is_cod,False,True,True,USED,model input feature
+V1,is_fashion_tv,False,True,True,USED,model input feature
+V1,is_first_order,False,True,True,USED,model input feature
+V1,is_fragile,True,True,True,USED,model input feature
+V1,is_high_discount,False,True,True,USED,model input feature
+V1,is_high_risk_customer,False,True,True,USED,model input feature
+V1,is_impulse_buy,False,True,True,USED,model input feature
+V1,is_long_distance_cod,False,True,True,USED,model input feature
+V1,is_low_commitment,False,True,True,USED,model input feature
+V1,is_peak_hour,False,True,True,USED,model input feature
+V1,is_remote_area,False,True,True,USED,model input feature
+V1,is_repurchased_item,True,True,True,USED,model input feature
+V1,is_weekend,False,True,True,USED,model input feature
+V1,log_total_amount,False,True,True,USED,model input feature
+V1,log_unit_price,False,True,True,USED,model input feature
+V1,low_rating_alert,False,True,True,USED,model input feature
+V1,membership_tier,True,True,True,USED,model input feature
+V1,order_dayofweek,False,True,True,USED,model input feature
+V1,order_hour,True,True,True,USED,model input feature
+V1,payment_method_COD,False,False,True,USED,model input feature
+V1,payment_method_Credit_Card,False,False,True,USED,model input feature
+V1,product_rating,True,True,True,USED,model input feature
+V1,promo_discount_pct,False,True,True,USED,model input feature
+V1,province_Chiang Mai,False,False,True,USED,model input feature
+V1,province_Chonburi,False,False,True,USED,model input feature
+V1,province_Khon Kaen,False,False,True,USED,model input feature
+V1,province_Nonthaburi,False,False,True,USED,model input feature
+V1,province_Phuket,False,False,True,USED,model input feature
+V1,province_Remote_Area,False,False,True,USED,model input feature
+V1,province_Songkhla,False,False,True,USED,model input feature
+V1,province_payment_Bangkok_COD,False,False,True,USED,model input feature
+V1,province_payment_Bangkok_Credit_Card,False,False,True,USED,model input feature
+V1,province_payment_Chiang Mai_Bank_Transfer,False,False,True,USED,model input feature
+V1,province_payment_Chiang Mai_COD,False,False,True,USED,model input feature
+V1,province_payment_Chiang Mai_Credit_Card,False,False,True,USED,model input feature
+V1,province_payment_Chonburi_Bank_Transfer,False,False,True,USED,model input feature
+V1,province_payment_Chonburi_COD,False,False,True,USED,model input feature
+V1,province_payment_Chonburi_Credit_Card,False,False,True,USED,model input feature
+V1,province_payment_Khon Kaen_Bank_Transfer,False,False,True,USED,model input feature
+V1,province_payment_Khon Kaen_COD,False,False,True,USED,model input feature
+V1,province_payment_Khon Kaen_Credit_Card,False,False,True,USED,model input feature
+V1,province_payment_Nonthaburi_Bank_Transfer,False,False,True,USED,model input feature
+V1,province_payment_Nonthaburi_COD,False,False,True,USED,model input feature
+V1,province_payment_Nonthaburi_Credit_Card,False,False,True,USED,model input feature
+V1,province_payment_Phuket_Bank_Transfer,False,False,True,USED,model input feature
+V1,province_payment_Phuket_COD,False,False,True,USED,model input feature
+V1,province_payment_Phuket_Credit_Card,False,False,True,USED,model input feature
+V1,province_payment_Remote_Area_Bank_Transfer,False,False,True,USED,model input feature
+V1,province_payment_Remote_Area_COD,False,False,True,USED,model input feature
+V1,province_payment_Remote_Area_Credit_Card,False,False,True,USED,model input feature
+V1,province_payment_Songkhla_Bank_Transfer,False,False,True,USED,model input feature
+V1,province_payment_Songkhla_COD,False,False,True,USED,model input feature
+V1,province_payment_Songkhla_Credit_Card,False,False,True,USED,model input feature
+V1,quantity,True,True,True,USED,model input feature
+V1,return_rate_by_category,False,True,True,USED,model input feature
+V1,total_amount,True,True,True,USED,model input feature
+V1,total_orders_before,False,True,True,USED,model input feature
+V1,total_returns_before,False,True,True,USED,model input feature
+V1,unit_price,True,True,True,USED,model input feature

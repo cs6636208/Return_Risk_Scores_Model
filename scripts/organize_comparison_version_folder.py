@@ -124,6 +124,14 @@ def version_configs() -> list[dict]:
                     "code/feature_engineered_v2_HIGH_ACCURACY.py",
                 ),
                 (
+                    DOCS
+                    / "version 2"
+                    / "v2_xgboost_safe_plus_rolling_HIGH_ACCURACY"
+                    / "sql"
+                    / "query_dataset_v2_xgboost_safe_plus_rolling_HIGH_ACCURACY.sql",
+                    "sql/query_dataset_v2_xgboost_safe_plus_rolling_HIGH_ACCURACY.sql",
+                ),
+                (
                     DOCS / "version 2" / "v2_xgboost_safe_plus_rolling_HIGH_ACCURACY" / "images" / "metrics_v2_xgboost_safe_plus_rolling_HIGH_ACCURACY.png",
                     "images/metrics_v2_xgboost_safe_plus_rolling_HIGH_ACCURACY.png",
                 ),

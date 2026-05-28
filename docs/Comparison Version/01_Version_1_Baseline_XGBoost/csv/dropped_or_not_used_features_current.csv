@@ -1,5 +1,4 @@
 ﻿version,feature,in_clean_source,in_df_engineered,used_in_model,status,reason
-V1,age,True,True,False,NOT USED,not selected in final feature set
 V1,avg_delivery_days,True,False,False,DROPPED,post-event/target/leakage field
 V1,brand,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
 V1,campaign_discount_pct,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
@@ -11,62 +10,27 @@ V1,courier_id,True,False,False,DROPPED,identifier or high-cardinality identity f
 V1,courier_name,True,False,False,DROPPED,identifier or high-cardinality identity field
 V1,courier_type,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
 V1,coverage_region,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
-V1,customer_age_days,True,True,False,NOT USED,not selected in final feature set
 V1,customer_id,True,False,False,DROPPED,identifier or high-cardinality identity field
 V1,customer_name,True,False,False,DROPPED,identifier or high-cardinality identity field
 V1,customer_phone,True,False,False,DROPPED,identifier or high-cardinality identity field
-V1,customer_return_ratio,False,True,False,NOT USED,engineered candidate not selected for this model
 V1,damage_rate,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
-V1,days_since_last_order,True,True,False,NOT USED,not selected in final feature set
-V1,days_since_last_return,False,True,False,NOT USED,engineered candidate not selected for this model
 V1,delay_days,True,False,False,DROPPED,post-event/target/leakage field
 V1,delivery_date,True,False,False,DROPPED,post-event/target/leakage field
 V1,delivery_days,True,False,False,DROPPED,post-event/target/leakage field
-V1,delivery_time_expected_days,True,True,False,NOT USED,not selected in final feature set
 V1,discount_applied_amount,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
 V1,expected_delivery_date,True,False,False,DROPPED,post-event/target/leakage field
 V1,gender,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
 V1,gender_province,False,True,False,NOT USED,engineered candidate not selected for this model
 V1,hist_order_count,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
-V1,hist_order_count_180d,False,True,False,NOT USED,engineered candidate not selected for this model
-V1,hist_order_count_30d,False,True,False,NOT USED,engineered candidate not selected for this model
-V1,hist_order_count_60d,False,True,False,NOT USED,engineered candidate not selected for this model
 V1,hist_return_rate,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
-V1,hist_return_rate_180d,False,True,False,NOT USED,engineered candidate not selected for this model
-V1,hist_return_rate_30d,False,True,False,NOT USED,engineered candidate not selected for this model
-V1,hist_return_rate_60d,False,True,False,NOT USED,engineered candidate not selected for this model
-V1,hist_spend_sum_180d,False,True,False,NOT USED,engineered candidate not selected for this model
-V1,hist_spend_sum_30d,False,True,False,NOT USED,engineered candidate not selected for this model
-V1,hist_spend_sum_60d,False,True,False,NOT USED,engineered candidate not selected for this model
-V1,is_cod,False,True,False,NOT USED,engineered candidate not selected for this model
-V1,is_fashion_tv,False,True,False,NOT USED,engineered candidate not selected for this model
-V1,is_first_order,False,True,False,NOT USED,engineered candidate not selected for this model
-V1,is_fragile,True,True,False,NOT USED,not selected in final feature set
-V1,is_high_discount,False,True,False,NOT USED,engineered candidate not selected for this model
-V1,is_high_risk_customer,False,True,False,NOT USED,engineered candidate not selected for this model
-V1,is_impulse_buy,False,True,False,NOT USED,engineered candidate not selected for this model
-V1,is_long_distance_cod,False,True,False,NOT USED,engineered candidate not selected for this model
-V1,is_low_commitment,False,True,False,NOT USED,engineered candidate not selected for this model
-V1,is_peak_hour,False,True,False,NOT USED,engineered candidate not selected for this model
-V1,is_remote_area,False,True,False,NOT USED,engineered candidate not selected for this model
-V1,is_repurchased_item,True,True,False,NOT USED,not selected in final feature set
 V1,is_returned,True,True,False,DROPPED,post-event/target/leakage field
-V1,is_weekend,False,True,False,NOT USED,engineered candidate not selected for this model
 V1,item_condition,True,False,False,DROPPED,post-event/target/leakage field
-V1,log_total_amount,False,True,False,NOT USED,engineered candidate not selected for this model
-V1,log_unit_price,False,True,False,NOT USED,engineered candidate not selected for this model
-V1,low_rating_alert,False,True,False,NOT USED,engineered candidate not selected for this model
-V1,membership_tier,True,True,False,NOT USED,not selected in final feature set
 V1,order_date,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
-V1,order_dayofweek,False,True,False,NOT USED,engineered candidate not selected for this model
-V1,order_hour,True,True,False,NOT USED,not selected in final feature set
 V1,order_id,True,False,False,DROPPED,identifier or high-cardinality identity field
 V1,payment_method,True,True,False,NOT USED,not selected in final feature set
 V1,preferred_channel,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
 V1,product_id,True,False,False,DROPPED,identifier or high-cardinality identity field
 V1,product_name,True,False,False,DROPPED,identifier or high-cardinality identity field
-V1,product_rating,True,True,False,NOT USED,not selected in final feature set
-V1,promo_discount_pct,False,True,False,NOT USED,engineered candidate not selected for this model
 V1,promo_discount_rate,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
 V1,promo_end_date,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
 V1,promo_id,True,False,False,DROPPED,identifier or high-cardinality identity field
@@ -75,12 +39,10 @@ V1,promo_start_date,True,False,False,DROPPED,raw field replaced by engineered/en
 V1,promo_type,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
 V1,province,True,True,False,NOT USED,not selected in final feature set
 V1,province_payment,False,True,False,NOT USED,engineered candidate not selected for this model
-V1,quantity,True,True,False,NOT USED,not selected in final feature set
 V1,refund_amount,True,False,False,DROPPED,post-event/target/leakage field
 V1,registration_date,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
 V1,return_date,True,False,False,DROPPED,post-event/target/leakage field
 V1,return_id,True,False,False,DROPPED,post-event/target/leakage field
-V1,return_rate_by_category,False,True,False,NOT USED,engineered candidate not selected for this model
 V1,return_reason,True,False,False,DROPPED,post-event/target/leakage field
 V1,return_scenario,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
 V1,return_status,True,False,False,DROPPED,post-event/target/leakage field
@@ -93,8 +55,4 @@ V1,supplier_contact,True,False,False,DROPPED,identifier or high-cardinality iden
 V1,supplier_id,True,False,False,DROPPED,identifier or high-cardinality identity field
 V1,supplier_name,True,False,False,DROPPED,identifier or high-cardinality identity field
 V1,tier_discount_pct,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
-V1,total_amount,True,True,False,NOT USED,not selected in final feature set
 V1,total_discount_pct,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
-V1,total_orders_before,False,True,False,NOT USED,engineered candidate not selected for this model
-V1,total_returns_before,False,True,False,NOT USED,engineered candidate not selected for this model
-V1,unit_price,True,True,False,NOT USED,not selected in final feature set
