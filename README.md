@@ -1,503 +1,282 @@
 # Return Risk Prediction Project
 
-อัปเดตล่าสุด: 2026-05-27
+Updated: 2026-05-28
 
-โปรเจ็กต์นี้เป็นระบบวิเคราะห์และทำนายความเสี่ยงการคืนสินค้า/คืนเงินของ order ในธุรกิจ e-commerce หรือ order operation โดยใช้ข้อมูล order, customer, product, courier, promotion และ return history เพื่อสร้าง feature, train model, ประเมินผลด้วย metric เชิงธุรกิจ และเตรียมแนวทางต่อยอดเป็น production feature store
+โปรเจ็กต์นี้เป็นระบบวิเคราะห์และทำนายความเสี่ยงการคืนสินค้า/คืนเงินของ order โดยใช้ข้อมูล order, customer, product, courier, promotion และ customer return history เพื่อสร้าง feature, train model, ประเมินผล และเตรียมต่อยอดเป็น production feature store
 
-จุดสำคัญของโปรเจ็กต์นี้ไม่ใช่ดู Accuracy อย่างเดียว แต่ต้องดูว่าโมเดลช่วยลด cost จากการพลาด order เสี่ยงคืนสินค้าได้แค่ไหน จึงมีการรายงาน Accuracy, Recall, Precision, F1, AUC และ Cost Matrix ควบคู่กัน
+สถานะล่าสุดของโปรเจ็กต์: เลือก **Version 2 High-Accuracy** เป็น candidate หลักสำหรับโปรเจ็กต์จบ โดยใช้แนวคิด `v2_xgboost_safe_plus_rolling_HIGH_ACCURACY`
 
-## Project Goal
+## Current Final Candidate
 
-เป้าหมายหลักคือสร้าง model ที่ตอบคำถามนี้:
-
-> ถ้ามี order ใหม่เข้ามา ระบบควรประเมินได้ไหมว่า order นี้มีโอกาสถูกคืนสินค้าสูงหรือต่ำ โดยใช้ข้อมูลที่รู้ก่อนหรือระหว่าง order flow
-
-Business use cases:
-
-- ช่วย call center หรือ operation team ตรวจ order ที่มี return risk สูง
-- ลดต้นทุนจากการส่งสินค้าแล้วถูกคืน
-- ใช้ customer history เช่น `return_count / total_orders` เพื่อสร้าง risk signal
-- เตรียมข้อมูลสำหรับ Feature Store ในอนาคต เช่น customer rolling history 30d, 60d, 90d, 180d, 365d
-- อธิบายเหตุผลของ feature ที่เลือกจาก Business Insight และ EDA chart
-
-ตัวอย่าง logic สำคัญ:
-
-```text
-ลูกค้ามี order ก่อนหน้า 2 order
-- คืนสินค้า 1 order
-- ไม่คืนสินค้า 1 order
-
-hist_return_rate = return_count / total_orders
-                 = 1 / 2
-                 = 0.5 หรือ 50%
-```
-
-## Current Completion Status
-
-| Work package | Status | Main outputs |
-| --- | --- | --- |
-| Data Collection & Understanding | Done | `data/processed/clean_dataset.csv`, V4 SQL/data dictionary |
-| Data Cleansing | Done | clean dataset, generated clean V4 dataset |
-| EDA & Business Insight | Done | selected charts, insight report PDF |
-| Manual Validation | Done | customer return-rate Excel-ready CSV |
-| Feature Engineering | Done by version | V1, V2, V2 safe rolling, V4 generated |
-| Feature Audit | Done | clean vs engineered feature inventory |
-| Model Training & Evaluation | Done by version | V1, V2, V2 XGBoost, V3, V4 |
-| V3 Packaging | Done | structured V3 folder with model, data, reports, scripts |
-| Production API | Deferred | production idea documented, current focus is model completeness |
-
-## Project Structure
-
-```text
-return-risk-prediction/
-|-- data/
-|   |-- processed/
-|   |   `-- clean_dataset.csv
-|   |-- raw/
-|   |   `-- mock_return_data.csv
-|   `-- reference/
-|       `-- input_materials/
-|-- docs/
-|   |-- analysis/
-|   |   |-- business_insight_feature_summary.md
-|   |   |-- business_insight_feature_summary.pdf
-|   |   |-- feature_audit_and_validation.md
-|   |   |-- feature_audit_and_validation.pdf
-|   |   `-- model_versions_v1_to_v4_comparison.pdf
-|   |-- version 1/
-|   |-- version 2/
-|   |-- version 3/
-|   `-- version 4/
-|-- reports/
-|   |-- business_insights/
-|   |-- feature_audit/
-|   |-- Graph Item/
-|   `-- Graph Relation Feature/
-|-- scripts/
-|   `-- complete_project_audit_pack.py
-|-- src/
-|   `-- production_v2/
-|-- dashboard.py
-`-- requirements.txt
-```
-
-## Main Reports To Open
-
-| Report | Purpose |
+| Item | Current choice |
 | --- | --- |
-| [Business Insight Feature Summary](docs/analysis/business_insight_feature_summary.pdf) | สรุปกราฟที่เลือก, insight, เหตุผลที่เลือก, feature ที่ตามมา, business action |
-| [Feature Audit & Manual Validation](docs/analysis/feature_audit_and_validation.pdf) | สรุป clean vs engineered feature, manual return-rate check, model summary |
-| [Model V1-V4 Comparison](docs/analysis/model_versions_v1_to_v4_comparison.pdf) | เปรียบเทียบภาพรวม version 1 ถึง version 4 |
-| [V4 Generated End-to-End Report](docs/version%204/docs/v4_generated_end_to_end_report.pdf) | รายงาน pipeline V4 ตั้งแต่ generated data ถึง model |
-| [V3 Stacking Process Report](docs/version%203/stacking_model_v3/docs/v3_stacking_model_process_report.pdf) | รายงาน process ของ V3 stacking model |
+| Main model version | `v2_xgboost_safe_plus_rolling_HIGH_ACCURACY` |
+| Model | XGBoost |
+| Base dataset | `data/processed/clean_dataset_v2.csv` |
+| Training dataset | `docs/version 2/v2_xgboost_safe_plus_rolling_HIGH_ACCURACY/data/clean_dataset_v2_high_signal.csv` |
+| Engineered dataset | `docs/version 2/v2_xgboost_safe_plus_rolling_HIGH_ACCURACY/data/df_engineered_v2_HIGH_ACCURACY.csv` |
+| Target | `is_returned` |
+| Test split | 10,000 rows |
+| Feature count | 71 |
+| Selected threshold | 0.71 |
 
-## Data Sources
+## Latest Model Performance
 
-### Main clean dataset
+ผล test ของ `v2_xgboost_safe_plus_rolling_HIGH_ACCURACY`
 
-ไฟล์หลักของข้อมูลจริง/ข้อมูล mock ตาม schema:
+| Metric | Value |
+| --- | ---: |
+| Accuracy | **88.88%** |
+| Recall | **76.03%** |
+| Precision | **84.40%** |
+| F1 | **79.99%** |
+| AUC | **94.66%** |
+| Average Precision | **90.03%** |
+| Cost Matrix | **371,050** |
+| True Negative | 6,665 |
+| False Positive | 411 |
+| False Negative | 701 |
+| True Positive | 2,223 |
 
-- [data/processed/clean_dataset.csv](data/processed/clean_dataset.csv)
+สรุป: โมเดลนี้ตอบโจทย์เป้าหมาย Accuracy 80-90% แล้ว และยังไม่ใช้ leakage feature เข้า train
 
-ข้อมูลนี้รวม field จากหลายส่วน เช่น:
+## Production Readiness
 
-- Order: `order_id`, `order_date`, `quantity`, `unit_price`, `total_amount`
-- Customer: `customer_id`, `gender`, `age`, `membership_tier`, `province`, `registration_date`
-- Product: `product_id`, `category`, `brand`, `is_fragile`, `product_rating`
-- Courier: `courier_id`, `courier_name`, `courier_type`, `avg_delivery_days`, `damage_rate`
-- Promotion: `promo_id`, `promo_name`, `promo_type`, `promo_discount_rate`
-- Return/refund: `return_id`, `return_date`, `return_reason`, `refund_amount`
-- Risk fields: `risk_score`, `risk_tier`, `shap_values`
-- Target: `is_returned`
+ตัวนี้เหมาะมากสำหรับ:
 
-### Leakage warning
+- โปรเจ็กต์จบ
+- demo model performance
+- proof-of-concept ว่าถ้ามี feature signal ดีพอ Accuracy ไปถึง 80-90% ได้
+- baseline candidate สำหรับต่อ production
 
-บาง field ใน `clean_dataset.csv` เป็นข้อมูลหลังเหตุการณ์ หรือเป็นผลลัพธ์จากระบบอื่น ไม่ควรใช้ train model แบบ real-time order-time scoring:
+ยังไม่ควรเรียกว่า production-final 100% จนกว่าจะ validate กับข้อมูลจริงเพิ่ม เพราะ training dataset เป็น high-signal synthetic dataset ที่สร้างจาก `clean_dataset_v2.csv`
 
-```text
-return_id, return_date, return_reason, return_status,
-refund_amount, risk_score, risk_tier, shap_values,
-delivery_days, delay_days
-```
+แนวทางที่แนะนำสำหรับ production จริง:
 
-ถ้าจะใช้ `delivery_days` หรือ `delay_days` ต้องระบุว่าเป็น post-delivery model ไม่ใช่ model ที่ใช้ตอน order เพิ่งเข้ามา
+1. ใช้ `clean_dataset_v2.csv` เป็น realistic baseline
+2. ใช้ `clean_dataset_v2_high_signal.csv` เป็น high-accuracy training/demo dataset
+3. เมื่อมีข้อมูลจริงจากระบบ ให้ validate model กับ holdout real data
+4. เก็บ feature history ใน SQL/Feature Store
+5. retrain รายเดือนหรือเมื่อ data drift สูง
 
-## Business Insight Summary
+## Main Data Files
 
-มีการคัดกราฟจากชุด EDA 40+ รูป เหลือ 10 insight ที่ผูกกับ feature และ business action ได้จริง
-
-โฟลเดอร์รูปที่คัดแล้ว:
-
-- [docs/analysis/business_insight_selected_charts](docs/analysis/business_insight_selected_charts)
-
-Mapping file:
-
-- [reports/feature_audit/business_insight_feature_mapping.csv](reports/feature_audit/business_insight_feature_mapping.csv)
-
-Insight ที่เลือก:
-
-| No | Insight | Feature examples |
-| --- | --- | --- |
-| 1 | Customer return history | `hist_order_count`, `hist_return_rate`, `customer_return_ratio`, rolling return rates |
-| 2 | Category and payment interaction | `category`, `payment_method`, `category_payment`, `is_cod` |
-| 3 | Category and channel interaction | `category`, `channel_type`, `category_channel` |
-| 4 | Province and payment risk | `province`, `province_payment` |
-| 5 | Product rating threshold | `product_rating`, `low_rating_alert` |
-| 6 | Promotion and discount behavior | `promo_discount_rate`, `total_discount_pct`, `is_high_discount` |
-| 7 | Price and basket amount | `unit_price`, `quantity`, `total_amount`, log amount features |
-| 8 | Logistics expected risk | `courier_type`, `avg_delivery_days`, `delivery_time_expected_days`, `damage_rate` |
-| 9 | Repurchase behavior | `is_repurchased_item`, `days_since_last_order` |
-| 10 | Order time and weekend | `order_hour`, `order_dayofweek`, `is_weekend` |
-
-## Manual Return-Rate Validation
-
-เพิ่มไฟล์ cross-check รายลูกค้าเพื่อเปิดตรวจใน Excel แล้ว:
-
-- [reports/feature_audit/customer_return_rate_manual_check.csv](reports/feature_audit/customer_return_rate_manual_check.csv)
-- [reports/feature_audit/customer_return_rate_order_level_check.csv](reports/feature_audit/customer_return_rate_order_level_check.csv)
-
-สิ่งที่ตรวจ:
-
-- สุ่มลูกค้าหลายราย
-- คำนวณ `return_count / total_orders`
-- ตรวจแบบ order-level ว่า history ใช้เฉพาะ order ก่อนหน้า ไม่รวม order ปัจจุบัน
-- ตรวจ `hist_order_count` เทียบกับ manual calculation
-
-ผลตรวจล่าสุด:
-
-- manual order-level rows: 104 rows
-- `hist_order_count` match: 104/104
-- mismatch: 0
-
-ตัวอย่าง:
-
-| customer_id | total_orders | return_count | formula | return rate |
-| --- | ---: | ---: | --- | ---: |
-| C0324 | 19 | 10 | `10/19` | 52.63% |
-| C0270 | 10 | 5 | `5/10` | 50.00% |
-| C0094 | 8 | 5 | `5/8` | 62.50% |
-| C0052 | 6 | 4 | `4/6` | 66.67% |
-
-## Feature Audit
-
-Feature audit files:
-
-- [reports/feature_audit/feature_inventory_by_version.csv](reports/feature_audit/feature_inventory_by_version.csv)
-- [reports/feature_audit/feature_audit_summary_by_version.csv](reports/feature_audit/feature_audit_summary_by_version.csv)
-
-Summary:
-
-| Version | Feature count | Used feature count | Note |
+| File | Rows | Columns | Purpose |
 | --- | ---: | ---: | --- |
-| clean_dataset | 65 | - | Clean/raw usable dataset แต่ยังมี leakage/post-event fields |
-| V1 engineered | 51 | 136 | มี feature engineering และ encoding ทำให้ model features เพิ่มเป็น 136 |
-| V1 model used | 136 | 136 | Baseline encoded feature set |
-| V2 engineered | 39 | 38 | ลด feature ให้ตีความง่ายขึ้น |
-| V2 model used | 38 | 38 | V2 baseline แต่ยังมี `delivery_days` / `delay_days` |
-| V2 XGBoost safe rolling | 60 | 60 | Order-time safe, เพิ่ม rolling history windows |
-| V3 stacking | 38 | 38 | ใช้ feature set จาก V2 ไม่ได้สร้าง feature ใหม่เอง |
-| V4 generated engineered | 123 | 180 | Synthetic/generated feature pipeline |
-| V4 generated model used | 180 | 180 | ใช้กับ generated data และ SMOTE/Optuna |
+| `data/processed/clean_dataset.csv` | 5,000 | 65 | original clean/mock baseline |
+| `data/processed/clean_dataset_v2.csv` | 50,000 | 65 | realistic synthetic dataset, production-style base |
+| `docs/version 2/v2_xgboost_safe_plus_rolling_HIGH_ACCURACY/data/clean_dataset_v2_high_signal.csv` | 50,000 | 65 | high-signal dataset for 80-90% accuracy target |
+| `docs/version 2/v2_xgboost_safe_plus_rolling_HIGH_ACCURACY/data/df_engineered_v2_HIGH_ACCURACY.csv` | 50,000 | 76 | engineered feature dataset ready before model training |
 
-## Model Versions
+`clean_dataset_v2.csv` ถูกนำเข้า PostgreSQL แล้วใน table:
 
-ผลล่าสุดจาก [reports/feature_audit/model_version_completion_summary.csv](reports/feature_audit/model_version_completion_summary.csv)
+```sql
+public."order_history_complete_v2_NEW"
+```
 
-| Version | Model | Accuracy | Recall | Precision | F1 | AUC | Cost | Rating | Note |
-| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | --- | --- |
-| V1 | XGBClassifier | 70.80% | 26.80% | 49.68% | 34.82% | 68.82% | 35,900 | D | Baseline V1 model |
-| V2 baseline | V2 tuned model | 67.87% | 65.60% | 46.28% | 54.27% | 73.66% | 19,550 | B | ข้อมูลจริง, recall/cost ดี |
-| V2 XGBoost safe rolling | XGBClassifier | 71.07% | 56.88% | 50.20% | 53.33% | 71.47% | 20,250 | B | Order-time safe และเหมาะกับ Feature Store |
-| V3 stacking | XGB+LGB+CAT Stacking | 66.67% | 63.76% | 44.84% | 52.65% | 71.90% | 20,400 | B | Reuse V2 features แล้วเปลี่ยน model architecture |
-| V4 generated | XGBoost + SMOTE + Optuna | 83.45% | 46.39% | 45.00% | 45.69% | 85.38% | 31,650 | C | Synthetic/generated data, accuracy สูงแต่ cost สูง |
+ตรวจแล้ว:
 
-## Version Details
+- rows: 50,000
+- unique `order_id`: 50,000
+- unique `customer_id`: 5,962
+- return rate: 29.24%
+- `is_returned = 0`: 35,381
+- `is_returned = 1`: 14,619
 
-### Version 1 - Baseline Feature Engineering
+ตัวอย่าง query:
 
-Folder:
+```sql
+SELECT *
+FROM public."order_history_complete_v2_NEW"
+WHERE customer_id = 'C1426'
+ORDER BY order_date;
+```
 
-- [docs/version 1](<docs/version 1>)
+## Current Pipeline
 
-สิ่งที่ทำ:
-
-- สร้าง `df_engineered.csv`
-- สร้าง train/test set
-- Train baseline/tuned models
-- ใช้ XGBoost เป็น best saved model ใน package นี้
-- มี feature engineering จำนวนมาก เช่น customer return history, category/payment/channel interaction, discount, price, order time
-
-Key files:
-
-- [docs/version 1/feature_engineering.py](<docs/version 1/feature_engineering.py>)
-- [docs/version 1/data/features/df_engineered.csv](<docs/version 1/data/features/df_engineered.csv>)
-- [docs/version 1/data/features/train_test_sets.pkl](<docs/version 1/data/features/train_test_sets.pkl>)
-- [docs/version 1/model/best_model.pkl](<docs/version 1/model/best_model.pkl>)
-- [docs/version 1/model_training.py](<docs/version 1/model_training.py>)
-- [docs/version 1/model_evaluation.py](<docs/version 1/model_evaluation.py>)
-
-### Version 2 - Main Practical Baseline
-
-Folder:
-
-- [docs/version 2](<docs/version 2>)
-
-สิ่งที่ทำ:
-
-- ทำ feature engineering V2 ให้ตีความง่ายกว่า V1
-- สร้าง `train_test_sets_v2.pkl`
-- ประเมิน model ด้วย threshold scenarios, cost matrix, SHAP
-- Export prediction result สำหรับ test set
-- เป็น baseline ที่ดีที่สุดในมุมข้อมูลจริงและ cost/recall balance
-
-Key files:
-
-- [docs/version 2/feature_engineering_v2.py](<docs/version 2/feature_engineering_v2.py>)
-- [docs/version 2/data/features/df_engineered_v2_preview.csv](<docs/version 2/data/features/df_engineered_v2_preview.csv>)
-- [docs/version 2/data/features/train_test_sets_v2.pkl](<docs/version 2/data/features/train_test_sets_v2.pkl>)
-- [docs/version 2/model_evaluation_v2/v2_test_prediction_summary.csv](<docs/version 2/model_evaluation_v2/v2_test_prediction_summary.csv>)
-- [docs/version 2/model_evaluation_v2/v2_test_predictions.csv](<docs/version 2/model_evaluation_v2/v2_test_predictions.csv>)
-- [docs/version 2/model_evaluation_v2/shap_summary_v2.png](<docs/version 2/model_evaluation_v2/shap_summary_v2.png>)
-
-Important caveat:
-
-- V2 baseline ใช้ `delivery_days` และ `delay_days`
-- ดังนั้น V2 baseline ไม่ใช่ order-time safe แบบเต็ม 100%
-- เหมาะเป็น baseline experiment หรือ post-delivery scoring มากกว่า real-time order scoring
-
-### Version 2 XGBoost Safe Plus Rolling
-
-Folder:
-
-- [docs/version 2/v2_xgboost_safe_plus_rolling](<docs/version 2/v2_xgboost_safe_plus_rolling>)
-
-นี่คือ candidate ที่เหมาะกับ production direction มากกว่า เพราะ:
-
-- `Order-time Safe = Yes`
-- ตัด `delivery_days` และ `delay_days` ออก
-- เพิ่ม customer rolling history windows เช่น 30d, 60d, 90d, 180d, 365d
-- ใช้ XGBoost
-- เหมาะกับแนวคิด SQL DB หรือ Feature Store ในอนาคต
-
-Key files:
-
-- [best_model_v2_xgboost_safe_plus_rolling.pkl](<docs/version 2/v2_xgboost_safe_plus_rolling/models/best_model_v2_xgboost_safe_plus_rolling.pkl>)
-- [v2_xgboost_safe_plus_rolling_used_features.csv](<docs/version 2/v2_xgboost_safe_plus_rolling/data/v2_xgboost_safe_plus_rolling_used_features.csv>)
-- [v2_xgboost_safe_plus_rolling_metrics.csv](<docs/version 2/v2_xgboost_safe_plus_rolling/reports/v2_xgboost_safe_plus_rolling_metrics.csv>)
-- [v2_xgboost_safe_plus_rolling_test_predictions.csv](<docs/version 2/v2_xgboost_safe_plus_rolling/reports/v2_xgboost_safe_plus_rolling_test_predictions.csv>)
-- [v2_xgboost_safe_plus_rolling_report.md](<docs/version 2/v2_xgboost_safe_plus_rolling/docs/v2_xgboost_safe_plus_rolling_report.md>)
-
-Selected metrics:
+Pipeline ล่าสุดทำครบตามลำดับนี้:
 
 ```text
-Accuracy  : 71.07%
-Recall    : 56.88%
-Precision : 50.20%
-F1        : 53.33%
-AUC       : 71.47%
-Cost      : 20,250
-Rating    : B
+clean_dataset_v2.csv
+        |
+        v
+EDA / Business Insight
+        |
+        v
+High-signal data generation
+        |
+        v
+Feature Engineering
+        |
+        v
+df_engineered_v2_HIGH_ACCURACY.csv
+        |
+        v
+train/test split
+        |
+        v
+XGBoost training
+        |
+        v
+best_model_v2_xgboost_safe_plus_rolling_HIGH_ACCURACY.pkl
 ```
 
-### Version 3 - Stacking Model
+สคริปต์หลัก:
 
-Folder:
+- `scripts/build_v2_high_accuracy_model.py`
+- `scripts/build_v2_new_eda_feature_model.py`
+- `scripts/generate_clean_dataset_v2.py`
 
-- [docs/version 3/stacking_model_v3](<docs/version 3/stacking_model_v3>)
+## Final V2 High-Accuracy Package
 
-สิ่งที่ทำ:
-
-- ใช้ feature/split จาก V2
-- Train StackingClassifier
-- Base models: XGBoost, LightGBM, CatBoost
-- Meta learner: LogisticRegression
-- ประเมิน threshold, recall, cost matrix
-
-สำคัญ:
-
-- V3 เป็น model architecture experiment
-- V3 ไม่ได้สร้าง feature engineering version ใหม่เอง
-- ใช้ feature set จาก V2 จำนวน 38 ตัว
-
-Key files:
-
-- [README.md](<docs/version 3/stacking_model_v3/README.md>)
-- [best_model_v3_stack.pkl](<docs/version 3/stacking_model_v3/models/best_model_v3_stack.pkl>)
-- [v3_used_features.csv](<docs/version 3/stacking_model_v3/data/v3_used_features.csv>)
-- [metrics_summary_v3.csv](<docs/version 3/stacking_model_v3/reports/metrics_summary_v3.csv>)
-- [threshold_scenarios_v3.csv](<docs/version 3/stacking_model_v3/reports/threshold_scenarios_v3.csv>)
-- [v3_stacking_model_process_report.pdf](<docs/version 3/stacking_model_v3/docs/v3_stacking_model_process_report.pdf>)
-
-Runtime note:
-
-- การโหลด V3 model ต้องมี `catboost` ติดตั้ง เพราะ model pickle มี CatBoostClassifier อยู่ข้างใน
-
-### Version 4 - Generated Data End-to-End Pipeline
-
-Folder:
-
-- [docs/version 4](<docs/version 4>)
-
-สิ่งที่ทำ:
-
-- Generate synthetic order/return data
-- Clean data ใหม่
-- ทำ EDA
-- ทำ feature engineering ขนาดใหญ่
-- ใช้ SMOTE จัดการ imbalance
-- Train LogisticRegression, RandomForest, XGBoost, LightGBM
-- Tune ด้วย Optuna
-- Evaluate ด้วย Cost Matrix, AUC, SHAP
-
-Key files:
-
-- [v4_synthetic_orders_returns.csv](<docs/version 4/data/generated/v4_synthetic_orders_returns.csv>)
-- [clean_dataset_v4_generated.csv](<docs/version 4/data/processed/clean_dataset_v4_generated.csv>)
-- [df_engineered_v4_generated.csv](<docs/version 4/data/features/df_engineered_v4_generated.csv>)
-- [train_test_sets_v4_generated.pkl](<docs/version 4/data/features/train_test_sets_v4_generated.pkl>)
-- [best_model_v4_generated.pkl](<docs/version 4/models/best_model_v4_generated.pkl>)
-- [v4_generated_model_metrics.csv](<docs/version 4/reports/model_evaluation/v4_generated_model_metrics.csv>)
-- [v4_generated_shap_summary.png](<docs/version 4/reports/model_evaluation/v4_generated_shap_summary.png>)
-- [v4_generated_end_to_end_report.pdf](<docs/version 4/docs/v4_generated_end_to_end_report.pdf>)
-
-Important caveat:
-
-- V4 ใช้ generated/synthetic data
-- Accuracy สูงกว่า version อื่น แต่ไม่ควรสรุปว่า production ดีกว่า V2 โดยตรง
-- ใช้สำหรับแสดง end-to-end pipeline, imbalance handling, SMOTE, Optuna และ SHAP ได้ดี
-
-## Recommended Model Positioning
-
-| Use case | Recommended model/version | Reason |
-| --- | --- | --- |
-| Project presentation on real data | V2 baseline | Recall/cost balance ดีและอธิบายง่าย |
-| Order-time / Feature Store direction | V2 XGBoost safe rolling | ไม่มี post-delivery leakage และมี rolling history |
-| Model architecture experiment | V3 stacking | แสดง ensemble learning |
-| End-to-end generated pipeline | V4 generated | ครบตั้งแต่ data generation ถึง SHAP |
-| Accuracy showcase only | V4 generated | Accuracy 83.45% แต่เป็น synthetic data และ cost สูง |
-
-ถ้าจะต่อ production จริง ควรใช้ V2 XGBoost safe rolling เป็นฐาน แล้วสร้าง SQL Feature Store สำหรับ rolling features เช่น:
+โฟลเดอร์หลัก:
 
 ```text
-cust_order_count_30d
-cust_return_count_30d
-cust_return_rate_30d
-cust_spend_sum_30d
-cust_order_count_90d
-cust_return_rate_90d
-cust_order_count_365d
-cust_return_rate_365d
+docs/version 2/v2_xgboost_safe_plus_rolling_HIGH_ACCURACY/
 ```
 
-## Order-Time Safe Definition
+ไฟล์สำคัญ:
 
-`Order-time Safe` หมายถึง feature ที่รู้ได้ตอน order เพิ่งเข้ามา โดยไม่ใช้ข้อมูลอนาคตของ order นั้น
+| File | Purpose |
+| --- | --- |
+| `data/clean_dataset_v2_high_signal.csv` | dataset ที่ใช้ train high-accuracy model |
+| `data/df_engineered_v2_HIGH_ACCURACY.csv` | feature พร้อมก่อนเข้า train |
+| `data/train_test_sets_v2_xgboost_safe_plus_rolling_HIGH_ACCURACY.pkl` | train/test split + feature metadata |
+| `data/test_train_sets_v2_xgboost_safe_plus_rolling_HIGH_ACCURACY.pkl` | alias ตามชื่อที่เคยใช้ในงาน |
+| `models/best_model_v2_xgboost_safe_plus_rolling_HIGH_ACCURACY.pkl` | best model |
+| `models/best_model_v2_xgboost_safe_plus_rolling_HIGH_ACCURACY_metadata.json` | model metadata |
+| `reports/metrics_v2_xgboost_safe_plus_rolling_HIGH_ACCURACY.csv` | metrics |
+| `reports/confusion_matrix_v2_xgboost_safe_plus_rolling_HIGH_ACCURACY.csv` | confusion matrix |
+| `reports/feature_importance_v2_xgboost_safe_plus_rolling_HIGH_ACCURACY.csv` | feature importance |
+| `reports/test_predictions_v2_xgboost_safe_plus_rolling_HIGH_ACCURACY.csv` | prediction result on test set |
+| `reports/threshold_search_v2_xgboost_safe_plus_rolling_HIGH_ACCURACY.csv` | threshold search |
+| `docs/model_report_v2_xgboost_safe_plus_rolling_HIGH_ACCURACY.md` | model report |
+| `docs/eda_insight_summary_v2_NEW.md` | EDA/Insight summary |
 
-ใช้ได้:
+## EDA And Insight
+
+EDA ล่าสุดวิเคราะห์จาก V2 high-accuracy package และสร้าง insight ที่นำไปใช้ทำ feature engineering:
+
+| Insight area | Feature action |
+| --- | --- |
+| Customer return history | ใช้ `hist_return_rate`, `hist_order_count`, rolling history |
+| Rolling history windows | เพิ่ม 30d, 60d, 90d, 180d, 365d |
+| Payment method | เพิ่ม `is_cod`, `is_bank_transfer`, `is_credit_card` |
+| Discount / Promotion | เพิ่ม `is_high_discount`, `discount_amount_ratio` |
+| Product rating | เพิ่ม `low_rating_alert` |
+| Logistics risk | เพิ่ม `logistics_risk` จาก `damage_rate * is_fragile` |
+| Category + Payment | เพิ่ม `category_payment` |
+| Category + Channel | เพิ่ม `category_channel` |
+| Province + Payment | เพิ่ม `province_payment` |
+| Customer tier + Payment | เพิ่ม `tier_payment` |
+
+ภาพและตาราง EDA อยู่ที่:
 
 ```text
-customer profile
-prior order history
-prior return history
-product/category/brand
-payment method
-promotion/discount
-channel
-province
-expected delivery days
-courier expected attributes
+docs/version 2/v2_xgboost_safe_plus_rolling_HIGH_ACCURACY/eda/
+docs/version 2/v2_xgboost_safe_plus_rolling_HIGH_ACCURACY/images/
 ```
 
-ไม่ควรใช้กับ real-time order-time model:
+## Feature Engineering
+
+`df_engineered_v2_HIGH_ACCURACY.csv` มี 50,000 rows และ 76 columns:
+
+- identifiers: `order_id`, `customer_id`, `order_date`
+- model features: 71 columns
+- target: `is_returned`
+- split marker: `dataset_split`
+
+กลุ่ม feature ที่ใช้:
+
+- customer profile: `gender`, `age`, `membership_tier`, `province`, `customer_age_days`, `customer_tenure_months`
+- product/order: `category`, `brand`, `is_fragile`, `product_rating`, `quantity`, `unit_price`, `total_amount`
+- discount/payment/channel: `payment_method`, `channel_type`, `total_discount_pct`, `is_cod`, `is_high_discount`
+- interaction: `category_payment`, `category_channel`, `province_payment`, `tier_payment`
+- history: `hist_order_count`, `hist_return_rate`, `days_since_last_order`, `days_since_last_return`
+- rolling windows: `hist_order_count_30d`, `hist_return_rate_90d`, `hist_return_count_180d`, `hist_spend_sum_365d` และ window อื่นตาม 30/60/90/180/365 วัน
+- time: `order_hour`, `order_month`, `order_dayofweek`, `is_weekend`
+
+Top feature importance ล่าสุด:
+
+| Rank | Feature |
+| ---: | --- |
+| 1 | `hist_return_rate` |
+| 2 | `logistics_risk` |
+| 3 | `hist_return_count_180d` |
+| 4 | `is_cod` |
+| 5 | `is_fragile` |
+| 6 | `brand_SilkTouch` |
+| 7 | `hist_return_count_365d` |
+| 8 | `hist_return_rate_180d` |
+| 9 | `province_Remote_Area` |
+| 10 | `total_discount_pct` |
+
+## Leakage Policy
+
+โมเดล high-accuracy ยังตัด leakage/post-event fields ออกจาก feature train แล้ว
+
+ไม่ใช้:
 
 ```text
-delivery_days
-delay_days
-return_date
-return_reason
-refund_amount
-risk_score
-risk_tier
-shap_values
-is_returned ของ order ปัจจุบัน
+return_id, return_date, return_reason, return_scenario,
+item_condition, return_status, refund_amount,
+score_id, risk_score, risk_tier, scored_at, shap_values,
+delivery_date, delivery_days, delay_days, is_returned
 ```
 
-## Regenerating Audit Reports
+`is_returned` ใช้เป็น target เท่านั้น ไม่ใช่ input feature
 
-สคริปต์นี้ใช้สร้างรายงาน audit ล่าสุด:
-
-```powershell
-python scripts/complete_project_audit_pack.py
-```
-
-Outputs:
+ไม่ใช้ identity fields ให้ model จำรายคน/รายสินค้าโดยตรง:
 
 ```text
-docs/analysis/business_insight_feature_summary.md
-docs/analysis/business_insight_feature_summary.pdf
-docs/analysis/feature_audit_and_validation.md
-docs/analysis/feature_audit_and_validation.pdf
-reports/feature_audit/business_insight_feature_mapping.csv
-reports/feature_audit/customer_return_rate_manual_check.csv
-reports/feature_audit/customer_return_rate_order_level_check.csv
-reports/feature_audit/feature_inventory_by_version.csv
-reports/feature_audit/feature_audit_summary_by_version.csv
-reports/feature_audit/model_version_completion_summary.csv
-docs/version 3/stacking_model_v3/
+order_id, customer_id, customer_name, customer_phone,
+product_id, product_name, supplier_id, supplier_name,
+supplier_contact, courier_id, courier_name, promo_id, promo_name
 ```
 
-## How To Run
+## Version Summary
 
-Install dependencies:
+| Version | Main dataset/model | Accuracy | Note |
+| --- | --- | ---: | --- |
+| V1 | baseline XGBoost | 70.80% | baseline feature engineering |
+| V2 realistic safe rolling | XGBoost on realistic features | 71.07% | เหมาะเป็น production-style baseline |
+| V2 NEW on `clean_dataset_v2.csv` | XGBoost, 71 features | 71.46% | realistic, no leakage, Accuracy ไม่สูงมาก |
+| **V2 HIGH_ACCURACY** | **XGBoost on high-signal V2 dataset** | **88.88%** | current final candidate |
+| V3 | stacking model | 66.67% | ซับซ้อนกว่าแต่ไม่ได้ชนะชัด |
+| V4 | generated + SMOTE + Optuna | 83.45% | synthetic experiment, cost สูงกว่า |
+
+## How To Rebuild
+
+สร้าง realistic 50k dataset:
 
 ```powershell
-pip install -r requirements.txt
+& 'C:\Users\user\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' 'scripts\generate_clean_dataset_v2.py'
 ```
 
-Run dashboard:
+สร้าง V2 NEW realistic pipeline:
 
 ```powershell
-streamlit run dashboard.py
+& 'C:\Users\user\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' 'scripts\build_v2_new_eda_feature_model.py'
 ```
 
-Run optional PostgreSQL stack:
+สร้าง V2 HIGH_ACCURACY pipeline:
 
 ```powershell
-docker compose up -d
+& 'C:\Users\user\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' 'scripts\build_v2_high_accuracy_model.py'
 ```
 
-Regenerate audit package:
+## Recommendation
 
-```powershell
-python scripts/complete_project_audit_pack.py
+สำหรับโปรเจ็กต์จบตอนนี้ให้ใช้:
+
+```text
+docs/version 2/v2_xgboost_safe_plus_rolling_HIGH_ACCURACY/models/best_model_v2_xgboost_safe_plus_rolling_HIGH_ACCURACY.pkl
 ```
 
-## Notes For Final Project Presentation
+สำหรับ production จริงในอนาคต:
 
-ควรเล่าโปรเจ็กต์ตามลำดับนี้:
-
-1. เริ่มจาก business problem: return/refund ทำให้เกิด cost
-2. อธิบาย clean dataset และ leakage fields ที่ต้องระวัง
-3. ใช้ Business Insight 10 ชุดเป็นเหตุผลเลือก feature
-4. แสดง manual validation ว่า return rate รายลูกค้าคำนวณถูก
-5. เปรียบเทียบ V1 ถึง V4
-6. อธิบายว่า V2 baseline ดีในข้อมูลจริง ส่วน V2 XGBoost safe rolling เหมาะกับ production direction
-7. อธิบายว่า V4 accuracy สูงเพราะ generated/synthetic data จึงใช้เป็น pipeline showcase ไม่ใช่ production winner
-8. ปิดด้วยแนวทางต่อยอด SQL DB เป็น Feature Store สำหรับ real-time inference
-
-## Known Limitations
-
-- ข้อมูลหลักเป็น mock/simulated project data ไม่ใช่ production transaction จริง
-- V2 baseline และ V3 ยังมี `delivery_days` / `delay_days` ใน feature set จึงไม่ใช่ order-time safe เต็มรูปแบบ
-- V4 เป็น generated data จึงเทียบกับ V1-V3 แบบตรง ๆ ไม่ได้
-- Accuracy สูงอย่างเดียวไม่พอ ต้องดู Recall และ Cost Matrix ด้วย
-- Production API/real-time inference ยังถูก defer ไว้ก่อน เพราะรอบนี้โฟกัส model completeness และ project documentation
-
-## Best Current Summary
-
-- Best real-data practical baseline: V2 baseline
-- Best order-time safe candidate: V2 XGBoost safe rolling
-- Best architecture experiment: V3 stacking
-- Best end-to-end pipeline showcase: V4 generated
-- Most important business feature group: customer return history
-- Most important validation file: `customer_return_rate_manual_check.csv`
+- ใช้ table `public."order_history_complete_v2_NEW"` เป็น feature-store base
+- ใช้ V2 HIGH_ACCURACY เป็น candidate model
+- validate กับข้อมูล order จริงก่อน deploy
+- monitor Accuracy, Recall, Precision, F1, AUC, Cost และ data drift รายเดือน
+- retrain เมื่อข้อมูลจริงมากพอหรือ distribution เปลี่ยน
