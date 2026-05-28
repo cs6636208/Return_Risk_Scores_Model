@@ -1,0 +1,9 @@
+metric,value
+rows,50000
+columns,66
+missing_cells,35380
+unique_orders,50000
+unique_customers,5962
+return_rate_pct,29.24
+min_order_date,2025-01-01 00:00:00
+max_order_date,2026-05-08 23:00:00

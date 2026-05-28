@@ -1,0 +1,2 @@
+threshold,accuracy,precision,recall,f1,cost,tn,fp,fn,tp,auc,avg_precision,rows,train_rows,test_rows,feature_count,model,version
+0.7,0.7146,0.5470430107526881,0.13919288645690833,0.22191930207197383,1275350,6739,337,2517,407,0.6477489803880325,0.435103527949144,50000,40000,10000,71,XGBoost,v2_xgboost_safe_plus_rolling_NEW
