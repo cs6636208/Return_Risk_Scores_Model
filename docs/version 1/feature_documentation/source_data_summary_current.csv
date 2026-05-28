@@ -1,0 +1,4 @@
+﻿artifact,path,columns,sample_rows_read
+source_data,data\processed\clean_dataset.csv,65,5
+df_engineered,docs\version 1\data\features\df_engineered.csv,51,5
+used_feature_list,missing,-,-

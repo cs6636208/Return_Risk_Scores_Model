@@ -1,0 +1,4 @@
+﻿artifact,path,columns,sample_rows_read
+source_data,docs\version 2\data\features\df_engineered.csv,61,5
+df_engineered,docs\version 3\stacking_model_v3\data\df_featured.csv,40,5
+used_feature_list,docs\version 3\stacking_model_v3\data\v3_used_features.csv,1,5

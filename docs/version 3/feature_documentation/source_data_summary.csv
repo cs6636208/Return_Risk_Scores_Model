@@ -1,2 +1,0 @@
-﻿version,source_before_feature,engineered_dataset,df_featured_output,rows,columns_in_df_featured,model_input_feature_count,target_column,model_name,note
-version 3,docs/version 2/data/features/train_test_sets_v2.pkl,docs/version 2/data/features/df_engineered_v2_preview.csv,docs\version 3\data\features\df_featured.csv,5000,40,38,is_returned,StackingClassifier: XGBoost + LightGBM + CatBoost,V3 ไม่ได้สร้าง feature ใหม่เอง แต่ reuse V2 baseline feature set 38 features เพื่อทดลอง model architecture แบบ stacking

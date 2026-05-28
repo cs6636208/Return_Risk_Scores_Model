@@ -1,0 +1,2 @@
+﻿display_version,version,model,dataset,rows,test_rows,feature_count,order_time_safe,rating,note,accuracy,recall,precision,f1,auc,avg_precision,cost,threshold,tn,fp,fn,tp,cost_per_1k_test_orders
+V1,v1_baseline_xgboost,XGBoost baseline,clean_dataset.csv,5000,1000,136,Partial,D,baseline feature engineering; recall ต่ำและ cost สูง จึงใช้เป็นจุดเทียบ,0.708,0.268041237113402,0.4968152866242038,0.3482142857142857,0.6882352085847644,0.4463599411314076,35900,0.5,630,79,213,78,35900.0

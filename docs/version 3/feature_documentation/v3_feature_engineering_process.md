@@ -1,28 +1,16 @@
-# V3 Feature Engineering Process
+# Version 3 - Stacking Model from V2 Features - Feature Engineering Process
 
-V3 เป็น model architecture experiment: Stacking XGBoost + LightGBM + CatBoost โดย reuse feature จาก V2
+## Process
+- นำ feature base จาก V2 มาใช้ต่อเพื่อทดสอบผลของ model architecture
+- สร้าง stacking ensemble จาก XGBoost, LightGBM, CatBoost และ meta learner
+- ใช้ train/test split จาก V2 เพื่อให้เทียบผลจาก model ได้ยุติธรรม
+- ประเมิน threshold/cost/recall trade-off
 
-## Code Files
+## Code / Artifact Reference
 - `docs\version 3\stacking_model_v3\scripts\model_training_v3_stacking.py`
 - `docs\version 3\stacking_model_v3\scripts\model_evaluation_v3.py`
 
-## Steps
-1. Load train_test_sets_v2.pkl จาก V2
-2. ไม่ได้สร้าง feature engineering ใหม่เอง แต่ใช้ V2 feature 38 ตัว
-3. Train base models: XGBoost, LightGBM และ CatBoost
-4. ใช้ LogisticRegression เป็น meta learner ใน StackingClassifier
-5. Evaluate threshold scenarios, recall และ cost matrix
+## Decision
+ไม่เลือกเป็น final เพราะซับซ้อนกว่า แต่ performance ไม่ชนะ V2
 
-## Reasoning
-V3 พิสูจน์ว่าการเปลี่ยน model architecture เป็น ensemble ช่วย recall ได้ แต่ยัง reuse V2 feature ที่มี delivery_days/delay_days และไม่ได้แก้ order-time safety
-
-## Pseudo-code
-```python
-data = joblib.load("train_test_sets_v2.pkl")
-X_train, X_test = data["X_train"], data["X_test"]
-y_train, y_test = data["y_train"], data["y_test"]
-base_models = [XGBClassifier(), LGBMClassifier(), CatBoostClassifier()]
-model = StackingClassifier(estimators=base_models, final_estimator=LogisticRegression())
-model.fit(X_train, y_train)
-evaluate_thresholds(model.predict_proba(X_test))
-```
+Generated at: 2026-05-28T15:24:36

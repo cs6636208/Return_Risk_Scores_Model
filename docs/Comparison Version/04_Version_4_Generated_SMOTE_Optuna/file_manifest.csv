@@ -1,0 +1,13 @@
+﻿source,destination,copied
+docs\version 4\feature_documentation\v4_feature_used_unused_audit.pdf,01_feature_used_unused_audit_v4.pdf,True
+docs\version 4\feature_documentation\v4_feature_engineering_process.pdf,02_feature_engineering_process_v4.pdf,True
+docs\version 4\docs\v4_generated_end_to_end_report.pdf,03_generated_end_to_end_report_v4.pdf,True
+docs\version 4\feature_documentation\v4_feature_used_unused_audit.csv,csv/v4_feature_used_unused_audit.csv,True
+docs\version 4\feature_documentation\used_features_current.csv,csv/used_features_current.csv,True
+docs\version 4\feature_documentation\dropped_or_not_used_features_current.csv,csv/dropped_or_not_used_features_current.csv,True
+docs\version 4\reports\model_evaluation\v4_generated_model_metrics.csv,csv/v4_generated_model_metrics.csv,True
+docs\version 4\reports\model_evaluation\v4_used_features.csv,csv/v4_used_features.csv,True
+docs\version 4\reports\model_evaluation\v4_generated_shap_feature_importance.csv,csv/v4_generated_shap_feature_importance.csv,True
+docs\version 4\scripts\run_v4_generated_end_to_end_pipeline.py,code/run_v4_generated_end_to_end_pipeline.py,True
+docs\version 4\model_evaluation_v4_generated\v4_generated_model_metrics.png,images/v4_generated_model_metrics.png,True
+docs\version 4\model_evaluation_v4_generated\v4_generated_shap_summary.png,images/v4_generated_shap_summary.png,True

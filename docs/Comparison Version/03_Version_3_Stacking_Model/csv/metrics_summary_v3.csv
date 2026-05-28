@@ -1,0 +1,2 @@
+model_name,threshold,auc_roc,avg_precision,f1_score,precision,recall,tn,fp,fn,tp,optimal_cost_threshold,optimal_cost,optimal_cost_accuracy,optimal_cost_recall
+V3 Stacking (XGB+LGB+CAT),0.5,0.718984962406015,0.4878256192044552,0.5265151515151515,0.4483870967741935,0.6376146788990825,361,171,79,139,0.45,19500,0.616,0.7660550458715596

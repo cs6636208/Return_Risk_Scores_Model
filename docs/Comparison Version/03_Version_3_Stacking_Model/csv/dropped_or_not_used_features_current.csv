@@ -1,0 +1,27 @@
+﻿version,feature,in_clean_source,in_df_engineered,used_in_model,status,reason
+V3,category_channel,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
+V3,category_payment,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
+V3,dataset_split,False,True,False,NOT USED,engineered candidate not selected for this model
+V3,discount_amount_ratio,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
+V3,hist_order_count_180d,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
+V3,hist_order_count_30d,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
+V3,hist_order_count_365d,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
+V3,hist_order_count_60d,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
+V3,hist_order_count_90d,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
+V3,hist_return_count_180d,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
+V3,hist_return_count_30d,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
+V3,hist_return_count_365d,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
+V3,hist_return_count_60d,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
+V3,hist_return_count_90d,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
+V3,hist_return_rate_180d,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
+V3,hist_return_rate_30d,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
+V3,hist_return_rate_365d,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
+V3,hist_return_rate_60d,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
+V3,hist_return_rate_90d,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
+V3,hist_spend_sum_180d,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
+V3,hist_spend_sum_30d,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
+V3,hist_spend_sum_365d,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
+V3,hist_spend_sum_60d,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
+V3,hist_spend_sum_90d,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
+V3,is_returned,True,True,False,DROPPED,post-event/target/leakage field
+V3,province_payment,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required

@@ -1,0 +1,4 @@
+﻿artifact,path,columns,sample_rows_read
+source_data,docs\version 2\v2_xgboost_safe_plus_rolling_HIGH_ACCURACY\data\clean_dataset_v2_high_signal.csv,65,5
+df_engineered,docs\version 2\v2_xgboost_safe_plus_rolling_HIGH_ACCURACY\data\df_engineered_v2_HIGH_ACCURACY.csv,76,5
+used_feature_list,docs\version 2\v2_xgboost_safe_plus_rolling_HIGH_ACCURACY\data\used_features_v2_xgboost_safe_plus_rolling_HIGH_ACCURACY.csv,1,5

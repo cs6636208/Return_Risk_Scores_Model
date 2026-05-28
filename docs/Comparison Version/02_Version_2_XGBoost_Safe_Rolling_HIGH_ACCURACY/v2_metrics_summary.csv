@@ -1,0 +1,2 @@
+﻿display_version,version,model,dataset,rows,test_rows,feature_count,order_time_safe,rating,note,accuracy,recall,precision,f1,auc,avg_precision,cost,threshold,tn,fp,fn,tp,cost_per_1k_test_orders
+V2,v2_xgboost_safe_plus_rolling_HIGH_ACCURACY,XGBoost safe rolling,clean_dataset_v2_high_signal.csv,50000,10000,71,Yes,A,current selected model; rolling history + insight features + leakage exclusion,0.8888,0.7602599179206566,0.8439635535307517,0.799928031666067,0.94658332360249,0.9002822163562983,371050,0.71,6665,411,701,2223,37105.0

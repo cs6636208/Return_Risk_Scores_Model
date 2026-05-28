@@ -1,0 +1,4 @@
+﻿artifact,path,columns,sample_rows_read
+source_data,docs\version 4\data\processed\clean_dataset_v4_generated.csv,65,5
+df_engineered,docs\version 4\data\features\df_engineered_v4_generated.csv,123,5
+used_feature_list,docs\version 4\reports\model_evaluation\v4_used_features.csv,1,5

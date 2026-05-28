@@ -1,0 +1,2 @@
+﻿display_version,version,model,dataset,rows,test_rows,feature_count,order_time_safe,rating,note,accuracy,recall,precision,f1,auc,avg_precision,cost,threshold,tn,fp,fn,tp,cost_per_1k_test_orders
+V4,v4_generated_xgboost_smote_optuna,XGBoost + SMOTE + Optuna,clean_dataset_v4_generated.csv,9700,1940,180,No/Benchmark,C,generated-data benchmark; accuracy สูงแต่ recall และ feature volume ยังไม่เหมาะกว่า V2,0.8345360824742268,0.4639175257731959,0.45,0.4568527918781725,0.8538112237136325,0.4446689081268707,31650,0.3399999999999999,1484,165,156,135,16314.432989690722

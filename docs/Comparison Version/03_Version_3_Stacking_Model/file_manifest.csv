@@ -1,0 +1,12 @@
+﻿source,destination,copied
+docs\version 3\feature_documentation\v3_feature_used_unused_audit.pdf,01_feature_used_unused_audit_v3.pdf,True
+docs\version 3\feature_documentation\v3_feature_engineering_process.pdf,02_feature_engineering_process_v3.pdf,True
+docs\version 3\stacking_model_v3\docs\v3_stacking_model_process_report.pdf,03_stacking_model_process_report_v3.pdf,True
+docs\version 3\feature_documentation\v3_feature_used_unused_audit.csv,csv/v3_feature_used_unused_audit.csv,True
+docs\version 3\feature_documentation\used_features_current.csv,csv/used_features_current.csv,True
+docs\version 3\feature_documentation\dropped_or_not_used_features_current.csv,csv/dropped_or_not_used_features_current.csv,True
+docs\version 3\stacking_model_v3\reports\metrics_summary_v3.csv,csv/metrics_summary_v3.csv,True
+docs\version 3\stacking_model_v3\data\v3_used_features.csv,csv/v3_used_features.csv,True
+docs\version 3\stacking_model_v3\scripts\model_training_v3_stacking.py,code/model_training_v3_stacking.py,True
+docs\version 3\stacking_model_v3\scripts\model_evaluation_v3.py,code/model_evaluation_v3.py,True
+docs\version 3\stacking_model_v3\images\accuracy_recall_tradeoff.png,images/accuracy_recall_tradeoff.png,True

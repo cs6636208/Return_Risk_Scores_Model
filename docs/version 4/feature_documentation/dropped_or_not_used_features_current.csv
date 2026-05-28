@@ -1,0 +1,47 @@
+﻿version,feature,in_clean_source,in_df_engineered,used_in_model,status,reason
+V4,brand,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
+V4,category,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
+V4,channel_type,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
+V4,courier_id,True,False,False,DROPPED,identifier or high-cardinality identity field
+V4,courier_name,True,False,False,DROPPED,identifier or high-cardinality identity field
+V4,courier_type,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
+V4,coverage_region,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
+V4,customer_id,True,False,False,DROPPED,identifier or high-cardinality identity field
+V4,customer_name,True,False,False,DROPPED,identifier or high-cardinality identity field
+V4,customer_phone,True,False,False,DROPPED,identifier or high-cardinality identity field
+V4,delay_days,True,False,False,DROPPED,post-event/target/leakage field
+V4,delivery_date,True,False,False,DROPPED,post-event/target/leakage field
+V4,delivery_days,True,False,False,DROPPED,post-event/target/leakage field
+V4,ership_tier_Silver,False,True,False,NOT USED,engineered candidate not selected for this model
+V4,expected_delivery_date,True,False,False,DROPPED,post-event/target/leakage field
+V4,gender,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
+V4,is_returned,True,False,False,DROPPED,post-event/target/leakage field
+V4,item_condition,True,False,False,DROPPED,post-event/target/leakage field
+V4,membership_tier,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
+V4,order_date,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
+V4,order_id,True,False,False,DROPPED,identifier or high-cardinality identity field
+V4,payment_method,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
+V4,preferred_channel,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
+V4,product_id,True,False,False,DROPPED,identifier or high-cardinality identity field
+V4,product_name,True,False,False,DROPPED,identifier or high-cardinality identity field
+V4,promo_end_date,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
+V4,promo_id,True,False,False,DROPPED,identifier or high-cardinality identity field
+V4,promo_name,True,False,False,DROPPED,identifier or high-cardinality identity field
+V4,promo_start_date,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
+V4,promo_type,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
+V4,province,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
+V4,refund_amount,True,False,False,DROPPED,post-event/target/leakage field
+V4,registration_date,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
+V4,return_date,True,False,False,DROPPED,post-event/target/leakage field
+V4,return_id,True,False,False,DROPPED,post-event/target/leakage field
+V4,return_reason,True,False,False,DROPPED,post-event/target/leakage field
+V4,return_scenario,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
+V4,return_status,True,False,False,DROPPED,post-event/target/leakage field
+V4,risk_score,True,False,False,DROPPED,post-event/target/leakage field
+V4,risk_tier,True,False,False,DROPPED,post-event/target/leakage field
+V4,score_id,True,False,False,DROPPED,post-event/target/leakage field
+V4,scored_at,True,False,False,DROPPED,post-event/target/leakage field
+V4,shap_values,True,False,False,DROPPED,post-event/target/leakage field
+V4,supplier_contact,True,False,False,DROPPED,identifier or high-cardinality identity field
+V4,supplier_id,True,False,False,DROPPED,identifier or high-cardinality identity field
+V4,supplier_name,True,False,False,DROPPED,identifier or high-cardinality identity field

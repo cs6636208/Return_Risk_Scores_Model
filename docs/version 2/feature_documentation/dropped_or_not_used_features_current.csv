@@ -1,0 +1,36 @@
+﻿version,feature,in_clean_source,in_df_engineered,used_in_model,status,reason
+V2,courier_id,True,False,False,DROPPED,identifier or high-cardinality identity field
+V2,courier_name,True,False,False,DROPPED,identifier or high-cardinality identity field
+V2,customer_id,True,True,False,DROPPED,identifier or high-cardinality identity field
+V2,customer_name,True,False,False,DROPPED,identifier or high-cardinality identity field
+V2,customer_phone,True,False,False,DROPPED,identifier or high-cardinality identity field
+V2,dataset_split,False,True,False,NOT USED,engineered candidate not selected for this model
+V2,delay_days,True,False,False,DROPPED,post-event/target/leakage field
+V2,delivery_date,True,False,False,DROPPED,post-event/target/leakage field
+V2,delivery_days,True,False,False,DROPPED,post-event/target/leakage field
+V2,expected_delivery_date,True,False,False,DROPPED,post-event/target/leakage field
+V2,is_returned,True,True,False,DROPPED,post-event/target/leakage field
+V2,item_condition,True,False,False,DROPPED,post-event/target/leakage field
+V2,order_date,True,True,False,NOT USED,not selected in final feature set
+V2,order_id,True,True,False,DROPPED,identifier or high-cardinality identity field
+V2,product_id,True,False,False,DROPPED,identifier or high-cardinality identity field
+V2,product_name,True,False,False,DROPPED,identifier or high-cardinality identity field
+V2,promo_end_date,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
+V2,promo_id,True,False,False,DROPPED,identifier or high-cardinality identity field
+V2,promo_name,True,False,False,DROPPED,identifier or high-cardinality identity field
+V2,promo_start_date,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
+V2,refund_amount,True,False,False,DROPPED,post-event/target/leakage field
+V2,registration_date,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
+V2,return_date,True,False,False,DROPPED,post-event/target/leakage field
+V2,return_id,True,False,False,DROPPED,post-event/target/leakage field
+V2,return_reason,True,False,False,DROPPED,post-event/target/leakage field
+V2,return_scenario,True,False,False,DROPPED,raw field replaced by engineered/encoded feature or not required
+V2,return_status,True,False,False,DROPPED,post-event/target/leakage field
+V2,risk_score,True,False,False,DROPPED,post-event/target/leakage field
+V2,risk_tier,True,False,False,DROPPED,post-event/target/leakage field
+V2,score_id,True,False,False,DROPPED,post-event/target/leakage field
+V2,scored_at,True,False,False,DROPPED,post-event/target/leakage field
+V2,shap_values,True,False,False,DROPPED,post-event/target/leakage field
+V2,supplier_contact,True,False,False,DROPPED,identifier or high-cardinality identity field
+V2,supplier_id,True,False,False,DROPPED,identifier or high-cardinality identity field
+V2,supplier_name,True,False,False,DROPPED,identifier or high-cardinality identity field

@@ -1,0 +1,9 @@
+﻿source,destination,copied
+docs\version 1\feature_documentation\v1_feature_used_unused_audit.pdf,01_feature_used_unused_audit_v1.pdf,True
+docs\version 1\feature_documentation\v1_feature_engineering_process.pdf,02_feature_engineering_process_v1.pdf,True
+docs\version 1\feature_documentation\v1_feature_used_unused_audit.csv,csv/v1_feature_used_unused_audit.csv,True
+docs\version 1\feature_documentation\used_features_current.csv,csv/used_features_current.csv,True
+docs\version 1\feature_documentation\dropped_or_not_used_features_current.csv,csv/dropped_or_not_used_features_current.csv,True
+docs\version 1\feature_engineering.py,code/feature_engineering.py,True
+docs\version 1\model_training.py,code/model_training.py,True
+docs\version 1\model_evaluation.py,code/model_evaluation.py,True

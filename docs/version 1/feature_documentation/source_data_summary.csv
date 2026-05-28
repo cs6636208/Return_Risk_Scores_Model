@@ -1,2 +1,0 @@
-﻿version,source_before_feature,engineered_dataset,df_featured_output,rows,columns_in_df_featured,model_input_feature_count,target_column,model_name,note
-version 1,data/processed/clean_dataset.csv,docs/version 1/data/features/df_engineered.csv,docs\version 1\data\features\df_featured.csv,6672,138,136,is_returned,XGBClassifier,V1 export เป็น encoded/scaled model feature set 136 features จาก train_test_sets.pkl จึงเป็น feature ที่เข้า model จริง

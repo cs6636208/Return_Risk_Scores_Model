@@ -1,0 +1,2 @@
+﻿display_version,version,model,dataset,rows,test_rows,feature_count,order_time_safe,rating,note,accuracy,recall,precision,f1,auc,avg_precision,cost,threshold,tn,fp,fn,tp,cost_per_1k_test_orders
+V3,v3_stacking_from_v2,Stacking XGB+LGBM+CatBoost,V2 engineered feature set,3750,750,38,Yes,B,tests model architecture; feature base มาจาก V2 จึงซับซ้อนขึ้นแต่ไม่ชนะ V2,0.616,0.6376146788990825,0.4483870967741935,0.5265151515151515,0.718984962406015,0.4878256192044552,19500,0.45,361,171,79,139,26000.0
