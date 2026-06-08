@@ -1,0 +1,6 @@
+﻿version,holdout_accuracy,external_accuracy,accuracy_gap_points,external_recall,external_precision,external_f1,external_auc,external_cost
+V1,69.77,72.38,2.61,93.05,51.4,66.22,88.82,2406550
+V2,68.22,72.39,4.17,88.17,51.5,65.02,86.88,3076500
+V3,71.65,73.49,1.84,87.58,52.67,65.78,87.2,3100200
+V4,72.42,70.98,-1.44,88.94,50.08,64.08,85.62,3043450
+V5,71.61,67.71,-3.9,92.29,47.19,62.45,85.84,2756000

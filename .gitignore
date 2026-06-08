@@ -1,0 +1,14 @@
+node_modules
+
+# Local Python/ML dependency installs should not be committed.
+.codex_pydeps/
+.ml_deps/
+
+# Python cache/build artifacts.
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Native dependency binaries are installed from packages, not stored in Git.
+*.dll

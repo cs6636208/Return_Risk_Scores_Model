@@ -1,0 +1,2 @@
+﻿file,rows,columns,missing_or_null_cells,blank_text_cells,duplicate_rows,duplicate_order_id,distinct_order_id,distinct_customer_id,first_order_id,last_order_id,min_order_date,max_order_date,returned_count,not_returned_count,return_rate,note
+docs\XGBoost\SETB\real_data\S4\real_data_s2.csv,50000,65,0,0,0,0,50000,5000,ORD_REAL_S2_055001,ORD_REAL_S2_105000,2025-01-01 03:00:00,2026-05-07 23:00:00,14550,35450,0.291,S2 representative external full-dataset test data. Do not use this file for model training.
