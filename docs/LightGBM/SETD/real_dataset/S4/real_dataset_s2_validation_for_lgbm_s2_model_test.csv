@@ -1,2 +1,0 @@
-﻿file,rows,columns,missing_or_null_cells,blank_text_cells,duplicate_rows,duplicate_order_id,distinct_order_id,distinct_customer_id,first_order_id,last_order_id,min_order_date,max_order_date,returned_count,not_returned_count,return_rate,note
-docs\LightGBM\SETD\real_dataset\real_dataset_s2.csv,105000,65,0,0,0,0,105000,10500,ORD_LGBM_REAL_000001,ORD_LGBM_REAL_105000,2025-01-01 01:00:00,2026-05-08 18:00:10,30555,74445,0.291,External full-dataset test for LightGBM SETC S2 models. Do not split this file again.

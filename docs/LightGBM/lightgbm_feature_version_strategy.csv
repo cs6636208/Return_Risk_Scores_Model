@@ -1,0 +1,6 @@
+version,feature_count_s2,strategy,added_feature_groups,why_it_exists
+V1,25,Base order-time features,"customer profile; product attributes; price/discount; payment/channel; logistics expectation","Baseline สำหรับดูว่า feature พื้นฐานอย่างเดียวทำนายได้แค่ไหน"
+V2,64,Customer temporal history,"customer_return_ratio; total_orders_before; rolling return rate 7/30/60/90/180/365 days; spend/order behavior","ทดสอบว่าประวัติลูกค้าและพฤติกรรมย้อนหลังช่วยเพิ่ม Accuracy หรือไม่"
+V3,81,Product and logistics risk,"product_return_rate_pti; category_return_rate_pti; brand_return_rate_pti; courier_return_rate_pti; product_quality_score; logistics_risk_score","ทดสอบว่า risk ฝั่งสินค้า/ขนส่ง/หมวดหมู่ช่วย generalize กับ external test ได้ไหม"
+V4,107,Business interactions,"category_payment; category_channel; province_payment; category_province; price/discount/rating bands; COD/high discount/fragile flags","ทดสอบ interaction เชิงธุรกิจแบบละเอียดว่าช่วย holdout หรือทำให้ overfit"
+V5,64,Compact selected best,"selected history + product risk + key interaction features","ลด feature จาก V4 เพื่อให้ query/resource เบาลงแต่ performance ยังใกล้เคียง"
