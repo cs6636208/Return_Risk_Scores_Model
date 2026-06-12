@@ -5,9 +5,9 @@
 - Model: `LightGBM`
 - Feature strategy: `V5 compact selected best: reduced feature set selected from V2-V4 to keep performance high while reducing noise/resource use.`
 - Feature count: `64`
-- Holdout Accuracy: `82.26%`
-- Holdout Recall: `68.80%`
-- Holdout F1: `71.40%`
-- Holdout AUC: `83.49%`
+- Holdout Accuracy: `82.86%`
+- Holdout Recall: `68.96%`
+- Holdout F1: `72.08%`
+- Holdout AUC: `83.42%`
 
 New data policy: the model can predict new rows only when the same feature schema is rebuilt. It does not learn automatically or jump to a new model without retraining.

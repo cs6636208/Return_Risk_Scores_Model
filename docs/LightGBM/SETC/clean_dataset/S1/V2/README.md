@@ -5,9 +5,9 @@
 - Model: `LightGBM`
 - Feature strategy: `V2 customer temporal history: V1 plus point-in-time customer return/spend/order behavior and rolling windows.`
 - Feature count: `64`
-- Holdout Accuracy: `81.10%`
-- Holdout Recall: `66.14%`
-- Holdout F1: `69.07%`
-- Holdout AUC: `82.51%`
+- Holdout Accuracy: `81.20%`
+- Holdout Recall: `66.46%`
+- Holdout F1: `69.28%`
+- Holdout AUC: `82.57%`
 
 New data policy: the model can predict new rows only when the same feature schema is rebuilt. It does not learn automatically or jump to a new model without retraining.

@@ -1,5 +1,5 @@
-area,dataset_role,paired_dataset,best_version,model,feature_count,accuracy,recall,f1,auc,selection_reason
-SETC_S1,holdout_train_validation_test,clean_dataset_s1_5000_high_signal_33pct_return,V5,LightGBM,64,0.8440,0.7043,0.7476,0.8529,Best holdout accuracy on S1 with semi-realistic 33% return ratio.
-SETC_S2,holdout_train_validation_test,clean_dataset_s2_40000_high_signal_33pct_return,V3,LightGBM,81,0.8720,0.7600,0.7975,0.8869,Best holdout accuracy tie with V1; V3 wins by F1/AUC tie-breaker.
-SETD_S3,external_full_dataset_test,S3_vs_SETC_S1_high_signal_33pct_return,V4,LightGBM,107,0.8516,0.7355,0.7686,0.8773,Best external accuracy on S3.
-SETD_S4,external_full_dataset_test,S4_vs_SETC_S2_high_signal_33pct_return,V3,LightGBM,81,0.8723,0.7652,0.7991,0.8883,Best external accuracy on S4; V5 is the lower-cost alternative.
+﻿area,dataset_role,paired_dataset,best_version,model,feature_count,accuracy,recall,f1,auc,selection_reason
+SETC_S1,holdout_train_validation_test,clean_dataset_s1_5000_high_signal_32pct_return,V4,LightGBM,107,0.825,0.6614420062695925,0.7068676716917923,0.8313470417374413,"Best holdout Accuracy on S1. Uses 64% fit, 16% validation, and 20% holdout."
+SETC_S2,holdout_train_validation_test,clean_dataset_s2_50000_high_signal_32pct_return,V4,LightGBM,107,0.8316,0.6827672172016205,0.7223870755028025,0.8345488151123339,Best holdout Accuracy on S2. S2 has more customers/products/orders than S1.
+SETD_S3,external_full_dataset_test,S3_55000_vs_SETC_S1_high_signal_32pct_return,V4,LightGBM,107,0.8205090909090909,0.6331890167483195,0.6924802193009781,0.8256987688643603,Best external full-dataset Accuracy when S3 is tested against S1 models.
+SETD_S4,external_full_dataset_test,S4_105000_vs_SETC_S2_high_signal_32pct_return,V3,LightGBM,81,0.8286857142857142,0.6524742452212231,0.7090073767309435,0.8327734318409543,Best external full-dataset Accuracy when S4 is tested against S2 models.

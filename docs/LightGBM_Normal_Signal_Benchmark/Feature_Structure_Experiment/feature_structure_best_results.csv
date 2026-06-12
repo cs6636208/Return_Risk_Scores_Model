@@ -1,0 +1,5 @@
+﻿area,dataset_role,best_version,feature_structure,model,feature_count,accuracy,recall,f1,auc
+SETC_S1,holdout_train_validation_test,V5,"V5 Hybrid Compact Best: compact hybrid selected from customer, product, logistics, payment, and interaction features.",LightGBM,65,0.801,0.37083333333333335,0.47214854111405835,0.7396655701754387
+SETC_S2,holdout_train_validation_test,V5,"V5 Hybrid Compact Best: compact hybrid selected from customer, product, logistics, payment, and interaction features.",LightGBM,65,0.7852,0.4739022369511185,0.5157799819657349,0.7261458829121189
+SETD_S3,external_full_dataset_test,V5,"V5 Hybrid Compact Best: compact hybrid selected from customer, product, logistics, payment, and interaction features.",LightGBM,65,0.7835636363636364,0.4319517709118312,0.49058541595344063,0.7175669964321902
+SETD_S4,external_full_dataset_test,V5,"V5 Hybrid Compact Best: compact hybrid selected from customer, product, logistics, payment, and interaction features.",LightGBM,65,0.7849333333333334,0.47782433393944185,0.5170452115146071,0.7338352622789397

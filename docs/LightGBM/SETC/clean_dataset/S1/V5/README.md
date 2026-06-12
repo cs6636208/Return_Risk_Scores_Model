@@ -6,8 +6,8 @@
 - Feature strategy: `V5 compact selected best: reduced feature set selected from V2-V4 to keep performance high while reducing noise/resource use.`
 - Feature count: `64`
 - Holdout Accuracy: `82.00%`
-- Holdout Recall: `63.95%`
-- Holdout F1: `69.39%`
-- Holdout AUC: `83.25%`
+- Holdout Recall: `59.56%`
+- Holdout F1: `67.86%`
+- Holdout AUC: `83.27%`
 
 New data policy: the model can predict new rows only when the same feature schema is rebuilt. It does not learn automatically or jump to a new model without retraining.

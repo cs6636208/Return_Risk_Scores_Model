@@ -5,9 +5,9 @@
 - Model: `LightGBM`
 - Feature strategy: `V1 base order-time features: customer profile, product, price, channel, payment, promotion, and logistics expectation.`
 - Feature count: `25`
-- Holdout Accuracy: `82.65%`
-- Holdout Recall: `66.74%`
-- Holdout F1: `71.23%`
-- Holdout AUC: `83.39%`
+- Holdout Accuracy: `82.29%`
+- Holdout Recall: `69.40%`
+- Holdout F1: `71.55%`
+- Holdout AUC: `83.38%`
 
 New data policy: the model can predict new rows only when the same feature schema is rebuilt. It does not learn automatically or jump to a new model without retraining.

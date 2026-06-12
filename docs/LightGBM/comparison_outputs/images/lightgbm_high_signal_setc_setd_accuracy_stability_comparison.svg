@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="720" viewBox="0 0 1600 720">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="800.0" y="45" text-anchor="middle" font-family="Arial" font-size="30" font-weight="700" fill="#222222">LightGBM High-Signal Accuracy Stability</text>
+<rect x="1180" y="25" width="18" height="18" fill="#245B8A"/>
+<text x="1205" y="40" font-family="Arial" font-size="16" fill="#222222">Clean holdout</text>
+<rect x="1350" y="25" width="18" height="18" fill="#C97018"/>
+<text x="1375" y="40" font-family="Arial" font-size="16" fill="#222222">Real external</text>
+<text x="415.0" y="83" text-anchor="middle" font-family="Arial" font-size="21" font-weight="700" fill="#222222">SETC/S1 clean 5,000 vs SETD/S3 real 55,000</text>
+<line x1="70.0" y1="630.0" x2="760.0" y2="630.0" stroke="#DADDE1" stroke-width="1"/>
+<text x="58.0" y="635.0" text-anchor="end" font-family="Arial" font-size="13" fill="#555555">65%</text>
+<line x1="70.0" y1="525.0" x2="760.0" y2="525.0" stroke="#DADDE1" stroke-width="1"/>
+<text x="58.0" y="530.0" text-anchor="end" font-family="Arial" font-size="13" fill="#555555">70%</text>
+<line x1="70.0" y1="420.0" x2="760.0" y2="420.0" stroke="#DADDE1" stroke-width="1"/>
+<text x="58.0" y="425.0" text-anchor="end" font-family="Arial" font-size="13" fill="#555555">75%</text>
+<line x1="70.0" y1="315.0" x2="760.0" y2="315.0" stroke="#DADDE1" stroke-width="1"/>
+<text x="58.0" y="320.0" text-anchor="end" font-family="Arial" font-size="13" fill="#555555">80%</text>
+<line x1="70.0" y1="210.0" x2="760.0" y2="210.0" stroke="#DADDE1" stroke-width="1"/>
+<text x="58.0" y="215.0" text-anchor="end" font-family="Arial" font-size="13" fill="#555555">85%</text>
+<line x1="70.0" y1="105.0" x2="760.0" y2="105.0" stroke="#DADDE1" stroke-width="1"/>
+<text x="58.0" y="110.0" text-anchor="end" font-family="Arial" font-size="13" fill="#555555">90%</text>
+<rect x="100.9" y="302.4" width="35" height="327.6" rx="4" fill="#245B8A"/>
+<text x="118.4" y="294.4" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#222222">80.60%</text>
+<rect x="142.1" y="313.1" width="35" height="316.9" rx="4" fill="#C97018"/>
+<text x="159.6" y="305.1" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#222222">80.09%</text>
+<text x="139.0" y="662" text-anchor="middle" font-family="Arial" font-size="17" font-weight="700" fill="#222222">V1</text>
+<text x="139.0" y="686" text-anchor="middle" font-family="Arial" font-size="13" fill="#555555">gap -0.51 pp</text>
+<rect x="238.9" y="289.8" width="35" height="340.2" rx="4" fill="#245B8A"/>
+<text x="256.4" y="281.8" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#222222">81.20%</text>
+<rect x="280.1" y="300.1" width="35" height="329.9" rx="4" fill="#C97018"/>
+<text x="297.6" y="292.1" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#222222">80.71%</text>
+<text x="277.0" y="662" text-anchor="middle" font-family="Arial" font-size="17" font-weight="700" fill="#222222">V2</text>
+<text x="277.0" y="686" text-anchor="middle" font-family="Arial" font-size="13" fill="#555555">gap -0.49 pp</text>
+<rect x="376.9" y="275.1" width="35" height="354.9" rx="4" fill="#245B8A"/>
+<text x="394.4" y="267.1" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#222222">81.90%</text>
+<rect x="418.1" y="272.2" width="35" height="357.8" rx="4" fill="#C97018"/>
+<text x="435.6" y="264.2" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#222222">82.04%</text>
+<text x="415.0" y="662" text-anchor="middle" font-family="Arial" font-size="17" font-weight="700" fill="#222222">V3</text>
+<text x="415.0" y="686" text-anchor="middle" font-family="Arial" font-size="13" fill="#555555">gap +0.14 pp</text>
+<rect x="514.9" y="262.5" width="35" height="367.5" rx="4" fill="#245B8A"/>
+<text x="532.4" y="254.5" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#222222">82.50%</text>
+<rect x="556.1" y="272.0" width="35" height="358.0" rx="4" fill="#C97018"/>
+<text x="573.6" y="264.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#222222">82.05%</text>
+<text x="553.0" y="662" text-anchor="middle" font-family="Arial" font-size="17" font-weight="700" fill="#222222">V4</text>
+<text x="553.0" y="686" text-anchor="middle" font-family="Arial" font-size="13" fill="#555555">gap -0.45 pp</text>
+<rect x="652.9" y="273.0" width="35" height="357.0" rx="4" fill="#245B8A"/>
+<text x="670.4" y="265.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#222222">82.00%</text>
+<rect x="694.1" y="274.9" width="35" height="355.1" rx="4" fill="#C97018"/>
+<text x="711.6" y="266.9" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#222222">81.91%</text>
+<text x="691.0" y="662" text-anchor="middle" font-family="Arial" font-size="17" font-weight="700" fill="#222222">V5</text>
+<text x="691.0" y="686" text-anchor="middle" font-family="Arial" font-size="13" fill="#555555">gap -0.09 pp</text>
+<line x1="70.0" y1="630.0" x2="760.0" y2="630.0" stroke="#333333" stroke-width="1.5"/>
+<text x="1185.0" y="83" text-anchor="middle" font-family="Arial" font-size="21" font-weight="700" fill="#222222">SETC/S2 clean 50,000 vs SETD/S4 real 105,000</text>
+<line x1="840.0" y1="630.0" x2="1530.0" y2="630.0" stroke="#DADDE1" stroke-width="1"/>
+<text x="828.0" y="635.0" text-anchor="end" font-family="Arial" font-size="13" fill="#555555">65%</text>
+<line x1="840.0" y1="525.0" x2="1530.0" y2="525.0" stroke="#DADDE1" stroke-width="1"/>
+<text x="828.0" y="530.0" text-anchor="end" font-family="Arial" font-size="13" fill="#555555">70%</text>
+<line x1="840.0" y1="420.0" x2="1530.0" y2="420.0" stroke="#DADDE1" stroke-width="1"/>
+<text x="828.0" y="425.0" text-anchor="end" font-family="Arial" font-size="13" fill="#555555">75%</text>
+<line x1="840.0" y1="315.0" x2="1530.0" y2="315.0" stroke="#DADDE1" stroke-width="1"/>
+<text x="828.0" y="320.0" text-anchor="end" font-family="Arial" font-size="13" fill="#555555">80%</text>
+<line x1="840.0" y1="210.0" x2="1530.0" y2="210.0" stroke="#DADDE1" stroke-width="1"/>
+<text x="828.0" y="215.0" text-anchor="end" font-family="Arial" font-size="13" fill="#555555">85%</text>
+<line x1="840.0" y1="105.0" x2="1530.0" y2="105.0" stroke="#DADDE1" stroke-width="1"/>
+<text x="828.0" y="110.0" text-anchor="end" font-family="Arial" font-size="13" fill="#555555">90%</text>
+<rect x="870.9" y="266.9" width="35" height="363.1" rx="4" fill="#245B8A"/>
+<text x="888.4" y="258.9" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#222222">82.29%</text>
+<rect x="912.1" y="263.5" width="35" height="366.5" rx="4" fill="#C97018"/>
+<text x="929.6" y="255.5" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#222222">82.45%</text>
+<text x="909.0" y="662" text-anchor="middle" font-family="Arial" font-size="17" font-weight="700" fill="#222222">V1</text>
+<text x="909.0" y="686" text-anchor="middle" font-family="Arial" font-size="13" fill="#555555">gap +0.16 pp</text>
+<rect x="1008.9" y="269.4" width="35" height="360.6" rx="4" fill="#245B8A"/>
+<text x="1026.4" y="261.4" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#222222">82.17%</text>
+<rect x="1050.1" y="274.7" width="35" height="355.3" rx="4" fill="#C97018"/>
+<text x="1067.6" y="266.7" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#222222">81.92%</text>
+<text x="1047.0" y="662" text-anchor="middle" font-family="Arial" font-size="17" font-weight="700" fill="#222222">V2</text>
+<text x="1047.0" y="686" text-anchor="middle" font-family="Arial" font-size="13" fill="#555555">gap -0.25 pp</text>
+<rect x="1146.9" y="251.2" width="35" height="378.8" rx="4" fill="#245B8A"/>
+<text x="1164.4" y="243.2" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#222222">83.04%</text>
+<rect x="1188.1" y="254.7" width="35" height="375.3" rx="4" fill="#C97018"/>
+<text x="1205.6" y="246.7" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#222222">82.87%</text>
+<text x="1185.0" y="662" text-anchor="middle" font-family="Arial" font-size="17" font-weight="700" fill="#222222">V3</text>
+<text x="1185.0" y="686" text-anchor="middle" font-family="Arial" font-size="13" fill="#555555">gap -0.17 pp</text>
+<rect x="1284.9" y="248.6" width="35" height="381.4" rx="4" fill="#245B8A"/>
+<text x="1302.4" y="240.6" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#222222">83.16%</text>
+<rect x="1326.1" y="254.9" width="35" height="375.1" rx="4" fill="#C97018"/>
+<text x="1343.6" y="246.9" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#222222">82.86%</text>
+<text x="1323.0" y="662" text-anchor="middle" font-family="Arial" font-size="17" font-weight="700" fill="#222222">V4</text>
+<text x="1323.0" y="686" text-anchor="middle" font-family="Arial" font-size="13" fill="#555555">gap -0.30 pp</text>
+<rect x="1422.9" y="254.9" width="35" height="375.1" rx="4" fill="#245B8A"/>
+<text x="1440.4" y="246.9" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#222222">82.86%</text>
+<rect x="1464.1" y="256.6" width="35" height="373.4" rx="4" fill="#C97018"/>
+<text x="1481.6" y="248.6" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#222222">82.78%</text>
+<text x="1461.0" y="662" text-anchor="middle" font-family="Arial" font-size="17" font-weight="700" fill="#222222">V5</text>
+<text x="1461.0" y="686" text-anchor="middle" font-family="Arial" font-size="13" fill="#555555">gap -0.08 pp</text>
+<line x1="840.0" y1="630.0" x2="1530.0" y2="630.0" stroke="#333333" stroke-width="1.5"/>
+</svg>

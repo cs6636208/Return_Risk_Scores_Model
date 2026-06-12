@@ -5,9 +5,9 @@
 - Model: `LightGBM`
 - Feature strategy: `V4 business interactions: V3 plus category-payment-channel-province interactions, bands, and risk flags.`
 - Feature count: `107`
-- Holdout Accuracy: `82.21%`
-- Holdout Recall: `69.97%`
-- Holdout F1: `71.68%`
-- Holdout AUC: `83.52%`
+- Holdout Accuracy: `83.16%`
+- Holdout Recall: `68.28%`
+- Holdout F1: `72.24%`
+- Holdout AUC: `83.45%`
 
 New data policy: the model can predict new rows only when the same feature schema is rebuilt. It does not learn automatically or jump to a new model without retraining.
