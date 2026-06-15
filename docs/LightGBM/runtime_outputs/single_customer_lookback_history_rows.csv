@@ -1,3 +1,0 @@
-﻿order_id,customer_id,customer_order_no,order_date,product_id,category,brand,payment_method,channel_type,quantity,total_amount,is_returned,return_id,return_date,return_reason,used_for_return_rate
-LGS1ORD0002762,C000003,1,2025-08-07 17:00:00,PRD000084,Electronics,ShieldCase,COD,Shopee,1,868.99,1,LGS1RET0000852,2025-08-15 17:00:00,Not as Expected,1
-LGS1ORD0002873,C000003,2,2025-08-16 12:00:00,PRD000199,Cosmetics,FreshLook,PromptPay,Web,2,2442.09,0,NO_RETURN,Not Returned,Not Returned,1

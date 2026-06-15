@@ -1,6 +1,0 @@
-﻿order_id,customer_id,customer_order_no,order_date,category,brand,payment_method,channel_type,quantity,total_amount,is_returned,return_id,return_date,return_reason,used_for_return_rate
-LGS1ORD0002762,C000003,1,2025-08-07 17:00:00,Electronics,ShieldCase,COD,Shopee,1,868.99,1,LGS1RET0000852,2025-08-15 17:00:00,Not as Expected,1
-LGS1ORD0002873,C000003,2,2025-08-16 12:00:00,Cosmetics,FreshLook,PromptPay,Web,2,2442.09,0,NO_RETURN,Not Returned,Not Returned,1
-LGS1ORD0003254,C000003,3,2025-09-15 16:00:00,Fashion,SilkTouch,PromptPay,CallCenter,2,3506.86,0,NO_RETURN,Not Returned,Not Returned,1
-LGS1ORD0003886,C000003,4,2025-11-04 17:00:00,Home_Appliance,PureAir,COD,Lazada,4,30478.87,0,NO_RETURN,Not Returned,Not Returned,1
-LGS1ORD0004597,C000003,5,2025-12-31 01:00:00,Fashion,FitStyle,COD,Shopee,3,2352.09,1,LGS1RET0001457,2026-01-10 01:00:00,Damaged Packaging,1

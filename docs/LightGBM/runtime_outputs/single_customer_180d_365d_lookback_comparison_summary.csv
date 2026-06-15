@@ -1,3 +1,0 @@
-﻿dataset,dataset_rows,customer_id,current_order_id,current_order_date,current_order_no,lookback_label,lookback_days,history_rows,return_count,not_return_count,return_rate,return_rate_pct,avg_total_amount,sum_total_amount,avg_delay_days,runtime_filter_loaded_df_avg_ms
-clean_dataset_s1.csv,5000,C000722,LGS1ORD0004971,2026-01-29 16:00:00,16,6 months / 180 days,180,6,3,3,0.5,50.0,2690.296666666667,16141.780000000002,0.8333333333333334,1.265889999999672
-clean_dataset_s1.csv,5000,C000722,LGS1ORD0004971,2026-01-29 16:00:00,16,1 year / 365 days,365,15,6,9,0.4,40.0,5486.145333333334,82292.18000000001,1.2,1.2327166999998553
