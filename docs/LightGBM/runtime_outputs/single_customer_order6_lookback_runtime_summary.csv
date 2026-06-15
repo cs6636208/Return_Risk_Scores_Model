@@ -1,0 +1,2 @@
+﻿scenario,dataset,dataset_rows,customer_id,current_order_id,current_order_date,current_order_no,history_rows_365d,history_return_count_365d,history_not_return_count_365d,history_return_rate_365d,history_return_rate_365d_pct,history_rows_180d,warm_filter_365d_avg_ms,warm_filter_180d_avg_ms
+"customer current order no 6, prior 5 orders if available",clean_dataset_s1.csv,5000,C000003,LGS1ORD0004700,2026-01-08 05:00:00,6,5,2,3,0.4,40.0,5,1.1667003000000022,1.1293848000000253
