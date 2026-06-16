@@ -1,282 +1,293 @@
-# Return Risk Prediction Project
+﻿# Return Risk Prediction Project
 
-Updated: 2026-05-28
+Updated: 2026-06-16
 
-โปรเจ็กต์นี้เป็นระบบวิเคราะห์และทำนายความเสี่ยงการคืนสินค้า/คืนเงินของ order โดยใช้ข้อมูล order, customer, product, courier, promotion และ customer return history เพื่อสร้าง feature, train model, ประเมินผล และเตรียมต่อยอดเป็น production feature store
+โปรเจ็กต์นี้เป็นระบบทดลองสำหรับ **ทำนายความเสี่ยงการคืนสินค้า (Return Risk Prediction)** ของบริบทงานขายสินค้าแบบ O Shopping / Commerce โดยใช้ข้อมูล order, customer, product, courier, promotion, payment, channel และประวัติการคืนสินค้าของลูกค้า เพื่อสร้าง feature แล้วนำไป train model สำหรับช่วยประเมินว่า order ใหม่มีโอกาสคืนสินค้าสูงหรือต่ำ
 
-สถานะล่าสุดของโปรเจ็กต์: เลือก **Version 2 High-Accuracy** เป็น candidate หลักสำหรับโปรเจ็กต์จบ โดยใช้แนวคิด `v2_xgboost_safe_plus_rolling_HIGH_ACCURACY`
+สถานะล่าสุดของโปรเจ็กต์ตอนนี้เลือกโมเดลหลักสำหรับส่งต่องานเป็น:
 
-## Current Final Candidate
+```text
+LightGBM V5
+Train/Clean Dataset: SETC S1 clean_dataset_s1.csv จำนวน 5,000 rows
+External/Real-like Test Dataset: SETD S3 real_dataset_s1.csv จำนวน 55,000 rows
+```
 
-| Item | Current choice |
+## สรุปสถานะปัจจุบัน
+
+| หัวข้อ | รายละเอียด |
 | --- | --- |
-| Main model version | `v2_xgboost_safe_plus_rolling_HIGH_ACCURACY` |
-| Model | XGBoost |
-| Base dataset | `data/processed/clean_dataset_v2.csv` |
-| Training dataset | `docs/version 2/v2_xgboost_safe_plus_rolling_HIGH_ACCURACY/data/clean_dataset_v2_high_signal.csv` |
-| Engineered dataset | `docs/version 2/v2_xgboost_safe_plus_rolling_HIGH_ACCURACY/data/df_engineered_v2_HIGH_ACCURACY.csv` |
+| Selected model | LightGBM V5 |
+| Main train dataset | `docs/LightGBM/SETC/clean_dataset/clean_dataset_s1.csv` |
+| Train rows | 5,000 rows |
+| External test dataset | `docs/LightGBM/SETD/real_dataset/S3/real_dataset_s1.csv` |
+| External test rows | 55,000 rows |
+| Feature count | 64 features |
 | Target | `is_returned` |
-| Test split | 10,000 rows |
-| Feature count | 71 |
-| Selected threshold | 0.71 |
+| Main output folder for handoff | `Model Use/` |
+| User manual | `Model Use/04_User_Manual/LightGBM_V5_User_Manual_TH.docx` |
 
-## Latest Model Performance
+## ทำไมเลือก LightGBM V5
 
-ผล test ของ `v2_xgboost_safe_plus_rolling_HIGH_ACCURACY`
+LightGBM V5 ถูกเลือกเป็น candidate หลัก เพราะเป็น version ที่สมดุลที่สุดระหว่าง:
 
-| Metric | Value |
-| --- | ---: |
-| Accuracy | **88.88%** |
-| Recall | **76.03%** |
-| Precision | **84.40%** |
-| F1 | **79.99%** |
-| AUC | **94.66%** |
-| Average Precision | **90.03%** |
-| Cost Matrix | **371,050** |
-| True Negative | 6,665 |
-| False Positive | 411 |
-| False Negative | 701 |
-| True Positive | 2,223 |
+- Accuracy อยู่ในระดับใช้งานต่อได้
+- ผลทดสอบบน clean dataset และ real-like dataset ใกล้เคียงกัน
+- จำนวน feature ไม่เยอะเกินไปเมื่อเทียบกับ V4
+- เหมาะเป็น baseline สำหรับนำไปต่อยอดเป็น production model
+- รองรับแนวคิด real-time inference ได้ เพราะ feature หลักเป็นข้อมูลที่เตรียมจากประวัติก่อนหน้าและ snapshot ที่เกี่ยวข้อง
 
-สรุป: โมเดลนี้ตอบโจทย์เป้าหมาย Accuracy 80-90% แล้ว และยังไม่ใช้ leakage feature เข้า train
+## ผลการประเมิน LightGBM V5
 
-## Production Readiness
+| Evaluation | Dataset | Rows | Accuracy | Recall | Precision | F1 | AUC |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Holdout Test | SETC S1 | 1,000 | 82.00% | 59.56% | 78.84% | 67.86% | 83.27% |
+| External Test | SETD S3 | 55,000 | 81.91% | 61.24% | 77.38% | 68.37% | 82.59% |
 
-ตัวนี้เหมาะมากสำหรับ:
+สรุป: ผลระหว่าง clean dataset และ real-like dataset ใกล้กัน จึงเหมาะใช้เป็น baseline สำหรับส่งต่องาน แต่ยังต้อง retrain ด้วยข้อมูลจริงของบริษัทก่อนนำไป production จริง
 
-- โปรเจ็กต์จบ
-- demo model performance
-- proof-of-concept ว่าถ้ามี feature signal ดีพอ Accuracy ไปถึง 80-90% ได้
-- baseline candidate สำหรับต่อ production
-
-ยังไม่ควรเรียกว่า production-final 100% จนกว่าจะ validate กับข้อมูลจริงเพิ่ม เพราะ training dataset เป็น high-signal synthetic dataset ที่สร้างจาก `clean_dataset_v2.csv`
-
-แนวทางที่แนะนำสำหรับ production จริง:
-
-1. ใช้ `clean_dataset_v2.csv` เป็น realistic baseline
-2. ใช้ `clean_dataset_v2_high_signal.csv` เป็น high-accuracy training/demo dataset
-3. เมื่อมีข้อมูลจริงจากระบบ ให้ validate model กับ holdout real data
-4. เก็บ feature history ใน SQL/Feature Store
-5. retrain รายเดือนหรือเมื่อ data drift สูง
-
-## Main Data Files
-
-| File | Rows | Columns | Purpose |
-| --- | ---: | ---: | --- |
-| `data/processed/clean_dataset.csv` | 5,000 | 65 | original clean/mock baseline |
-| `data/processed/clean_dataset_v2.csv` | 50,000 | 65 | realistic synthetic dataset, production-style base |
-| `docs/version 2/v2_xgboost_safe_plus_rolling_HIGH_ACCURACY/data/clean_dataset_v2_high_signal.csv` | 50,000 | 65 | high-signal dataset for 80-90% accuracy target |
-| `docs/version 2/v2_xgboost_safe_plus_rolling_HIGH_ACCURACY/data/df_engineered_v2_HIGH_ACCURACY.csv` | 50,000 | 76 | engineered feature dataset ready before model training |
-
-`clean_dataset_v2.csv` ถูกนำเข้า PostgreSQL แล้วใน table:
-
-```sql
-public."order_history_complete_v2_NEW"
-```
-
-ตรวจแล้ว:
-
-- rows: 50,000
-- unique `order_id`: 50,000
-- unique `customer_id`: 5,962
-- return rate: 29.24%
-- `is_returned = 0`: 35,381
-- `is_returned = 1`: 14,619
-
-ตัวอย่าง query:
-
-```sql
-SELECT *
-FROM public."order_history_complete_v2_NEW"
-WHERE customer_id = 'C1426'
-ORDER BY order_date;
-```
-
-## Current Pipeline
-
-Pipeline ล่าสุดทำครบตามลำดับนี้:
+## โครงสร้างไฟล์สำคัญ
 
 ```text
-clean_dataset_v2.csv
-        |
-        v
-EDA / Business Insight
-        |
-        v
-High-signal data generation
-        |
-        v
-Feature Engineering
-        |
-        v
-df_engineered_v2_HIGH_ACCURACY.csv
-        |
-        v
-train/test split
-        |
-        v
-XGBoost training
-        |
-        v
-best_model_v2_xgboost_safe_plus_rolling_HIGH_ACCURACY.pkl
+return-risk-prediction/
+  Model Use/
+    01_Model_Artifacts/
+    02_Datasets/
+    03_Evaluation_Reports/
+    04_User_Manual/
+    05_Environment/
+  docs/
+    LightGBM/
+      SETC/
+      SETD/
+  scripts/
+  data/
+  reports/
+  docker-compose.yml
+  requirements.txt
 ```
 
-สคริปต์หลัก:
+## โฟลเดอร์ Model Use สำหรับส่งต่องาน
 
-- `scripts/build_v2_high_accuracy_model.py`
-- `scripts/build_v2_new_eda_feature_model.py`
-- `scripts/generate_clean_dataset_v2.py`
+โฟลเดอร์ `Model Use/` ถูกจัดไว้สำหรับให้คนอื่นรับงานต่อได้ง่าย โดยรวมไฟล์สำคัญของโมเดล LightGBM V5 ไว้แล้ว
 
-## Final V2 High-Accuracy Package
-
-โฟลเดอร์หลัก:
+### 1. Model Artifacts
 
 ```text
-docs/version 2/v2_xgboost_safe_plus_rolling_HIGH_ACCURACY/
+Model Use/01_Model_Artifacts/
+  models/
+    model_lgbm_s1_v5_lightgbm.pkl
+    model_lgbm_s1_v5_metadata.json
+  features/
+    used_features_lgbm_s1_v5.csv
+    train_validation_holdout_sets_lgbm_s1_v5.pkl
+    df_featured_lgbm_s1_v5.csv
 ```
 
-ไฟล์สำคัญ:
+ความหมาย:
 
-| File | Purpose |
-| --- | --- |
-| `data/clean_dataset_v2_high_signal.csv` | dataset ที่ใช้ train high-accuracy model |
-| `data/df_engineered_v2_HIGH_ACCURACY.csv` | feature พร้อมก่อนเข้า train |
-| `data/train_test_sets_v2_xgboost_safe_plus_rolling_HIGH_ACCURACY.pkl` | train/test split + feature metadata |
-| `data/test_train_sets_v2_xgboost_safe_plus_rolling_HIGH_ACCURACY.pkl` | alias ตามชื่อที่เคยใช้ในงาน |
-| `models/best_model_v2_xgboost_safe_plus_rolling_HIGH_ACCURACY.pkl` | best model |
-| `models/best_model_v2_xgboost_safe_plus_rolling_HIGH_ACCURACY_metadata.json` | model metadata |
-| `reports/metrics_v2_xgboost_safe_plus_rolling_HIGH_ACCURACY.csv` | metrics |
-| `reports/confusion_matrix_v2_xgboost_safe_plus_rolling_HIGH_ACCURACY.csv` | confusion matrix |
-| `reports/feature_importance_v2_xgboost_safe_plus_rolling_HIGH_ACCURACY.csv` | feature importance |
-| `reports/test_predictions_v2_xgboost_safe_plus_rolling_HIGH_ACCURACY.csv` | prediction result on test set |
-| `reports/threshold_search_v2_xgboost_safe_plus_rolling_HIGH_ACCURACY.csv` | threshold search |
-| `docs/model_report_v2_xgboost_safe_plus_rolling_HIGH_ACCURACY.md` | model report |
-| `docs/eda_insight_summary_v2_NEW.md` | EDA/Insight summary |
+- `model_lgbm_s1_v5_lightgbm.pkl` = ไฟล์โมเดลตัวจริง
+- `model_lgbm_s1_v5_metadata.json` = threshold, parameter, metric และข้อมูลประกอบโมเดล
+- `used_features_lgbm_s1_v5.csv` = รายชื่อ feature 64 ตัวที่ต้องสร้างให้ตรงก่อน predict
+- `df_featured_lgbm_s1_v5.csv` = dataset หลังทำ feature engineering
 
-## EDA And Insight
-
-EDA ล่าสุดวิเคราะห์จาก V2 high-accuracy package และสร้าง insight ที่นำไปใช้ทำ feature engineering:
-
-| Insight area | Feature action |
-| --- | --- |
-| Customer return history | ใช้ `hist_return_rate`, `hist_order_count`, rolling history |
-| Rolling history windows | เพิ่ม 30d, 60d, 90d, 180d, 365d |
-| Payment method | เพิ่ม `is_cod`, `is_bank_transfer`, `is_credit_card` |
-| Discount / Promotion | เพิ่ม `is_high_discount`, `discount_amount_ratio` |
-| Product rating | เพิ่ม `low_rating_alert` |
-| Logistics risk | เพิ่ม `logistics_risk` จาก `damage_rate * is_fragile` |
-| Category + Payment | เพิ่ม `category_payment` |
-| Category + Channel | เพิ่ม `category_channel` |
-| Province + Payment | เพิ่ม `province_payment` |
-| Customer tier + Payment | เพิ่ม `tier_payment` |
-
-ภาพและตาราง EDA อยู่ที่:
+### 2. Datasets
 
 ```text
-docs/version 2/v2_xgboost_safe_plus_rolling_HIGH_ACCURACY/eda/
-docs/version 2/v2_xgboost_safe_plus_rolling_HIGH_ACCURACY/images/
+Model Use/02_Datasets/
+  clean_dataset_s1.csv
+  real_dataset_s1.csv
 ```
 
-## Feature Engineering
+- `clean_dataset_s1.csv` = clean dataset 5,000 rows ที่ใช้ train
+- `real_dataset_s1.csv` = real-like dataset 55,000 rows ที่ใช้ external test
 
-`df_engineered_v2_HIGH_ACCURACY.csv` มี 50,000 rows และ 76 columns:
-
-- identifiers: `order_id`, `customer_id`, `order_date`
-- model features: 71 columns
-- target: `is_returned`
-- split marker: `dataset_split`
-
-กลุ่ม feature ที่ใช้:
-
-- customer profile: `gender`, `age`, `membership_tier`, `province`, `customer_age_days`, `customer_tenure_months`
-- product/order: `category`, `brand`, `is_fragile`, `product_rating`, `quantity`, `unit_price`, `total_amount`
-- discount/payment/channel: `payment_method`, `channel_type`, `total_discount_pct`, `is_cod`, `is_high_discount`
-- interaction: `category_payment`, `category_channel`, `province_payment`, `tier_payment`
-- history: `hist_order_count`, `hist_return_rate`, `days_since_last_order`, `days_since_last_return`
-- rolling windows: `hist_order_count_30d`, `hist_return_rate_90d`, `hist_return_count_180d`, `hist_spend_sum_365d` และ window อื่นตาม 30/60/90/180/365 วัน
-- time: `order_hour`, `order_month`, `order_dayofweek`, `is_weekend`
-
-Top feature importance ล่าสุด:
-
-| Rank | Feature |
-| ---: | --- |
-| 1 | `hist_return_rate` |
-| 2 | `logistics_risk` |
-| 3 | `hist_return_count_180d` |
-| 4 | `is_cod` |
-| 5 | `is_fragile` |
-| 6 | `brand_SilkTouch` |
-| 7 | `hist_return_count_365d` |
-| 8 | `hist_return_rate_180d` |
-| 9 | `province_Remote_Area` |
-| 10 | `total_discount_pct` |
-
-## Leakage Policy
-
-โมเดล high-accuracy ยังตัด leakage/post-event fields ออกจาก feature train แล้ว
-
-ไม่ใช้:
+### 3. Evaluation Reports
 
 ```text
-return_id, return_date, return_reason, return_scenario,
-item_condition, return_status, refund_amount,
-score_id, risk_score, risk_tier, scored_at, shap_values,
-delivery_date, delivery_days, delay_days, is_returned
+Model Use/03_Evaluation_Reports/
+  holdout_reports/
+  external_test_reports/
+  images/
+  lgbm_s1_v1_to_v5_external_summary.csv
+  lgbm_s1_v1_to_v5_external_summary.json
 ```
 
-`is_returned` ใช้เป็น target เท่านั้น ไม่ใช่ input feature
+ใช้ตรวจสอบผลลัพธ์ของโมเดล เช่น Accuracy, Recall, F1, AUC และ prediction output
 
-ไม่ใช้ identity fields ให้ model จำรายคน/รายสินค้าโดยตรง:
+### 4. User Manual
 
 ```text
-order_id, customer_id, customer_name, customer_phone,
-product_id, product_name, supplier_id, supplier_name,
-supplier_contact, courier_id, courier_name, promo_id, promo_name
+Model Use/04_User_Manual/
+  LightGBM_V5_User_Manual_TH.docx
 ```
 
-## Version Summary
+คู่มือภาษาไทยสำหรับคนรับงานต่อ อธิบายว่าโมเดลใช้งานอย่างไร ถ้าทำนายพลาดควรแก้ตรงไหน และถ้ามีข้อมูลจริงต้อง retrain/map feature อย่างไร
 
-| Version | Main dataset/model | Accuracy | Note |
-| --- | --- | ---: | --- |
-| V1 | baseline XGBoost | 70.80% | baseline feature engineering |
-| V2 realistic safe rolling | XGBoost on realistic features | 71.07% | เหมาะเป็น production-style baseline |
-| V2 NEW on `clean_dataset_v2.csv` | XGBoost, 71 features | 71.46% | realistic, no leakage, Accuracy ไม่สูงมาก |
-| **V2 HIGH_ACCURACY** | **XGBoost on high-signal V2 dataset** | **88.88%** | current final candidate |
-| V3 | stacking model | 66.67% | ซับซ้อนกว่าแต่ไม่ได้ชนะชัด |
-| V4 | generated + SMOTE + Optuna | 83.45% | synthetic experiment, cost สูงกว่า |
+### 5. Environment
 
-## How To Rebuild
+```text
+Model Use/05_Environment/
+  docker-compose.yml
+  .env.example
+  requirements.txt
+  README_DOCKER_POSTGRES.md
+```
 
-สร้าง realistic 50k dataset:
+ใช้สำหรับเปิด PostgreSQL ด้วย Docker และเตรียม environment สำหรับคนรับงานต่อ
+
+## วิธีเปิด PostgreSQL ด้วย Docker
+
+เข้าโฟลเดอร์ environment:
 
 ```powershell
-& 'C:\Users\user\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' 'scripts\generate_clean_dataset_v2.py'
+cd "Model Use\05_Environment"
 ```
 
-สร้าง V2 NEW realistic pipeline:
+สร้างไฟล์ `.env` จากตัวอย่าง:
 
 ```powershell
-& 'C:\Users\user\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' 'scripts\build_v2_new_eda_feature_model.py'
+copy .env.example .env
 ```
 
-สร้าง V2 HIGH_ACCURACY pipeline:
+เปิด PostgreSQL และ pgAdmin:
 
 ```powershell
-& 'C:\Users\user\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' 'scripts\build_v2_high_accuracy_model.py'
+docker compose up -d
 ```
 
-## Recommendation
+ตรวจว่า container ทำงาน:
 
-สำหรับโปรเจ็กต์จบตอนนี้ให้ใช้:
+```powershell
+docker ps
+```
+
+ข้อมูลเชื่อมต่อจากเครื่อง:
 
 ```text
-docs/version 2/v2_xgboost_safe_plus_rolling_HIGH_ACCURACY/models/best_model_v2_xgboost_safe_plus_rolling_HIGH_ACCURACY.pkl
+Host: 127.0.0.1
+Port: 5433
+Database: gmm_oshopping_db
+User: admin
+Password: ดูจากค่า DB_PASS ใน .env
 ```
 
-สำหรับ production จริงในอนาคต:
+pgAdmin:
 
-- ใช้ table `public."order_history_complete_v2_NEW"` เป็น feature-store base
-- ใช้ V2 HIGH_ACCURACY เป็น candidate model
-- validate กับข้อมูล order จริงก่อน deploy
-- monitor Accuracy, Recall, Precision, F1, AUC, Cost และ data drift รายเดือน
-- retrain เมื่อข้อมูลจริงมากพอหรือ distribution เปลี่ยน
+```text
+URL: http://localhost:5050
+```
+
+อ่านรายละเอียดเต็มได้ที่:
+
+```text
+Model Use/05_Environment/README_DOCKER_POSTGRES.md
+```
+
+## แนวคิด Production Flow
+
+เมื่อมี order ใหม่เข้ามา ระบบ production ควรทำงานแบบนี้:
+
+```text
+Order ใหม่ 1 record
+  -> Query เฉพาะ customer_id ที่เกี่ยวข้อง
+  -> Query product/category/courier/payment/channel snapshot
+  -> Build feature 1 row ให้ตรงกับ used_features_lgbm_s1_v5.csv
+  -> Predict ด้วย LightGBM V5
+  -> แสดงผล Low / Medium / High Risk
+```
+
+ระบบจริงไม่ควรคำนวณทั้ง dataset ทุกครั้ง แต่ควรใช้ Feature Store หรือ table snapshot เพื่อเก็บค่าที่คำนวณไว้ล่วงหน้า เช่น customer return history, product return rate, category return rate และ courier risk
+
+## Feature หลักของ V5
+
+V5 ใช้ 64 features โดยแบ่งกลุ่มได้ประมาณนี้:
+
+- ข้อมูลลูกค้า เช่น `age`, `membership_tier`, `province`
+- ข้อมูลสินค้า/order เช่น `category`, `brand`, `quantity`, `total_amount`
+- ประวัติลูกค้า เช่น `total_orders_before`, `total_returns_before`, `customer_return_ratio`
+- ประวัติย้อนหลัง เช่น `hist_return_rate_7d`, `hist_return_rate_30d`, `hist_return_rate_90d`, `hist_return_rate_365d`
+- ความเสี่ยงสินค้า/หมวด/แบรนด์ เช่น `product_return_rate_pti`, `category_return_rate_pti`, `brand_return_rate_pti`
+- ความเสี่ยงช่องทาง/ชำระเงิน/ขนส่ง เช่น `payment_return_rate_pti`, `channel_return_rate_pti`, `courier_return_rate_pti`
+- feature ผสม เช่น `category_payment`, `category_channel`, `high_discount_cod`, `low_rating_high_discount`
+
+## ถ้ามีข้อมูลจริงของบริษัทเข้ามา ต้องทำอะไรต่อ
+
+เมื่อมีข้อมูลจริงจากบริษัท ไม่ควรเอาโมเดลเดิมไปใช้ทันทีโดยไม่ตรวจ ควรทำตามขั้นตอนนี้:
+
+1. ตรวจ schema ของข้อมูลจริง เช่น order, customer, product, return, courier, payment
+2. ทำ Data Dictionary เพื่อรู้ว่าแต่ละ column หมายถึงอะไร
+3. Map column จริงให้ตรงกับ feature ที่ V5 ต้องใช้
+4. ตรวจ missing, null, duplicate, outlier
+5. สร้าง feature ด้วยสูตรเดียวกับ V5
+6. ทดสอบ V5 เดิมกับข้อมูลจริงเพื่อดู baseline
+7. Retrain LightGBM ด้วยข้อมูลจริง
+8. Tune threshold และ parameter ใหม่
+9. เปรียบเทียบ V5 เดิม vs V5 retrain หรือ V6
+10. เลือกโมเดลสุดท้ายก่อนขึ้น production
+
+## สถานะความสมบูรณ์ของโปรเจ็กต์
+
+สิ่งที่พร้อมแล้ว:
+
+- Dataset สำหรับ train/test แบบทดลอง
+- Feature Engineering หลาย version
+- LightGBM V1-V5
+- Selected model: LightGBM V5
+- Holdout test และ external test
+- คู่มือภาษาไทยสำหรับส่งต่องาน
+- ชุดไฟล์ `Model Use/`
+- Docker/PostgreSQL handoff guide
+
+สิ่งที่ยังต้องทำก่อน production จริง:
+
+- ต่อ API เช่น FastAPI สำหรับรับ order ใหม่
+- ทำ Feature Builder สำหรับสร้าง feature 1 row ใน production
+- ทำ Feature Store ใน PostgreSQL
+- Map ข้อมูลจริงของบริษัทกับ feature ของ V5
+- Retrain ด้วยข้อมูลจริง
+- ตั้งระบบ monitoring ว่าโมเดลทำนายพลาดตรงไหน
+- เก็บ feedback หลัง order จบจริงเพื่อ retrain รอบต่อไป
+
+## คำสั่ง Python เบื้องต้น
+
+ติดตั้ง package:
+
+```powershell
+pip install -r requirements.txt
+```
+
+หมายเหตุ: ถ้าใช้ environment ใน `Model Use/05_Environment` ให้ใช้:
+
+```powershell
+pip install -r "Model Use\05_Environment\requirements.txt"
+```
+
+## ข้อควรระวัง
+
+- ห้ามส่งไฟล์ `.env` ที่มี password จริงขึ้น GitHub
+- ถ้าเป็นข้อมูลจริงของบริษัท ไม่ควร commit CSV จริงลง repo
+- ไฟล์ CSV ขนาดใหญ่ควรใช้ Git LFS หรือเก็บแยกนอก repo
+- Accuracy จาก dataset ทดลองไม่ใช่คำรับประกันว่า production จริงจะได้เท่ากัน
+- เมื่อข้อมูลจริงมา ต้อง retrain และ validate ใหม่เสมอ
+
+## สรุปสำหรับส่งต่องาน
+
+ถ้าคนอื่นจะรับงานต่อ ให้เริ่มจาก:
+
+```text
+Model Use/README.md
+Model Use/04_User_Manual/LightGBM_V5_User_Manual_TH.docx
+Model Use/05_Environment/README_DOCKER_POSTGRES.md
+```
+
+โมเดลที่เลือกคือ:
+
+```text
+Model Use/01_Model_Artifacts/models/model_lgbm_s1_v5_lightgbm.pkl
+```
+
+รายชื่อ feature ที่ต้องสร้างให้ตรงคือ:
+
+```text
+Model Use/01_Model_Artifacts/features/used_features_lgbm_s1_v5.csv
+```
