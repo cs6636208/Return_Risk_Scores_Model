@@ -1,5 +1,0 @@
-﻿area,dataset_role,paired_dataset,best_version,model,feature_count,accuracy,recall,f1,auc,selection_reason
-SETC_S1,holdout_train_validation_test,normal_signal_clean_dataset_s1_5000,V4,LightGBM,107,0.777,0.4791666666666667,0.5077262693156733,0.721968201754386,Best holdout Accuracy on normal-signal S1.
-SETC_S2,holdout_train_validation_test,normal_signal_clean_dataset_s2_50000,V5,LightGBM,64,0.7903,0.4266777133388567,0.495549675246572,0.726336352820167,Best holdout Accuracy on normal-signal S2.
-SETD_S3,external_full_dataset_test,normal_signal_s3_55000_vs_s1,V2,LightGBM,64,0.7784727272727273,0.4507159005275056,0.4954029652944587,0.7200803637551555,Best external Accuracy on normal-signal S3.
-SETD_S4,external_full_dataset_test,normal_signal_s4_105000_vs_s2,V5,LightGBM,64,0.7928952380952381,0.4243023163886473,0.4967834498079326,0.733538772845126,Best external Accuracy on normal-signal S4.
