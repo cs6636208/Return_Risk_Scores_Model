@@ -1,17 +1,3 @@
-"""
-Train selected LightGBM V5 model again from featured dataset.
-
-ใช้ทำอะไร:
-- ให้คนรับงานต่อสามารถ train โมเดล LightGBM V5 ใหม่ได้
-- ใช้ feature set ที่เตรียมไว้แล้ว: df_featured_lgbm_s1_v5.csv
-- แบ่งข้อมูลเป็น train / validation / holdout ตามแนวทางเดิม
-- บันทึก model, metadata, metrics, predictions, feature importance
-
-หมายเหตุ:
-- ไฟล์ clean_dataset_s1.csv ยังเป็น clean/raw dataset ต้องทำ Feature Engineering ก่อน
-- ไฟล์ที่ใช้ train ได้ทันทีคือ df_featured_lgbm_s1_v5.csv
-"""
-
 from __future__ import annotations
 
 import argparse
@@ -47,8 +33,10 @@ def load_reference_params(metadata_path: Path) -> dict:
 
 
 def binary_metrics(y_true, y_pred, y_prob=None, fp_cost: float = 50.0, fn_cost: float = 500.0) -> dict:
-    y_true = pd.Series(y_true).astype(int)
-    y_pred = pd.Series(y_pred).astype(int)
+    y_true = pd.Series(y_true).astype(int).reset_index(drop=True)
+    y_pred = pd.Series(y_pred).astype(int).reset_index(drop=True)
+    if y_prob is not None:
+        y_prob = pd.Series(y_prob).reset_index(drop=True)
 
     tp = int(((y_true == 1) & (y_pred == 1)).sum())
     tn = int(((y_true == 0) & (y_pred == 0)).sum())
@@ -254,7 +242,7 @@ def main() -> None:
     holdout_metrics = binary_metrics(y_holdout, holdout_pred, holdout_prob, args.fp_cost, args.fn_cost)
 
     print(f"\nSelected threshold: {threshold:.2f}")
-    print_metrics(val_metrics, "Validation Result")
+    print("Threshold was selected from validation set, but only Holdout Test is shown as the final train result.")
     print_metrics(holdout_metrics, "Holdout Test Result")
 
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")

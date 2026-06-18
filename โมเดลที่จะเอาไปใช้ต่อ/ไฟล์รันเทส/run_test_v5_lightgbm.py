@@ -30,10 +30,24 @@ DEFAULT_FEATURED_DATA_PATH = BASE_DIR / "โมเดล" / "features" / "df_fea
 DEFAULT_SAVED_EXTERNAL_PREDICTIONS = (
     BASE_DIR
     / "รายงานการวัดผล"
-    / "external_test_reports"
+    / "รายงานผล test"
     / "external_predictions_lgbm_s1_v5.csv"
 )
 DEFAULT_OUTPUT_DIR = BASE_DIR / "ไฟล์รันเทส" / "outputs"
+
+
+def resolve_existing_path(path_value: str | Path, filename: str | None = None) -> Path:
+    """Return an existing path, or find the file under the handoff folder."""
+    path = Path(path_value)
+    if path.exists():
+        return path
+
+    target_name = filename or path.name
+    matches = sorted(BASE_DIR.rglob(target_name))
+    if matches:
+        return matches[0]
+
+    raise FileNotFoundError(f"File not found: {path} (also searched for {target_name} under {BASE_DIR})")
 
 
 def load_threshold(metadata_path: Path, fallback: float = 0.5) -> float:
@@ -51,8 +65,10 @@ def load_feature_names(feature_list_path: Path) -> list[str]:
 
 
 def binary_metrics(y_true, y_pred, y_prob=None, fp_cost: float = 50.0, fn_cost: float = 500.0) -> dict:
-    y_true = pd.Series(y_true).astype(int)
-    y_pred = pd.Series(y_pred).astype(int)
+    y_true = pd.Series(y_true).astype(int).reset_index(drop=True)
+    y_pred = pd.Series(y_pred).astype(int).reset_index(drop=True)
+    if y_prob is not None:
+        y_prob = pd.Series(y_prob).reset_index(drop=True)
 
     tp = int(((y_true == 1) & (y_pred == 1)).sum())
     tn = int(((y_true == 0) & (y_pred == 0)).sum())
@@ -119,19 +135,12 @@ def mode_model(args: argparse.Namespace) -> None:
         print("pip install -r \"..\\ทรัพยากรในเครื่องติดตั้งก่อนทำ\\requirements.txt\"")
         sys.exit(1)
 
-    model_path = Path(args.model_path)
-    metadata_path = Path(args.metadata_path)
-    feature_list_path = Path(args.feature_list_path)
-    input_path = Path(args.input_csv)
+    model_path = resolve_existing_path(args.model_path, "model_lgbm_s1_v5_lightgbm.pkl")
+    metadata_path = resolve_existing_path(args.metadata_path, "model_lgbm_s1_v5_metadata.json")
+    feature_list_path = resolve_existing_path(args.feature_list_path, "used_features_lgbm_s1_v5.csv")
+    input_path = resolve_existing_path(args.input_csv, "df_featured_lgbm_s1_v5.csv")
     output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
-
-    if not model_path.exists():
-        raise FileNotFoundError(f"Model file not found: {model_path}")
-    if not feature_list_path.exists():
-        raise FileNotFoundError(f"Feature list not found: {feature_list_path}")
-    if not input_path.exists():
-        raise FileNotFoundError(f"Input CSV not found: {input_path}")
 
     features = load_feature_names(feature_list_path)
     threshold = float(args.threshold) if args.threshold is not None else load_threshold(metadata_path, 0.5)
@@ -197,12 +206,9 @@ def mode_model(args: argparse.Namespace) -> None:
 
 
 def mode_saved_predictions(args: argparse.Namespace) -> None:
-    predictions_path = Path(args.predictions_csv)
+    predictions_path = resolve_existing_path(args.predictions_csv, "external_predictions_lgbm_s1_v5.csv")
     output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
-
-    if not predictions_path.exists():
-        raise FileNotFoundError(f"Predictions CSV not found: {predictions_path}")
 
     df = pd.read_csv(predictions_path)
     required = ["actual_is_returned", "predicted_is_returned", "predict_probability_return"]
